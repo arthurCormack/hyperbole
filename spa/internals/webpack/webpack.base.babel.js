@@ -123,6 +123,14 @@ module.exports = options => ({
       fetch: 'exports-loader?self.fetch!whatwg-fetch',
     }),
 
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+        API_URL: JSON.stringify(process.env.API_URL),
+        SERVER_API_URL: JSON.stringify(process.env.SERVER_API_URL),
+      },
+    }),
+    
     // Always expose NODE_ENV to webpack, in order to use `process.env.NODE_ENV`
     // inside your code for any environment checks; Terser will automatically
     // drop any unreachable code.

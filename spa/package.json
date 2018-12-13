@@ -22,10 +22,11 @@
     "prebuild": "npm run build:clean",
     "build": "cross-env NODE_ENV=production webpack --config internals/webpack/webpack.prod.babel.js --color -p --progress --hide-modules --display-optimization-bailout",
     "build:clean": "rimraf ./build",
-    "start": "cross-env NODE_ENV=development node server",
+    "start": "cross-env NODE_ENV=development SERVER_API_URL=http://hyperbole.local API_URL=//hyperbole.local npm-run-all --parallel ssr:generate:watch ssr:start start:dev",
+    "start:dev": "cross-env NODE_ENV=development SERVER_API_URL=http://hyperbole.local API_URL=//hyperbole.local node server",
     "start:tunnel": "cross-env NODE_ENV=development ENABLE_TUNNEL=true node server",
     "start:production": "npm run test && npm run build && npm run start:prod",
-    "start:prod": "cross-env NODE_ENV=production node server",
+    "start:prod": "cross-env NODE_ENV=production PORT=8081 SERVER_API_URL=http://hyperbole.local API_URL=//hyperbole.local node server  --max-old-space-size=1500",
     "presetup": "npm i chalk shelljs",
     "setup": "node ./internals/scripts/setup.js",
     "clean": "shjs ./internals/scripts/clean.js",
@@ -42,7 +43,11 @@
     "test": "cross-env NODE_ENV=test jest --coverage",
     "test:watch": "cross-env NODE_ENV=test jest --watchAll",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
-    "prettify": "prettier --write"
+    "prettify": "prettier --write",
+    "ssr:generate": "cross-env NODE_ENV=development SERVER_API_URL=http://hyperbole.local API_URL=//hyperbole.local webpack --progress --config internals/webpack/webpack.ssr.dev.babel.js",
+    "ssr:generate:watch": "npm run ssr:generate -- --watch",
+    "ssr:start": "cross-env NODE_ENV=development SERVER_API_URL=http://hyperbole.local API_URL=//hyperbole.local nodemon -q --ext js,json --watch server/middlewares --watch server/devRenderService.js server/devRenderService.js",
+    "ssr:clean": "rimraf server/middlewares/generated.*"
   },
   "lint-staged": {
     "*.js": [
@@ -66,6 +71,7 @@
     "connected-react-router": "5.0.1",
     "cross-env": "5.2.0",
     "express": "4.16.4",
+    "express-async-handler": "^1.1.4",
     "fontfaceobserver": "2.0.13",
     "history": "4.7.2",
     "hoist-non-react-statics": "3.1.0",
@@ -171,6 +177,7 @@
     "webpack-cli": "3.1.2",
     "webpack-dev-middleware": "3.4.0",
     "webpack-hot-middleware": "2.24.3",
+    "webpack-node-externals": "^1.7.2",
     "webpack-pwa-manifest": "3.7.1"
   }
 }
