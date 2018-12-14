@@ -13,8 +13,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router/immutable';
+// import {   } from 'react-router-config';
 import FontFaceObserver from 'fontfaceobserver';
-import history from 'utils/history';
+// import history from 'utils/history';
+import createHistory from 'history/createBrowserHistory';
+
 import 'sanitize.css/sanitize.css';
 
 // Import root app
@@ -25,7 +28,11 @@ import LanguageProvider from 'containers/LanguageProvider';
 
 // Load the favicon and the .htaccess file
 import '!file-loader?name=[name].[ext]!./images/favicon.ico';
-import 'file-loader?name=.htaccess!./.htaccess'; // eslint-disable-line import/extensions
+// import 'file-loader?name=.htaccess!./.htaccess'; // eslint-disable-line import/extensions
+
+import renderInBrowser from './renderInBrowser';
+import Routes from 'routes';// so ... this is no longer a function, its a simple array
+
 
 import configureStore from './configureStore';
 
@@ -34,7 +41,7 @@ import { translationMessages } from './i18n';
 
 // Observe loading of Open Sans (to remove open sans, remove the <link> tag in
 // the index.html file and this observer)
-const openSansObserver = new FontFaceObserver('Open Sans', {});
+const openSansObserver = new FontFaceObserver('Libre Baskerville', {});
 
 // When Open Sans is loaded, add a font-family using Open Sans to the body
 openSansObserver.load().then(() => {
@@ -42,22 +49,28 @@ openSansObserver.load().then(() => {
 });
 
 // Create redux store with history
-const initialState = {};
+const initialState = window.APP_STATE || {};
+const history = createHistory();
 const store = configureStore(initialState, history);
 const MOUNT_NODE = document.getElementById('app');
 
-const render = messages => {
-  ReactDOM.render(
-    <Provider store={store}>
-      <LanguageProvider messages={messages}>
-        <ConnectedRouter history={history}>
-          <App />
-        </ConnectedRouter>
-      </LanguageProvider>
-    </Provider>,
-    MOUNT_NODE,
-  );
-};
+const render = (messages) => {
+  renderInBrowser({ messages, store, Routes, history });
+}
+
+
+// const render = messages => {
+//   ReactDOM.render(
+//     <Provider store={store}>
+//       <LanguageProvider messages={messages}>
+//         <ConnectedRouter history={history}>
+//           <App />
+//         </ConnectedRouter>
+//       </LanguageProvider>
+//     </Provider>,
+//     MOUNT_NODE,
+//   );
+// };
 
 if (module.hot) {
   // Hot reloadable React components and translation json files

@@ -131,8 +131,16 @@ const withConnect = connect(
 const withReducer = injectReducer({ key: 'home', reducer });
 const withSaga = injectSaga({ key: 'home', saga });
 
-export default compose(
-  withReducer,
-  withSaga,
-  withConnect,
-)(HomePage);
+// export default compose(
+//   withReducer,
+//   withSaga,
+//   withConnect,
+// )(HomePage);
+
+export default {
+  component: compose(
+    withReducer,
+    withSaga,
+    withConnect,
+  )(HomePage),
+};

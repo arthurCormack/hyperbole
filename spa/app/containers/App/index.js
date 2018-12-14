@@ -7,15 +7,24 @@
  */
 
 import React from 'react';
-import { Helmet } from 'react-helmet';
-import styled from 'styled-components';
-import { Switch, Route } from 'react-router-dom';
 
-import HomePage from 'containers/HomePage/Loadable';
-import FeaturePage from 'containers/FeaturePage/Loadable';
-import NotFoundPage from 'containers/NotFoundPage/Loadable';
-import Header from 'components/Header';
-import Footer from 'components/Footer';
+import { renderRoutes } from 'react-router-config';
+
+import { Helmet } from 'react-helmet';
+
+import injectSaga from 'utils/injectSaga';// for making of the global dynamic saga
+import { compose } from 'redux';
+import saga from './sagas';
+import { DAEMON } from 'utils/constants';
+
+import styled from 'styled-components';
+// import { Switch, Route } from 'react-router-dom';
+
+// import HomePage from 'containers/HomePage/Loadable';
+// import FeaturePage from 'containers/FeaturePage/Loadable';
+// import NotFoundPage from 'containers/NotFoundPage/Loadable';
+// import Header from 'components/Header';
+// import Footer from 'components/Footer';
 
 import GlobalStyle from '../../global-styles';
 
@@ -28,23 +37,28 @@ const AppWrapper = styled.div`
   flex-direction: column;
 `;
 
-export default function App() {
+const withSaga = injectSaga({ key: 'App', saga, mode: DAEMON });
+const App = ({ route }) => {
   return (
     <AppWrapper>
       <Helmet
-        titleTemplate="%s - React.js Boilerplate"
-        defaultTitle="React.js Boilerplate"
+        titleTemplate="%s - Hyperbole"
+        defaultTitle="Hyperbole"
+        meta={[
+          { name: 'description', content: 'Hyperbole' },
+
+        ]}
       >
-        <meta name="description" content="A React.js Boilerplate application" />
+        <meta name="description" content="Hyperbole" />
       </Helmet>
-      <Header />
-      <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route path="/features" component={FeaturePage} />
-        <Route path="" component={NotFoundPage} />
-      </Switch>
-      <Footer />
+      {renderRoutes(route.routes)}
       <GlobalStyle />
     </AppWrapper>
   );
-}
+};
+
+export default {
+  component: compose(
+    withSaga,
+  )(App),
+};

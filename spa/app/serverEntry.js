@@ -6,33 +6,27 @@
  *
  * The server uses it to render the app at given location.
  */
-// import 'babel-polyfill'; // for regeneratorRuntime
+
 import '@babel/polyfill'; // for regeneratorRuntime
 
 import React from 'react';
 
 import { renderToString, renderToStaticMarkup } from 'react-dom/server';
 
-// import { StaticRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { renderRoutes, matchRoutes } from 'react-router-config';
-
 import { ConnectedRouter } from 'connected-react-router/immutable';
 
-// import { match, RouterContext } from 'react-router';// match doesn't seem toi exist anymore in RR4. does RouterContext?
-
-// import { createMemoryHistory } from 'history';
 import createMemoryHistory from 'history/createMemoryHistory';
 
 import { END } from 'redux-saga';
 import Helmet from 'react-helmet';
-// import styleSheet from 'styled-components/lib/models/StyleSheet';
+
 import { ServerStyleSheet } from 'styled-components';
 
 // Global styles should be injected before any other scoped style, so make sure
 // this file is imported before any styled component.
 import 'global-styles';
-// import 'special-styles';
 
 import createStore from 'configureStore';
 
@@ -56,11 +50,11 @@ import LanguageProvider from 'containers/LanguageProvider';
 */
 
 import HtmlDocument from 'components/HtmlDocument';
-import AppRoot from 'containers/AppRoot';
-import App from 'containers/App';
+// import AppRoot from 'containers/AppRoot';
+// import App from 'containers/App';
 import { changeLocale } from 'containers/LanguageProvider/actions';
 
-import syncHistoryWithStore from 'setup/syncHistoryWithStore';
+// import syncHistoryWithStore from 'setup/syncHistoryWithStore';
 
 import monitorSagas from 'utils/monitorSagas';
 
@@ -120,8 +114,6 @@ async function renderHtmlDocument({ url, store, sagasDone, assets, webpackDllNam
   // console.log(assets);
   // 1st render phase - triggers the sagas
   renderAppToString(url, store, memHistory);// one
-
-  //
 
   // th thing is, with the way that the sagas,
   // send signal to sagas that we're done
