@@ -799,7 +799,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = __webpack_require__(/*! /Users/a.cormack/Sites/hyperbole/spa/app/serverEntry.js */\"./app/serverEntry.js\");\n\n\n//# sourceURL=webpack:///multi_./app/serverEntry.js?");
+eval("module.exports = __webpack_require__(/*! /Users/arthur/Sites/hyperbole/spa/app/serverEntry.js */\"./app/serverEntry.js\");\n\n\n//# sourceURL=webpack:///multi_./app/serverEntry.js?");
 
 /***/ }),
 
