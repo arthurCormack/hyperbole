@@ -11,6 +11,7 @@
   ... A signup for our newsletter thing?
   ... a Poll? Maybe we should ship a custom widget to go with this. Like a React Poll kind of thing. And make a side business, where people can
   ... create polls, and then summmon them into their pages, via api, and tokens.
+  .. A slideshow integration, possibly with some other wp slideshow. A way of putting it into json format, and of rendering it.
 
   ... what cool tricks can we add to the stack? The endless scrolling. The detection mechanism.
   ... THE SMEB! Which is a very cool thing.
@@ -27,7 +28,7 @@
   ... the FAPI idea from Drupal, that kind of structure / thinking, as a representaion of certain content, could bridge the gap between structure / layout in WP-land and React-Land.
 
 
-  ... also consider the best way to store wp post data in state. maybe as a lookuptable of post id and content. And from there, we can have archives, and posts simply look up from that state. And we can also implement a kind of garbage collection from state, and dump the bits of content that need to ge tdumped, soas to not crash the browser 
+  ... also consider the best way to store wp post data in state. maybe as a lookuptable of post id and content. And from there, we can have archives, and posts simply look up from that state. And we can also implement a kind of garbage collection from state, and dump the bits of content that need to ge tdumped, soas to not crash the browser
 */
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -40,7 +41,7 @@ import { createStructuredSelector } from 'reselect';
 import injectReducer from 'utils/injectReducer';
 import injectSaga from 'utils/injectSaga';
 import {
-  makeSelectpostStack,
+  makeSelectPostStack,
   makeSelectLoading,
   makeSelectError,
 } from 'containers/App/selectors';
@@ -52,9 +53,9 @@ import Form from './Form';
 import Input from './Input';
 import Section from './Section';
 import messages from './messages';
-import { loadRepos } from '../App/actions';
-import { changeUsername } from './actions';
-import { makeSelectUsername } from './selectors';
+// import { loadRepos } from '../App/actions';
+// import { changeUsername } from './actions';
+// import { makeSelectUsername } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 
@@ -95,22 +96,7 @@ export class HomePage extends React.PureComponent {
             <H2>
               <FormattedMessage {...messages.trymeHeader} />
             </H2>
-            <Form onSubmit={this.props.onSubmitForm}>
-              <label htmlFor="username">
-                <FormattedMessage {...messages.trymeMessage} />
-                <AtPrefix>
-                  <FormattedMessage {...messages.trymeAtPrefix} />
-                </AtPrefix>
-                <Input
-                  id="username"
-                  type="text"
-                  placeholder="mxstbr"
-                  value={this.props.username}
-                  onChange={this.props.onChangeUsername}
-                />
-              </label>
-            </Form>
-            <ReposList {...reposListProps} />
+            Hello Hyperbole!
           </Section>
         </div>
       </article>

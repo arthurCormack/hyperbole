@@ -51,6 +51,7 @@ const App = ({ route }) => {
       >
         <meta name="description" content="Hyperbole" />
       </Helmet>
+      Aloha
       {renderRoutes(route.routes)}
       <GlobalStyle />
     </AppWrapper>
