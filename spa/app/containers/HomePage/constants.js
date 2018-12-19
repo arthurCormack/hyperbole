@@ -9,4 +9,6 @@
  * export const YOUR_ACTION_CONSTANT = 'yourproject/YourContainer/YOUR_ACTION_CONSTANT';
  */
 
-export const CHANGE_USERNAME = 'boilerplate/Home/CHANGE_USERNAME';
+export const LOAD_HOMEPAGE = 'boilerplate/Home/LOAD_HOMEPAGE';
+export const LOAD_HOMEPAGE_SUCCESS = 'boilerplate/Home/LOAD_HOMEPAGE_SUCCESS';
+export const LOAD_HOMEPAGE_FAILURE = 'boilerplate/Home/LOAD_HOMEPAGE_FAILURE';

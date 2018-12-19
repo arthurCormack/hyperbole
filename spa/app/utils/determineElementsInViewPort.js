@@ -51,7 +51,7 @@ export function determineElementsInViewPort(elementPrefix, stripPrefix = false) 
         itemsInViewport.push(item.id);
       }
   }
-  
+
   if (stripPrefix) {
     return itemsInViewport.map((item) => Number(item.replace(elementPrefix, ``)));
   }
