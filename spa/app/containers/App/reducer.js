@@ -12,7 +12,9 @@
 
 import { fromJS } from 'immutable';
 
-import { LOAD_POST_SUCCESS } from 'containers/SinglePosts/constants';
+import { has } from 'lodash';
+// import { LOAD_POST_SUCCESS } from 'containers/SinglePosts/constants';
+import { LOAD_INITIAL_FRONTPAGEPOSTS_SUCCESS } from 'containers/HomePage/constants';
 
 // we will import and compose all the reducers of containers that detch content from the CAA (Content Authority API)
 // because that content will go into the global postStack.
@@ -55,7 +57,7 @@ import { LOAD_POST_SUCCESS } from 'containers/SinglePosts/constants';
 // and we don't want it to have to be in two places at the same time ... so ... On the
 // so, the App, has to be aware of some of the intricacies of the SinglePostPage, and the ArchivePage, and any other route containers that might have to load in post data.
 
-function postStack (state = fromJS([]), action) {// initial state is an immutable object/collection.
+function postStack (state = fromJS({}), action) {// initial state is an immutable object/collection.
   // where should the postStack be defined? ... before we answer that, let's instead define what the postStack actually is. And then maybe where it should live will become apparant.
   // the postStack is a local store of posts that get loaded in. It's a keyed array of objects, with post_id as key.
   // The objects can be in one of a few different possible state:
@@ -81,11 +83,30 @@ function postStack (state = fromJS([]), action) {// initial state is an immutabl
   // but the App level postStack needs to import reducers from each route container that loads post data.
   //
   switch (action.type) {
-    case LOAD_POST_SUCCESS:
-      // put a full post into the stack
-      return state.set(action.data.id, action.data);
+    case LOAD_INITIAL_FRONTPAGEPOSTS_SUCCESS:
+      // put a partial post into the stack
+      // return state.set(action.data.id, action.data);
+      // this action has frontPagePosts, and maybe some other stuff.
+      // at first, let's try just sticking it in there, and then we can use logic to determine exacly what to put in there.
 
-    // case LOAD_ARCHIVE_SUCCESS:
+      //let previousPostStack = clone(state);
+      const { frontPagePosts } = action;
+      frontPagePosts.forEach((item) => {
+        // if the item isn't already in the postStack, then stick it in.
+        // if (item.post_id) {
+        //
+        // }
+        if ( has(state, item.post_id) ) {
+          // then leave it alone.
+          // TODO, replace it, if the last_modified date of the new one > the old one.
+
+        } else {
+          // wow ... there are multiple state mutations, do we really want to do them each seperately? or make a new temporary stack, and then make the adjustments, and then update the whole thing.
+          item.loadState = 'excerpt';// possible loadStates: none (not ever loaded yet), emptied (loaded and then emptied), excerpt (excerpt loaded, but not full content), full (everything - full contnet, including multipage post_content, has been loaded).
+          state.set(item.post_id, item);// set each thin, and then return.
+        }
+      });
+      return state;
       // put partial/excerpt posts into the stack, but where the post is already there, only replace content if the modified date is greater.
       // we will have an array of posts
       // we'll come back to this later.
@@ -97,8 +118,8 @@ function postStack (state = fromJS([]), action) {// initial state is an immutabl
 
 export default combineReducers({
   postStack,
-  wp_request,
-  wp_userdata,
-  ads,
-  caardd,
+  // wp_request,
+  // wp_userdata,
+  // ads,
+  // caardd,
 });

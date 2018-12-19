@@ -5,13 +5,13 @@
 import { createSelector } from 'reselect';
 import { initialState } from './reducer';
 
-const selectHome = state => state.get('home', initialState);// what?! we can pass a second default state?!
+const selectHome = state => state.get('home', initialState);
 
-// const makeSelectUsername = () =>
-//   createSelector(
-//     selectHome,
-//     homeState => homeState.get('username'),
-//   );
+const makeSelectUsername = () =>
+  createSelector(
+    selectHome,
+    homeState => homeState.get('username'),
+  );
 
 /*
   The home page has it's postStack ...
@@ -21,6 +21,6 @@ const selectHome = state => state.get('home', initialState);// what?! we can pas
 */
 const makeSelectPostStack = () =>
   createSelector(
-
+    
   );
-export { makeSelectPostStack };
+export { selectHome, makeSelectUsername };
