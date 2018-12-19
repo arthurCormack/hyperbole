@@ -9,6 +9,10 @@
  * export const YOUR_ACTION_CONSTANT = 'yourproject/YourContainer/YOUR_ACTION_CONSTANT';
  */
 
-export const LOAD_HOMEPAGE = 'hyperbole/Home/LOAD_INITIALCONTENT';
-export const LOAD_HOMEPAGE_SUCCESS = 'hyperbole/Home/LOAD_INITIALCONTENT_SUCCESS';
-export const LOAD_HOMEPAGE_FAILURE = 'hyperbole/Home/LOAD_INITIALCONTENT_FAILURE';
+<<<<<<< HEAD
+export const LOAD_HOMEPAGE = 'boilerplate/Home/LOAD_HOMEPAGE';
+export const LOAD_HOMEPAGE_SUCCESS = 'boilerplate/Home/LOAD_HOMEPAGE_SUCCESS';
+export const LOAD_HOMEPAGE_FAILURE = 'boilerplate/Home/LOAD_HOMEPAGE_FAILURE';
+=======
+export const LOAD_INITIALSTUFF = 'hyperbole/Home/LOAD_INITIALSTUFF';
+>>>>>>> 285439446615b591c856c2468bdcca6270555706

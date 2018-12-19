@@ -403,11 +403,11 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var styl
 /*!**********************************************!*\
   !*** ./app/containers/HomePage/constants.js ***!
   \**********************************************/
-/*! exports provided: LOAD_INITIALSTUFF */
+/*! exports provided: LOAD_HOMEPAGE, LOAD_HOMEPAGE_SUCCESS, LOAD_HOMEPAGE_FAILURE */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"LOAD_INITIALSTUFF\", function() { return LOAD_INITIALSTUFF; });\n/*\n * HomeConstants\n * Each action has a corresponding type, which the reducer knows and picks up on.\n * To avoid weird typos between the reducer and the actions, we save them as\n * constants here. We prefix them with 'yourproject/YourComponent' so we avoid\n * reducers accidentally picking up actions they shouldn't.\n *\n * Follow this format:\n * export const YOUR_ACTION_CONSTANT = 'yourproject/YourContainer/YOUR_ACTION_CONSTANT';\n */\nvar LOAD_INITIALSTUFF = 'hyperbole/Home/LOAD_INITIALSTUFF';\n\n//# sourceURL=webpack:///./app/containers/HomePage/constants.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"LOAD_HOMEPAGE\", function() { return LOAD_HOMEPAGE; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"LOAD_HOMEPAGE_SUCCESS\", function() { return LOAD_HOMEPAGE_SUCCESS; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"LOAD_HOMEPAGE_FAILURE\", function() { return LOAD_HOMEPAGE_FAILURE; });\n/*\n * HomeConstants\n * Each action has a corresponding type, which the reducer knows and picks up on.\n * To avoid weird typos between the reducer and the actions, we save them as\n * constants here. We prefix them with 'yourproject/YourComponent' so we avoid\n * reducers accidentally picking up actions they shouldn't.\n *\n * Follow this format:\n * export const YOUR_ACTION_CONSTANT = 'yourproject/YourContainer/YOUR_ACTION_CONSTANT';\n */\nvar LOAD_HOMEPAGE = 'hyperbole/Home/LOAD_INITIALCONTENT';\nvar LOAD_HOMEPAGE_SUCCESS = 'hyperbole/Home/LOAD_INITIALCONTENT_SUCCESS';\nvar LOAD_HOMEPAGE_FAILURE = 'hyperbole/Home/LOAD_INITIALCONTENT_FAILURE';\n\n//# sourceURL=webpack:///./app/containers/HomePage/constants.js?");
 
 /***/ }),
 
@@ -787,7 +787,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = __webpack_require__(/*! /Users/arthur/Sites/hyperbole/spa/app/serverEntry.js */\"./app/serverEntry.js\");\n\n\n//# sourceURL=webpack:///multi_./app/serverEntry.js?");
+eval("module.exports = __webpack_require__(/*! /Users/a.cormack/Sites/hyperbole/spa/app/serverEntry.js */\"./app/serverEntry.js\");\n\n\n//# sourceURL=webpack:///multi_./app/serverEntry.js?");
 
 /***/ }),
 
