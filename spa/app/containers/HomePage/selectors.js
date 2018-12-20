@@ -5,13 +5,15 @@
 import { createSelector } from 'reselect';
 import { initialState } from './reducer';
 
+import { makeSelectPostStack as makeSelectGlobalPostStack } from 'containers/App/selectors';
+
 const selectHome = state => state.get('home', initialState);
 
-const makeSelectUsername = () =>
-  createSelector(
-    selectHome,
-    homeState => homeState.get('username'),
-  );
+// const makeSelectUsername = () =>
+//   createSelector(
+//     selectHome,
+//     homeState => homeState.get('username'),
+//   );
 
 /*
   The home page has it's postStack ...
@@ -21,6 +23,9 @@ const makeSelectUsername = () =>
 */
 const makeSelectPostStack = () =>
   createSelector(
-    
+    makeSelectGlobalPostStack(),
+    (globalPostStack) => {
+
+    }
   );
-export { selectHome, makeSelectUsername };
+export { selectHome, makeSelectPostStack };

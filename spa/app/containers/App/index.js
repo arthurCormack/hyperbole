@@ -14,10 +14,13 @@ import { Helmet } from 'react-helmet';
 
 import injectSaga from 'utils/injectSaga';// for making of the global dynamic saga
 import { compose } from 'redux';
-import saga from './sagas';
+
 import { DAEMON } from 'utils/constants';
 
 import styled from 'styled-components';
+
+import saga from './sagas';
+
 // import { Switch, Route } from 'react-router-dom';
 
 // import HomePage from 'containers/HomePage/Loadable';

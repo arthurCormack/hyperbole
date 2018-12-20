@@ -96,13 +96,15 @@ function postStack (state = fromJS({}), action) {// initial state is an immutabl
         // if (item.post_id) {
         //
         // }
-        if ( has(state, item.post_id) ) {
+        if (has(state, item.post_id)) {
           // then leave it alone.
           // TODO, replace it, if the last_modified date of the new one > the old one.
 
         } else {
           // wow ... there are multiple state mutations, do we really want to do them each seperately? or make a new temporary stack, and then make the adjustments, and then update the whole thing.
-          item.loadState = 'excerpt';// possible loadStates: none (not ever loaded yet), emptied (loaded and then emptied), excerpt (excerpt loaded, but not full content), full (everything - full contnet, including multipage post_content, has been loaded).
+          // is that seriously what I want to call it? loadState?
+          // it means homw much of the thing has loaded. archives and homepage load partial or excerpt. full is on post pages. so let's say the 4 loadLevels are: false, excerpt, full, cleared
+          item.loadLevel = 'excerpt';// possible loadStates: none (not ever loaded yet), emptied (loaded and then emptied), excerpt (excerpt loaded, but not full content), full (everything - full contnet, including multipage post_content, has been loaded).
           state.set(item.post_id, item);// set each thin, and then return.
         }
       });
