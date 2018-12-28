@@ -37,12 +37,13 @@ const selectRouter = state => state.get('router');
 //     selectRouter,
 //     routerState => routerState.get('location').toJS(),
 //   );
-const makeSelectPostStack = () => {
+const makeSelectPostStack = () =>
+  // console.log(`makeSelectPostStack()`);
   createSelector(
     selectGlobal,
     globalState => globalState.get('postStack')
   );
-}
+
 
 export {
   selectGlobal,

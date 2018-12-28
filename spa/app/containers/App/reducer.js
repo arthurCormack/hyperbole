@@ -11,6 +11,7 @@
  */
 
 import { fromJS } from 'immutable';
+import { combineReducers } from 'redux-immutable';
 
 import { has } from 'lodash';
 // import { LOAD_POST_SUCCESS } from 'containers/SinglePosts/constants';

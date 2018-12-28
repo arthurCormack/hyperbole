@@ -3,27 +3,77 @@
 <br />
 
 <div align="center"><strong>Hyperbole</strong></div>
-<div align="center">A Hybrid: the joining of a modern SPA Architechture to Wordpress.</div>
-#Introduction
-Hyperbole is a way of making a website, where content is controlled by Wordpress (or soon Drupal) and the presentation of that content
-happens in a Universal (isomorphic) Single Page Application.
-... need to insert an explanation of why this was necessary ... user experience, speed, functionality.
-... why not just use WP as it is. For many websites, this might be the best direction to take.
+<div align="center">A Hybrid: the joining of a modern SPA Architecture to Wordpress. Or, Wordpress content in a fast modern SPA site.</div>
+
+# What is Hyperbole? (Introduction)?
+Hyperbole is a way of making a website, where content controlled by a Wordpress CMS (or soon Drupal) is presented it in a Universal (isomorphic) Single Page Application.
+
+## History Pedigree / Lineage
+The SPA was originally based upon the awesome react boilerplate project.
+SSR was added.
+Additional Special components, libraries.
+Endless scroll, edit button, 
+
+## Features
+
+
+## Quickstart
+clone the repo
+cd into the dir that you cloned into,
+run `docker-compose up`
+(if you don't have docker and docker compose set up, then you'll need to do that first)
+this will build docker images for wordpress app server, the nginx proxy server, and the SPA server, which does the build, and runs a SSR node server.
+(this usually takes ~1-5 minutes, for the first time, but is much quicker subsequent times, because of the way docker works)
+... wait until it is done (the terminal will say, hyperbole is now running on port:3000), and then go to http://localhost:3000
+tada.
+
+
+[... need to insert an explanation of why this was necessary ... user experience, speed, functionality.
+... why not just use WP as it is. For many websites, this might be the best direction to take.]
 ## Why this project was started
 I work for a media company, we have a number of writers and editors that are already familiar with Wordpress.
 We wanted to keep using wordpress, but also to be able to do things like start a radio stream playing, and navigate around the site, without interrupting the stream. Or realtime updating of content, via socket.io. Or having really snappy Photo galleries.
 
+
+## Command Line options
+... do we really have any command line options? we could put in some scripts that would do cool things.
+... what are the scripted things that would be useful? having a script that would call the wordpress api, to get data needed to run the build? like figuring put where to map paths to for posts.
+... ascertaining the post path.
+... ascertaining the archive path.
+... getting all of the pages, and their paths.
+... getting any other paths that might be required. Maybe make a path making / exporting API plugin, in WP, so that we could register paths that would be exposed.
+...  
+## What it's for
+... publications, online magazines
+
+### Key features
+...
+
 ## An Overview of How it works
-Content is managed in the CMS (Wordpress, or soon, Drupal). Wordpress is the most popular CMS out there. It's awesome, and free and open-sourced. We have a user base that is familiar with it.
+Content is managed in the CMS (Wordpress, or soon, Drupal). Wordpress is the most popular CMS out there. It's awesome, and free and open-sourced. We have a user base that is familiar with it. (ok ... don't waste too much time telling people what is already well known.)
 
 The SPA gets the content via JSON REST APIs.
 Initial html is rendered on a NodeJS Server, and returned to client browsers. Subsequent content is rendered with client JS.
 
 The tech stack of the SPA utilizes many popular and awesome libraries, like React, Redux, Redux-Saga, ReSelect, etc.
 It was based of the amazing react-boilerplate project. Much of the structure, organization, and conventions are based on the React Boilerplate. And so this project owes a debt of gratitude and much appreciation to that project.
-  
+
 A proxy server is key, so that requests to CMS urls go to the CMS ( /wp-admin, /wp-json, etc. )
 In this repo, we use NGINX for proxying, but there are many other ways to do it: HAProxy, Squid, Cloudfront, AWS ALBs, etc.
+
+
+## Road Map
+A few ideas are afoot ...
+A wordpress API route discovery JSON API, where registered routes could be exported into a json file that would be imported during the build phase.
+... or running plop generators that would build containers that consumed content from endpoints that were made discoverable through the API.
+curently, things are limited to some basic functionality.
+... further than that, i'd like to see if there is any adoption, and then base plans on the feedback that I get from users.
+
+(My roadmap, is to release it, then notify people in the React and Wordpress communities that I have done this, and invite them to try it, and let them know that I would be grateful for any feedback or advice that they might have.)
+(Then present it. And show how it can be used.)
+
+## The name of this repo ...
+should it continue to be called hyperbole? that is perhaps a weak name. Maybe Klee. Well Klee is an inspiration, for sure. But the name is already taken by another open source project.
 
 <br />
 

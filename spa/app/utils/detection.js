@@ -1,5 +1,3 @@
-import { msg } from 'utils/msg';
-
 export const isClientMobile = () => {
   if (typeof window === 'undefined') {
     return null;
