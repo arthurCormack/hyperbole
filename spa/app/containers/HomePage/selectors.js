@@ -49,9 +49,11 @@ const makeSelectPostStack = () =>
       console.log(`globalPostStack==`, globalPostStack);// empty map
       console.log(`FrontPagePosts==`, frontPagePosts);
       // so ... to test this, and see it working, we actually have to load in some posts!
+
       // const intersect = filter(globalPostStack, has(globalPostStack, homePostStack.id));
       // return
       // return all the items in globalPostStack that have ids that are in homePostStack
+      return false;
     }
   );
 export { selectHome, makeSelectPostStack, makeSelectLoading, makeSelectError };

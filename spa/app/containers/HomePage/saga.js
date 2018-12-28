@@ -4,6 +4,9 @@
 
 import { call, put, select, takeLatest } from 'redux-saga/effects';
 import { APICALLURL_GETFRONTPAGEPOSTS } from 'apiCallURLs';
+
+import { makeSelectPostStack as makeSelectFrontPagePosts, makeSelectLoading } from './selectors';
+import { loadFrontPagePosts, loadFrontPagePostsSuccess, loadFrontPagePostsFailure } from './actions';
 // import { LOAD_REPOS } from 'containers/App/constants';
 // import { reposLoaded, repoLoadingError } from 'containers/App/actions';
 
@@ -47,24 +50,25 @@ function* firstLoadSaga() {
   // much of the gutenberg bells and whistles might not work, in dangerouslySetInnerHTML'd content; js that is supposed to be included in the head will not be, and the document.ready, came and went before the content got loaded.
   // console.log(` about to call ${APICALLURL_GETFRONTPAGEPOSTS}`);
 
-  // const homeQuote = yield select(makeSelectHomeQuote());
-  // const doWeHaveDataYet = homeQuote !== false;
-  // const areWeLoading = yield select(makeSelectLoading());
+  const frontPagePosts = yield select(makeSelectFrontPagePosts());
+  const doWeHaveDataYet = frontPagePosts !== false;
+  const areWeLoading = yield select(makeSelectLoading());
+
   // // so ... here is the problem ... we need to refresh the ad data.
-  // if (!doWeHaveDataYet && !areWeLoading) {// hack to always load, because we might have to overwrite the ads data, and this is the only way to do it
-  //
-  // // if (typeof window !== 'undefined' || (!doWeHaveDataYet && !areWeLoading)) {// hack to always load, because we might have to overwrite the ads data, and this is the only way to do it
-  //   yield put(loadHomeStart());// next time areWeLoading will be true, until success or failure, and then doWeHaveDataYet might be different.
-  //   try {
-  //     const someHomeStartData = yield call(request, APICALLURL_GETHOMESTART);
-  //     console.log(`finished call to APICALLURL_GETHOMESTART`);
-  //     yield put(loadHomeStartSuccess(someHomeStartData));
-  //   } catch (e) {
-  //     yield put(loadHomeStartFailure());
-  //   }
-  // } else {
-  //   console.log(`what are we doing here?`);
-  // }
+  if (!doWeHaveDataYet && !areWeLoading) {// hack to always load, because we might have to overwrite the ads data, and this is the only way to do it
+
+    yield put(loadFrontPagePosts());// next time areWeLoading will be true, until success or failure, and then doWeHaveDataYet might be different.
+
+    try {
+      const someHomeStartData = yield call(request, APICALLURL_GETFRONTPAGEPOSTS);
+      //console.log(`finished call to APICALLURL_GETHOMESTART`);
+      yield put(loadFrontPagePostsSuccess(someHomeStartData));
+    } catch (e) {
+      yield put(loadFrontPagePostsFailure());
+    }
+  } else {
+    console.log(`what are we doing here?`);
+  }
 
 
 }
