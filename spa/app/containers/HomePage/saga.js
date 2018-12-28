@@ -3,6 +3,7 @@
  */
 
 import { call, put, select, takeLatest } from 'redux-saga/effects';
+import { APICALLURL_GETFRONTPAGEPOSTS } from 'apiCallURLs';
 // import { LOAD_REPOS } from 'containers/App/constants';
 // import { reposLoaded, repoLoadingError } from 'containers/App/actions';
 
@@ -44,11 +45,34 @@ function* firstLoadSaga() {
   // do we simply pull the most recent posts? or do we make a special page that lets the site editor select articles? or a slideshow? in short, how do we know what we are doing here on the front page?
   // initially, let's just keep it simple. Get the n latest posts.
   // much of the gutenberg bells and whistles might not work, in dangerouslySetInnerHTML'd content; js that is supposed to be included in the head will not be, and the document.ready, came and went before the content got loaded.
+  // console.log(` about to call ${APICALLURL_GETFRONTPAGEPOSTS}`);
+
+  // const homeQuote = yield select(makeSelectHomeQuote());
+  // const doWeHaveDataYet = homeQuote !== false;
+  // const areWeLoading = yield select(makeSelectLoading());
+  // // so ... here is the problem ... we need to refresh the ad data.
+  // if (!doWeHaveDataYet && !areWeLoading) {// hack to always load, because we might have to overwrite the ads data, and this is the only way to do it
+  //
+  // // if (typeof window !== 'undefined' || (!doWeHaveDataYet && !areWeLoading)) {// hack to always load, because we might have to overwrite the ads data, and this is the only way to do it
+  //   yield put(loadHomeStart());// next time areWeLoading will be true, until success or failure, and then doWeHaveDataYet might be different.
+  //   try {
+  //     const someHomeStartData = yield call(request, APICALLURL_GETHOMESTART);
+  //     console.log(`finished call to APICALLURL_GETHOMESTART`);
+  //     yield put(loadHomeStartSuccess(someHomeStartData));
+  //   } catch (e) {
+  //     yield put(loadHomeStartFailure());
+  //   }
+  // } else {
+  //   console.log(`what are we doing here?`);
+  // }
+
+
 }
+
 
 export default function* homePageSaga() {
   // why not, instead of making each one of these sagas check to see if it is on the clinet ort server, simply check here, and only call them if/when we need to. as opposed to always calling them, and leaving it up toi them wether or not they participate, based on whether they are on the client or server.
-
+  console.log(`homePageSaga()`);
 
   if (isServer()) {
     yield firstLoadSaga();
