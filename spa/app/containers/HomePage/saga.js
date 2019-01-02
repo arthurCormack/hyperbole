@@ -49,11 +49,11 @@ function* firstLoadSaga() {
   // initially, let's just keep it simple. Get the n latest posts.
   // much of the gutenberg bells and whistles might not work, in dangerouslySetInnerHTML'd content; js that is supposed to be included in the head will not be, and the document.ready, came and went before the content got loaded.
   // console.log(` about to call ${APICALLURL_GETFRONTPAGEPOSTS}`);
-
+  console.log(`firstLoadSaga()`);
   const frontPagePosts = yield select(makeSelectFrontPagePosts());
   const doWeHaveDataYet = frontPagePosts !== false;
   const areWeLoading = yield select(makeSelectLoading());
-
+  console.log(`frontPagePosts==`, frontPagePosts, `doWeHaveDataYet==`, doWeHaveDataYet, `areWeLoading==`, areWeLoading);
   // // so ... here is the problem ... we need to refresh the ad data.
   if (!doWeHaveDataYet && !areWeLoading) {// hack to always load, because we might have to overwrite the ads data, and this is the only way to do it
 
@@ -61,7 +61,6 @@ function* firstLoadSaga() {
 
     try {
       const someHomeStartData = yield call(request, APICALLURL_GETFRONTPAGEPOSTS);
-      //console.log(`finished call to APICALLURL_GETHOMESTART`);
       yield put(loadFrontPagePostsSuccess(someHomeStartData));
     } catch (e) {
       yield put(loadFrontPagePostsFailure());
