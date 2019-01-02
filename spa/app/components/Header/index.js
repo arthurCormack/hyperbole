@@ -13,8 +13,8 @@ class Header extends React.Component {
   render() {
     return (
       <div>
-        <A href="https://twitter.com/mxstbr">
-          <Img src={Banner} alt="react-boilerplate - Logo" />
+        <A href="https://twitter.com/arthurcormack">
+          <Img src="https://user-images.githubusercontent.com/3849703/50613141-9fd0c800-0eaa-11e9-993c-802a20498139.png" alt="Hyperbole - Logo" />
         </A>
         <NavBar>
           <HeaderLink to="/">

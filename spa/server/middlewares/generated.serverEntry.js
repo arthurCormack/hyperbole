@@ -99,6 +99,18 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 
 /***/ }),
 
+/***/ "./app/components/A/index.js":
+/*!***********************************!*\
+  !*** ./app/components/A/index.js ***!
+  \***********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ \"styled-components\");\n/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_0__);\n/**\n * A link to a certain page, an anchor tag\n */\n\nvar A = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.a.withConfig({\n  displayName: \"A\",\n  componentId: \"ava8wy-0\"\n})([\"color:#41addd;&:hover{color:#6cc0e5;}\"]);\n/* harmony default export */ __webpack_exports__[\"default\"] = (A);\n\n//# sourceURL=webpack:///./app/components/A/index.js?");
+
+/***/ }),
+
 /***/ "./app/components/H2/index.js":
 /*!************************************!*\
   !*** ./app/components/H2/index.js ***!
@@ -111,6 +123,89 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var styl
 
 /***/ }),
 
+/***/ "./app/components/Header/A.js":
+/*!************************************!*\
+  !*** ./app/components/Header/A.js ***!
+  \************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ \"styled-components\");\n/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var components_A__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! components/A */ \"./app/components/A/index.js\");\n\n\nvar A = styled_components__WEBPACK_IMPORTED_MODULE_0___default()(components_A__WEBPACK_IMPORTED_MODULE_1__[\"default\"]).withConfig({\n  displayName: \"A\",\n  componentId: \"qxiah2-0\"\n})([\"padding:2em 0;\"]);\n/* harmony default export */ __webpack_exports__[\"default\"] = (A);\n\n//# sourceURL=webpack:///./app/components/Header/A.js?");
+
+/***/ }),
+
+/***/ "./app/components/Header/HeaderLink.js":
+/*!*********************************************!*\
+  !*** ./app/components/Header/HeaderLink.js ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-router-dom */ \"react-router-dom\");\n/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_router_dom__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ \"styled-components\");\n/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_1__);\n\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (styled_components__WEBPACK_IMPORTED_MODULE_1___default()(react_router_dom__WEBPACK_IMPORTED_MODULE_0__[\"Link\"]).withConfig({\n  displayName: \"HeaderLink\",\n  componentId: \"sc-1p82ymj-0\"\n})([\"display:inline-flex;padding:0.25em 2em;margin:1em;text-decoration:none;border-radius:4px;-webkit-font-smoothing:antialiased;-webkit-touch-callout:none;user-select:none;cursor:pointer;outline:0;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:bold;font-size:16px;border:2px solid #41addd;color:#41addd;&:active{background:#41addd;color:#fff;}\"]));\n\n//# sourceURL=webpack:///./app/components/Header/HeaderLink.js?");
+
+/***/ }),
+
+/***/ "./app/components/Header/Img.js":
+/*!**************************************!*\
+  !*** ./app/components/Header/Img.js ***!
+  \**************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ \"styled-components\");\n/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var components_Img__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! components/Img */ \"./app/components/Img/index.js\");\n\n\nvar Img = styled_components__WEBPACK_IMPORTED_MODULE_0___default()(components_Img__WEBPACK_IMPORTED_MODULE_1__[\"default\"]).withConfig({\n  displayName: \"Img\",\n  componentId: \"sc-1cjnm42-0\"\n})([\"margin:0 auto;display:block;\"]);\n/* harmony default export */ __webpack_exports__[\"default\"] = (Img);\n\n//# sourceURL=webpack:///./app/components/Header/Img.js?");
+
+/***/ }),
+
+/***/ "./app/components/Header/NavBar.js":
+/*!*****************************************!*\
+  !*** ./app/components/Header/NavBar.js ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ \"styled-components\");\n/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_0__);\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.div.withConfig({\n  displayName: \"NavBar\",\n  componentId: \"mognzh-0\"\n})([\"text-align:center;\"]));\n\n//# sourceURL=webpack:///./app/components/Header/NavBar.js?");
+
+/***/ }),
+
+/***/ "./app/components/Header/banner.jpg":
+/*!******************************************!*\
+  !*** ./app/components/Header/banner.jpg ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("module.exports = __webpack_require__.p + \"46c101dc585f1493994a4647acfe471d.jpg\";\n\n//# sourceURL=webpack:///./app/components/Header/banner.jpg?");
+
+/***/ }),
+
+/***/ "./app/components/Header/index.js":
+/*!****************************************!*\
+  !*** ./app/components/Header/index.js ***!
+  \****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-intl */ \"react-intl\");\n/* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_intl__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _A__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./A */ \"./app/components/Header/A.js\");\n/* harmony import */ var _Img__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Img */ \"./app/components/Header/Img.js\");\n/* harmony import */ var _NavBar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./NavBar */ \"./app/components/Header/NavBar.js\");\n/* harmony import */ var _HeaderLink__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./HeaderLink */ \"./app/components/Header/HeaderLink.js\");\n/* harmony import */ var _banner_jpg__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./banner.jpg */ \"./app/components/Header/banner.jpg\");\n/* harmony import */ var _banner_jpg__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_banner_jpg__WEBPACK_IMPORTED_MODULE_6__);\n/* harmony import */ var _messages__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./messages */ \"./app/components/Header/messages.js\");\nfunction _typeof(obj) { if (typeof Symbol === \"function\" && typeof Symbol.iterator === \"symbol\") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === \"function\" && obj.constructor === Symbol && obj !== Symbol.prototype ? \"symbol\" : typeof obj; }; } return _typeof(obj); }\n\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nfunction _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }\n\nfunction _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }\n\nfunction _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === \"object\" || typeof call === \"function\")) { return call; } return _assertThisInitialized(self); }\n\nfunction _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError(\"this hasn't been initialised - super() hasn't been called\"); } return self; }\n\nfunction _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }\n\nfunction _inherits(subClass, superClass) { if (typeof superClass !== \"function\" && superClass !== null) { throw new TypeError(\"Super expression must either be null or a function\"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }\n\nfunction _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }\n\n\n\n\n\n\n\n\n\n/* eslint-disable react/prefer-stateless-function */\n\nvar Header =\n/*#__PURE__*/\nfunction (_React$Component) {\n  _inherits(Header, _React$Component);\n\n  function Header() {\n    _classCallCheck(this, Header);\n\n    return _possibleConstructorReturn(this, _getPrototypeOf(Header).apply(this, arguments));\n  }\n\n  _createClass(Header, [{\n    key: \"render\",\n    value: function render() {\n      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_A__WEBPACK_IMPORTED_MODULE_2__[\"default\"], {\n        href: \"https://twitter.com/arthurcormack\"\n      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Img__WEBPACK_IMPORTED_MODULE_3__[\"default\"], {\n        src: \"https://user-images.githubusercontent.com/3849703/50613141-9fd0c800-0eaa-11e9-993c-802a20498139.png\",\n        alt: \"Hyperbole - Logo\"\n      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_NavBar__WEBPACK_IMPORTED_MODULE_4__[\"default\"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_HeaderLink__WEBPACK_IMPORTED_MODULE_5__[\"default\"], {\n        to: \"/\"\n      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_1__[\"FormattedMessage\"], _messages__WEBPACK_IMPORTED_MODULE_7__[\"default\"].home)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_HeaderLink__WEBPACK_IMPORTED_MODULE_5__[\"default\"], {\n        to: \"/features\"\n      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_intl__WEBPACK_IMPORTED_MODULE_1__[\"FormattedMessage\"], _messages__WEBPACK_IMPORTED_MODULE_7__[\"default\"].features))));\n    }\n  }]);\n\n  return Header;\n}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (Header);\n\n//# sourceURL=webpack:///./app/components/Header/index.js?");
+
+/***/ }),
+
+/***/ "./app/components/Header/messages.js":
+/*!*******************************************!*\
+  !*** ./app/components/Header/messages.js ***!
+  \*******************************************/
+/*! exports provided: scope, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"scope\", function() { return scope; });\n/* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-intl */ \"react-intl\");\n/* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_intl__WEBPACK_IMPORTED_MODULE_0__);\n/*\n * HomePage Messages\n *\n * This contains all the text for the HomePage component.\n */\n\nvar scope = 'boilerplate.components.Header';\n/* harmony default export */ __webpack_exports__[\"default\"] = (Object(react_intl__WEBPACK_IMPORTED_MODULE_0__[\"defineMessages\"])({\n  home: {\n    id: \"\".concat(scope, \".home\"),\n    defaultMessage: 'Home'\n  },\n  features: {\n    id: \"\".concat(scope, \".features\"),\n    defaultMessage: 'Features'\n  }\n}));\n\n//# sourceURL=webpack:///./app/components/Header/messages.js?");
+
+/***/ }),
+
 /***/ "./app/components/HtmlDocument/index.js":
 /*!**********************************************!*\
   !*** ./app/components/HtmlDocument/index.js ***!
@@ -120,6 +215,18 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var styl
 
 "use strict";
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return HtmlDocument; });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ \"prop-types\");\n/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var htmlescape__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! htmlescape */ \"htmlescape\");\n/* harmony import */ var htmlescape__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(htmlescape__WEBPACK_IMPORTED_MODULE_2__);\nfunction _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }\n\n/* eslint-disable react/no-danger */\n\n\n // We use this component only on the server side.\n\nfunction HtmlDocument(_ref) {\n  var lang = _ref.lang,\n      head = _ref.head,\n      css = _ref.css,\n      appMarkup = _ref.appMarkup,\n      state = _ref.state,\n      assets = _ref.assets;\n  var attrs = head.htmlAttributes.toComponent();\n  var t = new Date();\n  var timstamp = \"\".concat(t.toISOString());\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"html\", _extends({\n    lang: lang\n  }, attrs), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"head\", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"meta\", {\n    charSet: \"utf-8\"\n  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"meta\", {\n    name: \"viewport\",\n    content: \"width=device-width, initial-scale=1\"\n  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"meta\", {\n    name: \"ssr-timestamp\",\n    content: timstamp\n  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"link\", {\n    rel: \"manifest\",\n    href: \"/manifest.json\"\n  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"meta\", {\n    name: \"mobile-web-app-capable\",\n    content: \"yes\"\n  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"meta\", {\n    name: \"apple-mobile-web-app-title\",\n    content: \"Everything Zoomer\"\n  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"link\", {\n    rel: \"apple-touch-icon\",\n    sizes: \"120x120\",\n    href: \"/icon-120x120.png\"\n  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"link\", {\n    rel: \"apple-touch-icon\",\n    sizes: \"152x152\",\n    href: \"/icon-152x152.png\"\n  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"link\", {\n    rel: \"apple-touch-icon\",\n    sizes: \"167x167\",\n    href: \"/icon-167x167.png\"\n  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"link\", {\n    rel: \"apple-touch-icon\",\n    sizes: \"180x180\",\n    href: \"/icon-180x180.png\"\n  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"link\", {\n    rel: \"icon\",\n    href: \"/favicon.ico\"\n  }), head.title.toComponent(), head.meta.toComponent(), head.link.toComponent(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"link\", {\n    href: assets.main.css,\n    rel: \"stylesheet\"\n  }), css), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"body\", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"noscript\", null, \"If you are seeing this message, that means \", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"strong\", null, \"JavaScript has been disabled on your browser\"), \", please \", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"strong\", null, \"enable JS\"), \" to make this app work.\"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    id: \"app\"\n  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    dangerouslySetInnerHTML: {\n      __html: appMarkup\n    }\n  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"script\", {\n    dangerouslySetInnerHTML: {\n      __html: \"APP_STATE = \".concat(htmlescape__WEBPACK_IMPORTED_MODULE_2___default()(state))\n    }\n  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"script\", {\n    type: \"text/javascript\",\n    src: assets.main.js\n  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"link\", {\n    href: \"https://fonts.googleapis.com/css?family=Libre+Baskerville\",\n    rel: \"stylesheet\"\n  })));\n}\nHtmlDocument.propTypes = {\n  lang: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string.isRequired,\n  head: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.object.isRequired,\n  css: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.arrayOf(prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.node).isRequired,\n  appMarkup: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string.isRequired,\n  state: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.object.isRequired,\n  assets: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.shape({\n    main: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.shape({\n      js: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string.isRequired,\n      css: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string.isRequired\n    }).isRequired\n  }).isRequired\n};\n\n//# sourceURL=webpack:///./app/components/HtmlDocument/index.js?");
+
+/***/ }),
+
+/***/ "./app/components/Img/index.js":
+/*!*************************************!*\
+  !*** ./app/components/Img/index.js ***!
+  \*************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ \"prop-types\");\n/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);\n/**\n *\n * Img.js\n *\n * Renders an image, enforcing the usage of the alt=\"\" tag\n */\n\n\n\nfunction Img(props) {\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"img\", {\n    className: props.className,\n    src: props.src,\n    alt: props.alt\n  });\n} // We require the use of src and alt, only enforced by react in dev mode\n\n\nImg.propTypes = {\n  src: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.oneOfType([prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string, prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.object]).isRequired,\n  alt: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string.isRequired,\n  className: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string\n};\n/* harmony default export */ __webpack_exports__[\"default\"] = (Img);\n\n//# sourceURL=webpack:///./app/components/Img/index.js?");
 
 /***/ }),
 
@@ -143,7 +250,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var react_router_config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-config */ \"react-router-config\");\n/* harmony import */ var react_router_config__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_router_config__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var react_helmet__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-helmet */ \"react-helmet\");\n/* harmony import */ var react_helmet__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_helmet__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var utils_injectSaga__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! utils/injectSaga */ \"./app/utils/injectSaga.js\");\n/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! redux */ \"redux\");\n/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(redux__WEBPACK_IMPORTED_MODULE_4__);\n/* harmony import */ var utils_constants__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! utils/constants */ \"./app/utils/constants.js\");\n/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! styled-components */ \"styled-components\");\n/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_6__);\n/* harmony import */ var _sagas__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./sagas */ \"./app/containers/App/sagas.js\");\n/* harmony import */ var _global_styles__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../global-styles */ \"./app/global-styles.js\");\n/**\n *\n * App\n *\n * This component is the skeleton around the actual pages, and should only\n * contain code that should be seen on all pages. (e.g. navigation bar)\n */\n\n\n\n // for making of the global dynamic saga\n\n\n\n\n // import { Switch, Route } from 'react-router-dom';\n// import HomePage from 'containers/HomePage/Loadable';\n// import FeaturePage from 'containers/FeaturePage/Loadable';\n// import NotFoundPage from 'containers/NotFoundPage/Loadable';\n// import Header from 'components/Header';\n// import Footer from 'components/Footer';\n\n\nvar AppWrapper = styled_components__WEBPACK_IMPORTED_MODULE_6___default.a.div.withConfig({\n  displayName: \"App__AppWrapper\",\n  componentId: \"d1rs7t-0\"\n})([\"max-width:calc(768px + 16px * 2);margin:0 auto;display:flex;min-height:100%;padding:0 16px;flex-direction:column;\"]);\nvar withSaga = Object(utils_injectSaga__WEBPACK_IMPORTED_MODULE_3__[\"default\"])({\n  key: 'App',\n  saga: _sagas__WEBPACK_IMPORTED_MODULE_7__[\"default\"],\n  mode: utils_constants__WEBPACK_IMPORTED_MODULE_5__[\"DAEMON\"]\n});\n\nvar App = function App(_ref) {\n  var route = _ref.route;\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(AppWrapper, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_helmet__WEBPACK_IMPORTED_MODULE_2__[\"Helmet\"], {\n    titleTemplate: \"%s - Hyperbole\",\n    defaultTitle: \"Hyperbole\",\n    meta: [{\n      name: 'description',\n      content: 'Hyperbole'\n    }]\n  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"meta\", {\n    name: \"description\",\n    content: \"Hyperbole\"\n  })), \"Aloha\", Object(react_router_config__WEBPACK_IMPORTED_MODULE_1__[\"renderRoutes\"])(route.routes), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_global_styles__WEBPACK_IMPORTED_MODULE_8__[\"default\"], null));\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\n  component: Object(redux__WEBPACK_IMPORTED_MODULE_4__[\"compose\"])(withSaga)(App)\n});\n\n//# sourceURL=webpack:///./app/containers/App/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var react_router_config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-config */ \"react-router-config\");\n/* harmony import */ var react_router_config__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_router_config__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var react_helmet__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-helmet */ \"react-helmet\");\n/* harmony import */ var react_helmet__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_helmet__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var utils_injectSaga__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! utils/injectSaga */ \"./app/utils/injectSaga.js\");\n/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! redux */ \"redux\");\n/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(redux__WEBPACK_IMPORTED_MODULE_4__);\n/* harmony import */ var utils_constants__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! utils/constants */ \"./app/utils/constants.js\");\n/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! styled-components */ \"styled-components\");\n/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_6__);\n/* harmony import */ var _sagas__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./sagas */ \"./app/containers/App/sagas.js\");\n/* harmony import */ var components_Header__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! components/Header */ \"./app/components/Header/index.js\");\n/* harmony import */ var _global_styles__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../global-styles */ \"./app/global-styles.js\");\n/**\n *\n * App\n *\n * This component is the skeleton around the actual pages, and should only\n * contain code that should be seen on all pages. (e.g. navigation bar)\n */\n\n\n\n // for making of the global dynamic saga\n\n\n\n\n // import { Switch, Route } from 'react-router-dom';\n// import HomePage from 'containers/HomePage/Loadable';\n// import FeaturePage from 'containers/FeaturePage/Loadable';\n// import NotFoundPage from 'containers/NotFoundPage/Loadable';\n\n // import Footer from 'components/Footer';\n\n\nvar AppWrapper = styled_components__WEBPACK_IMPORTED_MODULE_6___default.a.div.withConfig({\n  displayName: \"App__AppWrapper\",\n  componentId: \"d1rs7t-0\"\n})([\"max-width:calc(768px + 16px * 2);margin:0 auto;display:flex;min-height:100%;padding:0 16px;flex-direction:column;\"]);\nvar withSaga = Object(utils_injectSaga__WEBPACK_IMPORTED_MODULE_3__[\"default\"])({\n  key: 'App',\n  saga: _sagas__WEBPACK_IMPORTED_MODULE_7__[\"default\"],\n  mode: utils_constants__WEBPACK_IMPORTED_MODULE_5__[\"DAEMON\"]\n});\n\nvar App = function App(_ref) {\n  var route = _ref.route;\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(AppWrapper, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_helmet__WEBPACK_IMPORTED_MODULE_2__[\"Helmet\"], {\n    titleTemplate: \"%s - Hyperbole\",\n    defaultTitle: \"Hyperbole\",\n    meta: [{\n      name: 'description',\n      content: 'Hyperbole'\n    }]\n  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"meta\", {\n    name: \"description\",\n    content: \"Hyperbole\"\n  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(components_Header__WEBPACK_IMPORTED_MODULE_8__[\"default\"], null), Object(react_router_config__WEBPACK_IMPORTED_MODULE_1__[\"renderRoutes\"])(route.routes), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_global_styles__WEBPACK_IMPORTED_MODULE_9__[\"default\"], null));\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\n  component: Object(redux__WEBPACK_IMPORTED_MODULE_4__[\"compose\"])(withSaga)(App)\n});\n\n//# sourceURL=webpack:///./app/containers/App/index.js?");
 
 /***/ }),
 
@@ -595,7 +702,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = __webpack_require__(/*! /Users/arthur/Sites/hyperbole/spa/app/serverEntry.js */\"./app/serverEntry.js\");\n\n\n//# sourceURL=webpack:///multi_./app/serverEntry.js?");
+eval("module.exports = __webpack_require__(/*! /Users/a.cormack/Sites/hyperbole/spa/app/serverEntry.js */\"./app/serverEntry.js\");\n\n\n//# sourceURL=webpack:///multi_./app/serverEntry.js?");
 
 /***/ }),
 
@@ -805,6 +912,17 @@ eval("module.exports = require(\"react-redux\");\n\n//# sourceURL=webpack:///ext
 /***/ (function(module, exports) {
 
 eval("module.exports = require(\"react-router-config\");\n\n//# sourceURL=webpack:///external_%22react-router-config%22?");
+
+/***/ }),
+
+/***/ "react-router-dom":
+/*!***********************************!*\
+  !*** external "react-router-dom" ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = require(\"react-router-dom\");\n\n//# sourceURL=webpack:///external_%22react-router-dom%22?");
 
 /***/ }),
 
