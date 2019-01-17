@@ -5,6 +5,12 @@
 const path = require('path');
 const webpack = require('webpack');
 
+const AssetsPlugin = require('assets-webpack-plugin');
+const assetsPluginInstance = new AssetsPlugin({
+  path: path.join(process.cwd(), 'server', 'middlewares'),
+  filename: 'generated.assets.json',
+});//
+
 const LoadablePlugin = require('@loadable/webpack-plugin');
 
 // Remove this line once the following warning goes away (it was meant for webpack loader authors not users):
@@ -100,10 +106,10 @@ module.exports = options => ({
           },
         ],
       },
-      {
-        test: /\.html$/,
-        use: 'html-loader',
-      },
+      // {
+      //   test: /\.html$/,
+      //   use: 'html-loader',
+      // },
       {
         test: /\.(mp4|webm)$/,
         use: {
@@ -122,7 +128,7 @@ module.exports = options => ({
       // make fetch available
       fetch: 'exports-loader?self.fetch!whatwg-fetch',
     }),
-
+    assetsPluginInstance,
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV),
@@ -130,7 +136,7 @@ module.exports = options => ({
         SERVER_API_URL: JSON.stringify(process.env.SERVER_API_URL),
       },
     }),
-    
+
     // Always expose NODE_ENV to webpack, in order to use `process.env.NODE_ENV`
     // inside your code for any environment checks; Terser will automatically
     // drop any unreachable code.

@@ -63,7 +63,7 @@ import { appLocales, translationMessages as messages} from './i18n';
 
 
 function renderAppToString(url, store, history, styleSheet ) {
-  // console.log(`renderAppToString(${url})`);
+  console.log(`renderAppToString(${url})`);
   // const memHistory = createMemoryHistory();// make a new one because i can't figure out how to pass history in through convoluted promise chain. gah.
 
 
