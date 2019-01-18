@@ -42,6 +42,7 @@ const AppWrapper = styled.div`
 
 const withSaga = injectSaga({ key: 'App', saga, mode: DAEMON });
 const App = ({ route }) => {
+  // console.log("App()");
   return (
     <AppWrapper>
       <Helmet

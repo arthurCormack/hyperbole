@@ -44,7 +44,7 @@ import LanguageProvider from 'containers/LanguageProvider';
 
 
 export default function renderInBrowser({ messages, store, Routes, history }) {
-  // console.log(`renderInBrowser({${messages}, ${store}, ${Routes}, ${history}})`);
+  console.log(`renderInBrowser({${messages}, ${store}, ${Routes}, ${history}})`);
   if (process.env.NODE_ENV === 'production') {
     ReactDOM.hydrate(
     <Provider store={store}>

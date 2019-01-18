@@ -5,7 +5,7 @@
 import { combineReducers } from 'redux-immutable';
 import { connectRouter, routerReducer, LOCATION_CHANGE } from 'connected-react-router/immutable';
 
-// import history from 'utils/history';
+import history from 'utils/history';
 import globalReducer from 'containers/App/reducer';
 import languageProviderReducer from 'containers/LanguageProvider/reducer';
 
@@ -41,8 +41,8 @@ export default function createReducer(injectedReducers = {}) {
     route: routeReducer,
     global: globalReducer,
     language: languageProviderReducer,
-    router: routerReducer,
-    // router: connectRouter(history),
+    // router: routerReducer,
+    router: connectRouter(history),
     ...injectedReducers,
   });
 
