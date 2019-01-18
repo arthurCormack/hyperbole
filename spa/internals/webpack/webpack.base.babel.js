@@ -5,6 +5,7 @@
 const path = require('path');
 const webpack = require('webpack');
 
+
 const AssetsPlugin = require('assets-webpack-plugin');
 const assetsPluginInstance = new AssetsPlugin({
   path: path.join(process.cwd(), 'server', 'middlewares'),

@@ -1,6 +1,7 @@
 /* eslint-disable global-require */
 require('isomorphic-fetch');
 
+
 const assets = require('./generated.assets.json'); // eslint-disable-line import/no-unresolved
 
 const serverEntry = require('./generated.serverEntry'); // eslint-disable-line import/no-unresolved
