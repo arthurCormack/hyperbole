@@ -13,7 +13,7 @@ const enableDestroy = require('server-destroy');
 const debug = console.log.bind(console, chalk.cyan('[ssr service]'));
 
 function ensureAllGeneratedFilesExist() {
-  console.log(`ensureAllGeneratedFilesExist()`);
+  // console.log(`ensureAllGeneratedFilesExist()`);
   const modules = [
     path.join(__dirname, 'middlewares', 'generated.assets.json'),
     path.join(__dirname, 'middlewares', 'generated.serverEntry'),
@@ -22,7 +22,7 @@ function ensureAllGeneratedFilesExist() {
   let modulePath;
   try {
     for (modulePath of modules) { // eslint-disable-line no-restricted-syntax
-      console.log(`modulePath==${modulePath}`);// all that this means is that the serverEntry has some sort of error in it.
+      // console.log(`modulePath==${modulePath}`);// all that this means is that the serverEntry has some sort of error in it.
       // but where is it?
       // console.log(modulePath);
       require(modulePath);
@@ -42,7 +42,7 @@ function ensureAllGeneratedFilesExist() {
 
 if (require.main === module) {
   ensureAllGeneratedFilesExist();
-  console.log(`passed ensureAllGeneratedFilesExist()`);
+  // console.log(`passed ensureAllGeneratedFilesExist()`);
   const handleSSR = require('./middlewares/handleSSR');
 
   const app = express();
