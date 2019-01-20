@@ -17,8 +17,6 @@ import { Provider } from 'react-redux';
 import { renderRoutes, matchRoutes } from 'react-router-config';
 import { ConnectedRouter } from 'connected-react-router/immutable';
 
-// We create an extractor from the statsFile
-const extractor = new ChunkExtractor({ statsFile })
 import createMemoryHistory from 'history/createMemoryHistory';
 
 import { END } from 'redux-saga';
@@ -294,14 +292,15 @@ function renderAppToStringAtLocation(url, { webpackDllNames = [], assets, lang }
       // we could call the loadData function here, but inport another function result, from the saga, that would deduce the computed url that we are supposed to calls
       // thats the problem, the saga has the job of extracting slug items from the url path, and putting together a complete url to call the api with;
       // ont that passes all of the permalink items required to make a successful api call.catch((//) => {})
-      // return route.loadData ? route.loadData(store) : null;
-      return null;// what if we don't run the loadData ... what if our saga will do it for us?
+      return route.loadData ? route.loadData(store) : null;
+      // return null;// what if we don't run the loadData ... what if our saga will do it for us?
     })
     .map(promise => {
       // console.log(``);
+      // wouldn't this be the place wjere we would receive the request promise, and when it is done, we would then dispatch to the store?
       if (promise) {
         return new Promise((resolve, reject) => {
-          promise.then(resolve).catch(resolve);
+          promise.then(resolve).catch(reject);
         });
       }
     });
