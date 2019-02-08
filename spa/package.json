@@ -99,7 +99,8 @@
     "redux-saga": "^0.16.2",
     "reselect": "4.0.0",
     "sanitize.css": "8.0.0",
-    "styled-components": "^4.1.2"
+    "styled-components": "^4.1.2",
+    "whatwg-fetch": "^3.0.0"
   },
   "devDependencies": {
     "@babel/cli": "7.1.5",

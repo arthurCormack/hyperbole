@@ -62,6 +62,14 @@ import messages from './messages';
 import reducer from './reducer';
 import saga from './saga';
 
+// for SSR, we have to provide the loadData call ... and that is a promise to do a request, then to dispatch at action that will put the result into state.
+// this is in the category of a big deal, because it will be the basis of all the SSR data calls
+// getting it to work properly, and to do a proper single render call, instead of having to to do the initial sagas, ... well ... is it neccesary really?
+// i don't know the answer to that. the only way to really know, is to run side by side comparisons, with both approaches, and see which one performs better, in terms of speed, and cpu + memory requirements.
+import request from 'utils/request';
+import { APICALLURL_GETFRONTPAGEPOSTS } from 'apiCallURLs';
+import { loadFrontPagePosts, loadFrontPagePostsSuccess, loadFrontPagePostsFailure } from './actions';
+
 /* eslint-disable react/prefer-stateless-function */
 export class HomePage extends React.PureComponent {
   /**
@@ -148,4 +156,21 @@ export default {
     withSaga,
     withConnect,
   )(HomePage),
+    loadData: ({ dispatch }) => {
+    // it looks ok. but I don't really know. 
+    return new Promise(
+      (resolve, reject) => {
+        const requestCallPromise = request(APICALLURL_GETFRONTPAGEPOSTS).then((result) => {
+          dispatch(loadFrontPagePostsSuccess(result));
+          resolve();
+        });
+      }
+    );
+
+    // dispatch(fetchHomePage());
+    /*
+    return a promise to load a thing. maybe just fo it with request directly from here. Don't use the saga to call request, just return request
+    */
+
+  },
 };
