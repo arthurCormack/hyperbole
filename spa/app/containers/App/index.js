@@ -26,7 +26,7 @@ import saga from './sagas';
 // import HomePage from 'containers/HomePage/Loadable';
 // import FeaturePage from 'containers/FeaturePage/Loadable';
 // import NotFoundPage from 'containers/NotFoundPage/Loadable';
-// import Header from 'components/Header';
+import Header from 'components/Header';
 // import Footer from 'components/Footer';
 
 import GlobalStyle from '../../global-styles';
@@ -42,6 +42,7 @@ const AppWrapper = styled.div`
 
 const withSaga = injectSaga({ key: 'App', saga, mode: DAEMON });
 const App = ({ route }) => {
+  // console.log("App()");
   return (
     <AppWrapper>
       <Helmet
@@ -54,7 +55,7 @@ const App = ({ route }) => {
       >
         <meta name="description" content="Hyperbole" />
       </Helmet>
-      Aloha
+      <Header />
       {renderRoutes(route.routes)}
       <GlobalStyle />
     </AppWrapper>

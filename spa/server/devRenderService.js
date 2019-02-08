@@ -22,8 +22,9 @@ function ensureAllGeneratedFilesExist() {
   let modulePath;
   try {
     for (modulePath of modules) { // eslint-disable-line no-restricted-syntax
-      // console.log('modulePath=='+modulePath);// all that this means is that the serverEntry has some sort of error in it.
+      // console.log(`modulePath==${modulePath}`);// all that this means is that the serverEntry has some sort of error in it.
       // but where is it?
+      // console.log(modulePath);
       require(modulePath);
     }
   } catch (e) {
@@ -32,9 +33,11 @@ function ensureAllGeneratedFilesExist() {
       debug(chalk.gray(`...waiting for '${modulePath}'`));
       process.exit(1);
     } else {
+      console.log('wtf');
       throw e;
     }
   }
+  // console.log();
 }
 
 if (require.main === module) {
@@ -62,4 +65,6 @@ if (require.main === module) {
       process.kill(process.pid, 'SIGUSR2');
     });
   });
+} else {
+  console.log(`ok, now how  did we get here?`);
 }

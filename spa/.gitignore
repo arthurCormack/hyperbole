@@ -4,6 +4,8 @@ build
 node_modules
 stats.json
 
+**/generated.*
+
 # Cruft
 .DS_Store
 npm-debug.log

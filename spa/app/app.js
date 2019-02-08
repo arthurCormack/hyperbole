@@ -15,8 +15,9 @@ import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router/immutable';
 // import {   } from 'react-router-config';
 import FontFaceObserver from 'fontfaceobserver';
-// import history from 'utils/history';
-import createHistory from 'history/createBrowserHistory';
+
+import history from 'utils/history';
+// import createHistory from 'history/createBrowserHistory';
 
 import 'sanitize.css/sanitize.css';
 
@@ -50,11 +51,17 @@ openSansObserver.load().then(() => {
 
 // Create redux store with history
 const initialState = window.APP_STATE || {};
-const history = createHistory();
+// console.log('before createHistory');
+// const history = createHistory();
+// console.log('after createHistory');
+
+console.log(`configureStore()`);
+
 const store = configureStore(initialState, history);
 const MOUNT_NODE = document.getElementById('app');
 
 const render = (messages) => {
+  console.log('about to call renderInBrowser');
   renderInBrowser({ messages, store, Routes, history });
 }
 

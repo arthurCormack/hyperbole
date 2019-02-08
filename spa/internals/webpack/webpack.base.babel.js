@@ -5,8 +5,15 @@
 const path = require('path');
 const webpack = require('webpack');
 
-const LoadablePlugin = require('@loadable/webpack-plugin');
 
+const AssetsPlugin = require('assets-webpack-plugin');
+const assetsPluginInstance = new AssetsPlugin({
+  path: path.join(process.cwd(), 'server', 'middlewares'),
+  filename: 'generated.assets.json',
+});//
+
+const LoadablePlugin = require('@loadable/webpack-plugin');
+const MiniCSSExtractPlugin = require("mini-css-extract-plugin");
 // Remove this line once the following warning goes away (it was meant for webpack loader authors not users):
 // 'DeprecationWarning: loaderUtils.parseQuery() received a non-string value which can be problematic,
 // see https://github.com/webpack/loader-utils/issues/56 parseQuery() will be replaced with getOptions()
@@ -41,13 +48,15 @@ module.exports = options => ({
         // for a list of loaders, see https://webpack.js.org/loaders/#styling
         test: /\.css$/,
         exclude: /node_modules/,
-        use: ['style-loader', 'css-loader'],
+        // use the MiniCSSExtractPlugin, with no style loader in production, as per reccomendation: https://github.com/webpack-contrib/mini-css-extract-plugin
+        use: options.mode === 'development' ? ['style-loader', 'css-loader'] : [MiniCSSExtractPlugin.loader, 'css-loader'],
       },
       {
         // Preprocess 3rd party .css files located in node_modules
         test: /\.css$/,
         include: /node_modules/,
-        use: ['style-loader', 'css-loader'],
+        // use the MiniCSSExtractPlugin, with no style loader in production, as per reccomendation: https://github.com/webpack-contrib/mini-css-extract-plugin
+        use: options.mode === 'development' ? ['style-loader', 'css-loader'] : [MiniCSSExtractPlugin.loader, 'css-loader'],
       },
       {
         test: /\.(eot|otf|ttf|woff|woff2)$/,
@@ -100,10 +109,10 @@ module.exports = options => ({
           },
         ],
       },
-      {
-        test: /\.html$/,
-        use: 'html-loader',
-      },
+      // {
+      //   test: /\.html$/,
+      //   use: 'html-loader',
+      // },
       {
         test: /\.(mp4|webm)$/,
         use: {
@@ -122,7 +131,7 @@ module.exports = options => ({
       // make fetch available
       fetch: 'exports-loader?self.fetch!whatwg-fetch',
     }),
-
+    assetsPluginInstance,
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV),
@@ -130,7 +139,7 @@ module.exports = options => ({
         SERVER_API_URL: JSON.stringify(process.env.SERVER_API_URL),
       },
     }),
-    
+
     // Always expose NODE_ENV to webpack, in order to use `process.env.NODE_ENV`
     // inside your code for any environment checks; Terser will automatically
     // drop any unreachable code.

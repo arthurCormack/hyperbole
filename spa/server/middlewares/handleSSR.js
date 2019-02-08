@@ -1,6 +1,7 @@
 /* eslint-disable global-require */
 require('isomorphic-fetch');
 
+
 const assets = require('./generated.assets.json'); // eslint-disable-line import/no-unresolved
 
 const serverEntry = require('./generated.serverEntry'); // eslint-disable-line import/no-unresolved
@@ -10,12 +11,12 @@ const serverEntry = require('./generated.serverEntry'); // eslint-disable-line i
 const renderAppToStringAtLocation = serverEntry.renderAppToStringAtLocation;
 const appLocales = serverEntry.appLocales;
 
-function extractWebpackDllNamesFromPackage() {
-  if (process.env.NODE_ENV === 'production') return [];
-
-  const dllPlugin = require('./dllPlugin');
-  return dllPlugin.dlls ? Object.keys(dllPlugin.dlls) : ['reactBoilerplateDeps'];
-}
+//  function extractWebpackDllNamesFromPackage() {
+//    if (process.env.NODE_ENV === 'production') return [];
+//
+//    const dllPlugin = require('./dllPlugin');
+//    return dllPlugin.dlls ? Object.keys(dllPlugin.dlls) : ['reactBoilerplateDeps'];
+//   }
 
 
 function printError(e) {
@@ -25,7 +26,7 @@ function printError(e) {
 module.exports = function handleSSR(req, res) {
   const options = {
     assets,
-    webpackDllNames: extractWebpackDllNamesFromPackage(),
+    // webpackDllNames: extractWebpackDllNamesFromPackage(),
     lang: req.acceptsLanguages(appLocales),
     // environment,
   };
