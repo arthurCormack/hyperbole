@@ -4,19 +4,7 @@ build
 node_modules
 stats.json
 
-**/generated.*
-
 # Cruft
 .DS_Store
 npm-debug.log
 .idea
-
-#app/vendor
-#app/vendor/*
-#app/vendor/**/*.js
-#app/vendor/jwplayer/*.js
-
-# Elastic Beanstalk Files
-.elasticbeanstalk/*
-!.elasticbeanstalk/*.cfg.yml
-!.elasticbeanstalk/*.global.yml

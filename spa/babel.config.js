@@ -12,7 +12,6 @@ module.exports = {
     'styled-components',
     '@babel/plugin-proposal-class-properties',
     '@babel/plugin-syntax-dynamic-import',
-    '@loadable/babel-plugin'
   ],
   env: {
     production: {

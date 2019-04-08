@@ -7,25 +7,26 @@
  * your application state. This guarantees that your state is up to date and nobody
  * messes it up weirdly somewhere.
  *
+ * To add a new Action:
+ * 1) Import your constant
+ * 2) Add a function like this:
+ *    export function yourAction(var) {
+ *        return { type: YOUR_ACTION_CONSTANT, var: var }
+ *    }
  */
 
-import { LOAD_INITIAL_FRONTPAGEPOSTS, LOAD_INITIAL_FRONTPAGEPOSTS_SUCCESS, LOAD_INITIAL_FRONTPAGEPOSTS_FAILURE } from './constants';
+import { CHANGE_USERNAME } from './constants';
 
-export function loadFrontPagePosts() {
+/**
+ * Changes the input field of the form
+ *
+ * @param  {string} username The new text of the input field
+ *
+ * @return {object} An action object with a type of CHANGE_USERNAME
+ */
+export function changeUsername(username) {
   return {
-    type: LOAD_INITIAL_FRONTPAGEPOSTS,
-  }
-}
-
-export function loadFrontPagePostsSuccess(data) {
-  return {
-    type: LOAD_INITIAL_FRONTPAGEPOSTS_SUCCESS,
-    data
-  }
-}
-
-export function loadFrontPagePostsFailure() {
-  return {
-    type: LOAD_INITIAL_FRONTPAGEPOSTS_FAILURE,
-  }
+    type: CHANGE_USERNAME,
+    username,
+  };
 }

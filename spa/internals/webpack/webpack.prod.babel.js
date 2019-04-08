@@ -1,6 +1,6 @@
 // Important modules this config uses
 const path = require('path');
-// const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
 const OfflinePlugin = require('offline-plugin');
 const { HashedModuleIdsPlugin } = require('webpack');
@@ -121,9 +121,9 @@ module.exports = require('./webpack.base.babel')({
     }),
 
     new WebpackPwaManifest({
-      name: 'Hyperbole',
-      short_name: 'Hyperbole',
-      description: 'In poetry and oratory, it emphasizes, evokes strong feelings, and creates strong impressions. As a figure of speech, it is usually not meant to be taken literally.',
+      name: 'React Boilerplate',
+      short_name: 'React BP',
+      description: 'My React Boilerplate-based project!',
       background_color: '#fafafa',
       theme_color: '#b1624d',
       inject: true,

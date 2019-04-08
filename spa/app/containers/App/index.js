@@ -7,27 +7,15 @@
  */
 
 import React from 'react';
-
-import { renderRoutes } from 'react-router-config';
-
 import { Helmet } from 'react-helmet';
-
-import injectSaga from 'utils/injectSaga';// for making of the global dynamic saga
-import { compose } from 'redux';
-
-import { DAEMON } from 'utils/constants';
-
 import styled from 'styled-components';
+import { Switch, Route } from 'react-router-dom';
 
-import saga from './sagas';
-
-// import { Switch, Route } from 'react-router-dom';
-
-// import HomePage from 'containers/HomePage/Loadable';
-// import FeaturePage from 'containers/FeaturePage/Loadable';
-// import NotFoundPage from 'containers/NotFoundPage/Loadable';
+import HomePage from 'containers/HomePage/Loadable';
+import FeaturePage from 'containers/FeaturePage/Loadable';
+import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Header from 'components/Header';
-// import Footer from 'components/Footer';
+import Footer from 'components/Footer';
 
 import GlobalStyle from '../../global-styles';
 
@@ -40,30 +28,23 @@ const AppWrapper = styled.div`
   flex-direction: column;
 `;
 
-const withSaga = injectSaga({ key: 'App', saga, mode: DAEMON });
-const App = ({ route }) => {
-  // console.log("App()");
+export default function App() {
   return (
     <AppWrapper>
       <Helmet
-        titleTemplate="%s - Hyperbole"
-        defaultTitle="Hyperbole"
-        meta={[
-          { name: 'description', content: 'Hyperbole' },
-
-        ]}
+        titleTemplate="%s - React.js Boilerplate"
+        defaultTitle="React.js Boilerplate"
       >
-        <meta name="description" content="Hyperbole" />
+        <meta name="description" content="A React.js Boilerplate application" />
       </Helmet>
       <Header />
-      {renderRoutes(route.routes)}
+      <Switch>
+        <Route exact path="/" component={HomePage} />
+        <Route path="/features" component={FeaturePage} />
+        <Route path="" component={NotFoundPage} />
+      </Switch>
+      <Footer />
       <GlobalStyle />
     </AppWrapper>
   );
-};
-
-export default {
-  component: compose(
-    withSaga,
-  )(App),
-};
+}
