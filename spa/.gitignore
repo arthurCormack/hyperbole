@@ -8,3 +8,12 @@ stats.json
 .DS_Store
 npm-debug.log
 .idea
+
+package-lock.json
+
+**/generated.*
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
