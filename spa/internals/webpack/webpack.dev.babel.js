@@ -16,7 +16,7 @@ module.exports = require('./webpack.base.babel')({
     'webpack-hot-middleware/client?reload=true',
     path.join(process.cwd(), 'app/app.js'), // Start with js/app.js
   ],
-
+  target: 'web',
   // Don't use hashes in dev mode for better performance
   output: {
     filename: '[name].js',

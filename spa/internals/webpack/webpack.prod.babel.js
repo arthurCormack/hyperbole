@@ -15,7 +15,7 @@ module.exports = require('./webpack.base.babel')({
     require.resolve('react-app-polyfill/ie11'),
     path.join(process.cwd(), 'app/app.js'),
   ],
-
+  target: 'web',
   // Utilize long-term caching by adding content hashes (not compilation hashes) to compiled assets
   output: {
     filename: '[name].[chunkhash].js',

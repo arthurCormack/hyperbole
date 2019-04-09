@@ -5,14 +5,21 @@
 const path = require('path');
 const webpack = require('webpack');
 
+const nodeExternals = require('webpack-node-externals');
+const LoadablePlugin = require('@loadable/webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
 module.exports = options => ({
   mode: options.mode,
   entry: options.entry,
+  externals:
+  options.target === 'node' ? ['@loadable/component', nodeExternals()] : undefined,
   output: Object.assign(
     {
       // Compile into js/build.js
       path: path.resolve(process.cwd(), 'build'),
       publicPath: '/',
+      libraryTarget: options.target === 'node' ? 'commonjs2' : undefined,
     },
     options.output,
   ), // Merge with env dependent settings
@@ -33,7 +40,9 @@ module.exports = options => ({
         // for a list of loaders, see https://webpack.js.org/loaders/#styling
         test: /\.css$/,
         exclude: /node_modules/,
-        use: ['style-loader', 'css-loader'],
+        use: [{
+          loader: MiniCssExtractPlugin.loader,
+        }, 'css-loader'],
       },
       {
         // Preprocess 3rd party .css files located in node_modules
@@ -114,6 +123,7 @@ module.exports = options => ({
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'development',
     }),
+    new LoadablePlugin(), new MiniCssExtractPlugin()
   ]),
   resolve: {
     modules: ['node_modules', 'app'],
