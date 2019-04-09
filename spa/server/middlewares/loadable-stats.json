@@ -1,0 +1,357 @@
+{
+  "errors": [],
+  "warnings": [],
+  "version": "4.29.6",
+  "hash": "5e010ed5ab7aa4a9226a",
+  "publicPath": "/",
+  "outputPath": "/Users/a.cormack/Sites/hyperbole/spa/build",
+  "assetsByChunkName": {
+    "vendor": "vendor.348eef797b13b8827a05.chunk.js",
+    "index": "index.56e4aa29aa1a33501d89.chunk.js",
+    "main": "main.7f728292e54a2c916676.chunk.js",
+    "runtime~main": "runtime~main.498e9c43875c826b42eb.js"
+  },
+  "assets": [
+    {
+      "name": ".htaccess",
+      "size": 1787,
+      "chunks": [],
+      "chunkNames": [],
+      "emitted": false
+    },
+    {
+      "name": "2f1a976c9c35ffed9b7e23cf2cbf8f19.jpg",
+      "size": 205990,
+      "chunks": [],
+      "chunkNames": [],
+      "emitted": false
+    },
+    {
+      "name": "4.9356541ece30aad135c1.chunk.js",
+      "size": 106,
+      "chunks": [
+        4
+      ],
+      "chunkNames": [],
+      "emitted": false
+    },
+    {
+      "name": "favicon.ico",
+      "size": 370070,
+      "chunks": [],
+      "chunkNames": [],
+      "emitted": false
+    },
+    {
+      "name": "icon_120x120.2f7752bee9dcd06e998fd44640e47485.png",
+      "size": 11249,
+      "chunks": [],
+      "chunkNames": [],
+      "emitted": false
+    },
+    {
+      "name": "icon_128x128.e76c240129e3d6ee2eb7df8f1e9c7b0f.png",
+      "size": 11003,
+      "chunks": [],
+      "chunkNames": [],
+      "emitted": false
+    },
+    {
+      "name": "icon_144x144.f2f644149d1ca21bccb120d44e79c824.png",
+      "size": 13586,
+      "chunks": [],
+      "chunkNames": [],
+      "emitted": false
+    },
+    {
+      "name": "icon_152x152.80d43cecdc663299328632b85127117b.png",
+      "size": 14590,
+      "chunks": [],
+      "chunkNames": [],
+      "emitted": false
+    },
+    {
+      "name": "icon_167x167.9085aba6ea24073fba72a94b7ac731a1.png",
+      "size": 16209,
+      "chunks": [],
+      "chunkNames": [],
+      "emitted": false
+    },
+    {
+      "name": "icon_180x180.33285f999db78beed5640085c051e7b1.png",
+      "size": 17810,
+      "chunks": [],
+      "chunkNames": [],
+      "emitted": false
+    },
+    {
+      "name": "icon_192x192.9aeb7f7081bf5316fa2c57b439bffdbe.png",
+      "size": 18871,
+      "chunks": [],
+      "chunkNames": [],
+      "emitted": false
+    },
+    {
+      "name": "icon_384x384.f2d8221e40ea55159668a02741826386.png",
+      "size": 41232,
+      "chunks": [],
+      "chunkNames": [],
+      "emitted": false
+    },
+    {
+      "name": "icon_512x512.dc20f8a86234c4a7a0b08d5cffff9d4d.png",
+      "size": 44313,
+      "chunks": [],
+      "chunkNames": [],
+      "emitted": false
+    },
+    {
+      "name": "icon_72x72.0880a778e8031d3cb721b64c1c1059a7.png",
+      "size": 6196,
+      "chunks": [],
+      "chunkNames": [],
+      "emitted": false
+    },
+    {
+      "name": "icon_96x96.e26d703c83c9b5844bb4f58c397f4bf2.png",
+      "size": 8668,
+      "chunks": [],
+      "chunkNames": [],
+      "emitted": false
+    },
+    {
+      "name": "index.56e4aa29aa1a33501d89.chunk.js",
+      "size": 17130,
+      "chunks": [
+        1
+      ],
+      "chunkNames": [
+        "index"
+      ],
+      "emitted": false
+    },
+    {
+      "name": "index.56e4aa29aa1a33501d89.chunk.js.gz",
+      "size": 5492,
+      "chunks": [],
+      "chunkNames": [],
+      "emitted": false
+    },
+    {
+      "name": "index.html",
+      "size": 1549,
+      "chunks": [],
+      "chunkNames": [],
+      "emitted": false
+    },
+    {
+      "name": "main.7f728292e54a2c916676.chunk.js",
+      "size": 25191,
+      "chunks": [
+        2
+      ],
+      "chunkNames": [
+        "main"
+      ],
+      "emitted": false
+    },
+    {
+      "name": "main.7f728292e54a2c916676.chunk.js.gz",
+      "size": 7050,
+      "chunks": [],
+      "chunkNames": [],
+      "emitted": false
+    },
+    {
+      "name": "manifest.47e77a2731a1bb975ed19ced8741b946.json",
+      "size": 1715,
+      "chunks": [],
+      "chunkNames": [],
+      "emitted": false
+    },
+    {
+      "name": "runtime~main.498e9c43875c826b42eb.js",
+      "size": 2276,
+      "chunks": [
+        3
+      ],
+      "chunkNames": [
+        "runtime~main"
+      ],
+      "emitted": false
+    },
+    {
+      "name": "sw.js",
+      "size": 26807,
+      "chunks": [],
+      "chunkNames": [],
+      "emitted": false
+    },
+    {
+      "name": "sw.js.gz",
+      "size": 7118,
+      "chunks": [],
+      "chunkNames": [],
+      "emitted": false
+    },
+    {
+      "name": "vendor.348eef797b13b8827a05.chunk.js",
+      "size": 633818,
+      "chunks": [
+        0
+      ],
+      "chunkNames": [
+        "vendor"
+      ],
+      "emitted": false
+    },
+    {
+      "name": "vendor.348eef797b13b8827a05.chunk.js.gz",
+      "size": 194997,
+      "chunks": [],
+      "chunkNames": [],
+      "emitted": false
+    }
+  ],
+  "filteredAssets": 0,
+  "entrypoints": {
+    "main": {
+      "chunks": [
+        3,
+        0,
+        2
+      ],
+      "assets": [
+        "runtime~main.498e9c43875c826b42eb.js",
+        "vendor.348eef797b13b8827a05.chunk.js",
+        "main.7f728292e54a2c916676.chunk.js"
+      ],
+      "children": {},
+      "childAssets": {}
+    }
+  },
+  "namedChunkGroups": {
+    "main": {
+      "chunks": [
+        3,
+        0,
+        2
+      ],
+      "assets": [
+        "runtime~main.498e9c43875c826b42eb.js",
+        "vendor.348eef797b13b8827a05.chunk.js",
+        "main.7f728292e54a2c916676.chunk.js"
+      ],
+      "children": {},
+      "childAssets": {}
+    },
+    "index": {
+      "chunks": [
+        0,
+        1
+      ],
+      "assets": [
+        "vendor.348eef797b13b8827a05.chunk.js",
+        "index.56e4aa29aa1a33501d89.chunk.js"
+      ],
+      "children": {},
+      "childAssets": {}
+    }
+  },
+  "children": [
+    {
+      "errors": [],
+      "warnings": [],
+      "publicPath": "/",
+      "outputPath": "/Users/a.cormack/Sites/hyperbole/spa/build",
+      "assetsByChunkName": {
+        "__offline_serviceworker": "__offline_serviceworker"
+      },
+      "assets": [
+        {
+          "name": "__offline_serviceworker",
+          "size": 25530,
+          "chunks": [
+            0
+          ],
+          "chunkNames": [
+            "__offline_serviceworker"
+          ],
+          "emitted": false
+        }
+      ],
+      "filteredAssets": 0,
+      "entrypoints": {
+        "__offline_serviceworker": {
+          "chunks": [
+            0
+          ],
+          "assets": [
+            "__offline_serviceworker"
+          ],
+          "children": {},
+          "childAssets": {}
+        }
+      },
+      "namedChunkGroups": {
+        "__offline_serviceworker": {
+          "chunks": [
+            0
+          ],
+          "assets": [
+            "__offline_serviceworker"
+          ],
+          "children": {},
+          "childAssets": {}
+        }
+      },
+      "children": [],
+      "name": "__offline_serviceworker"
+    },
+    {
+      "errors": [],
+      "warnings": [],
+      "publicPath": "/",
+      "outputPath": "/Users/a.cormack/Sites/hyperbole/spa/build",
+      "assetsByChunkName": {},
+      "assets": [
+        {
+          "name": "index.html",
+          "size": 4327,
+          "chunks": [
+            0
+          ],
+          "chunkNames": [],
+          "emitted": false
+        }
+      ],
+      "filteredAssets": 0,
+      "entrypoints": {
+        "undefined": {
+          "chunks": [
+            0
+          ],
+          "assets": [
+            "index.html"
+          ],
+          "children": {},
+          "childAssets": {}
+        }
+      },
+      "namedChunkGroups": {
+        "undefined": {
+          "chunks": [
+            0
+          ],
+          "assets": [
+            "index.html"
+          ],
+          "children": {},
+          "childAssets": {}
+        }
+      },
+      "children": [],
+      "name": "html-webpack-plugin for \"index.html\""
+    }
+  ]
+}

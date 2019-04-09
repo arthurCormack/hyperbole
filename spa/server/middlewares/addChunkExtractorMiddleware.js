@@ -1,12 +1,13 @@
 const path = require('path');// 
-const express = require('express');
-const compression = require('compression');
+// const express = require('express');
 
-
+const reactDOMServer = require("react-dom/server");
+const loadableServer = require("@loadable/server");
 
 // const publicPath = options.publicPath || '/';
 // const outputPath = options.outputPath || path.resolve(process.cwd(), 'build');
 
+// where do we expect to find the files?
 
 // const nodeStats = _path.default.resolve(__dirname, '../../public/dist/node/loadable-stats.json');
 // const webStats = _path.default.resolve(__dirname, '../../public/dist/web/loadable-stats.json');
