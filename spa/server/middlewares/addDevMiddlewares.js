@@ -78,7 +78,6 @@ module.exports = function addDevMiddlewares(app, webpackConfig) {
         ${webExtractor.getScriptTags()}
       </body>
       </html>`);
-
     
   });
 };

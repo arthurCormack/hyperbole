@@ -13,6 +13,7 @@ const enableDestroy = require('server-destroy');
 const debug = console.log.bind(console, chalk.cyan('[ssr service]'));
 
 function ensureAllGeneratedFilesExist() {
+  // but now, instead of looking into generated.assets.json, we instead want to look into loadable-stats
   console.log(`ensureAllGeneratedFilesExist()`);
   const modules = [
     path.join(__dirname, 'middlewares', 'generated.assets.json'),
