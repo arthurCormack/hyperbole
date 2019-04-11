@@ -2,7 +2,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import htmlescape from 'htmlescape';
+import he from 'he';
 
 // We use this component only on the server side.
 export default function HtmlDocument({ lang, head, css, appMarkup, state, assets, webpackDllNames }) {
@@ -15,7 +15,7 @@ export default function HtmlDocument({ lang, head, css, appMarkup, state, assets
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="ssr-timestamp" content={timstamp} />
-        <meta name="google-site-verification" content="SCPPZK4hIjmKf-PqyugPSYZbIV7snRjTR478Sa-8XXM" />
+        <meta name="google-site-verification" content="insert-your-google-site-verification-or-remove-this-tag" />
         {/* Allow installing the app to the homescreen */}
 
         <link rel="manifest" href="/manifest.json" />
@@ -54,19 +54,13 @@ export default function HtmlDocument({ lang, head, css, appMarkup, state, assets
         </div>
 
         {/* our app state */}
-        <script dangerouslySetInnerHTML={{ __html: `APP_STATE = ${htmlescape(state)}` }} />
+        <script dangerouslySetInnerHTML={{ __html: `APP_STATE = ${he.encode(state)}` }} />
 
         {/* dev only */}
         {(webpackDllNames || []).map((dllName) =>
           <script data-dll key={dllName} src={`/${dllName}.dll.js`}></script>
         )}
 
-
-        {/* VidoeJS / Google IMA code */}
-        <script src="//imasdk.googleapis.com/js/sdkloader/ima3.js"></script>
-        <script src="//vjs.zencdn.net/7.2.0/video.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-ads/6.4.2/videojs.ads.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-ima/1.5.1/videojs.ima.js"></script>
 
 
         {/* our app code */}
@@ -75,12 +69,8 @@ export default function HtmlDocument({ lang, head, css, appMarkup, state, assets
 
 
         {/* see app/setup/openSansObserver.js */}
-        <link href="https://fonts.googleapis.com/css?family=Cormorant+Infant:400,700" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css?family=Crimson+Text" rel="stylesheet" />
-
-        <link href="https://fonts.googleapis.com/css?family=Cormorant+Upright" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css?family=Vidaloka" rel="stylesheet" />
+        <!-- Open Sans Font -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">  
 
       </body>
     </html>
