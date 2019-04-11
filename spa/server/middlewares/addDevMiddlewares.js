@@ -43,39 +43,42 @@ module.exports = function addDevMiddlewares(app, webpackConfig) {
 
 
   app.get('*', (req, res) => {
-    console.log(`nodeStats`, nodeStats);
-    const nodeExtractor = new loadableServer.ChunkExtractor({
-      statsFile: nodeStats
-    });
-    console.log(`nodeExtractor`, nodeExtractor);
-    const {
-      default: App
-    } = nodeExtractor.requireEntrypoint();
-    const webExtractor = new loadableServer.ChunkExtractor({
-      statsFile: webStats
-    });
-
-    // const jsx = webExtractor.collectChunks(<App />)
-    const jsx = webExtractor.collectChunks(react.createElement(App, null));
-    const html = renderToString(jsx);
-
-    // fs.readFile(path.join(compiler.outputPath, 'index.html'), (err, file) => {
-    //   if (err) {
-    //     res.sendStatus(404);
-    //   } else {
-    //     res.send(file.toString());
-    //   }
+    // console.log(`nodeStats`, nodeStats);
+    // const nodeExtractor = new loadableServer.ChunkExtractor({
+    //   statsFile: nodeStats
     // });
-    res.send(`<!DOCTYPE html>
-      <html>
-      <head>
-      ${webExtractor.getLinkTags()}
-      ${webExtractor.getStyleTags()}
-      </head>
-      <body>
-        <div id="main">${html}</div>
-        ${webExtractor.getScriptTags()}
-      </body>
-      </html>`);
+    // console.log(`nodeExtractor`, nodeExtractor);
+    // const {
+    //   default: App
+    // } = nodeExtractor.requireEntrypoint();
+    // const webExtractor = new loadableServer.ChunkExtractor({
+    //   statsFile: webStats
+    // });
+
+    // // const jsx = webExtractor.collectChunks(<App />)
+    // const jsx = webExtractor.collectChunks(react.createElement(App, null));
+    // const html = renderToString(jsx);
+
+    // // fs.readFile(path.join(compiler.outputPath, 'index.html'), (err, file) => {
+    // //   if (err) {
+    // //     res.sendStatus(404);
+    // //   } else {
+    // //     res.send(file.toString());
+    // //   }
+    // // });
+    // // we can't do this here. because we have no way of rendering things like helmet head tags properly. that has to be something that is done in the full rende, similar to how we have donw it before, in previous ssr. which actually does work.
+    // res.send(`<!DOCTYPE html>
+    //   <html>
+    //   <head>
+    //   ${webExtractor.getLinkTags()}
+    //   ${webExtractor.getStyleTags()}
+    //   </head>
+    //   <body>
+    //     <div id="main">${html}</div>
+    //     ${webExtractor.getScriptTags()}
+    //   </body>
+    //   </html>`);
+
+    
   });
 };
