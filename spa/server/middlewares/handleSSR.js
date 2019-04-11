@@ -1,5 +1,5 @@
 /* eslint-disable global-require */
-require('isomorphic-fetch');
+require('isomorphic-fetch');// do we need this if we hace whatwg-fetch?
 
 const assets = require('./generated.assets.json'); // eslint-disable-line import/no-unresolved
 
@@ -7,8 +7,10 @@ const serverEntry = require('./generated.serverEntry'); // eslint-disable-line i
 
 // const environment = require('./environment.json'); // eslint-disable-line import/no-unresolved
 
-const renderAppToStringAtLocation = serverEntry.renderAppToStringAtLocation;
-const appLocales = serverEntry.appLocales;
+// const renderAppToStringAtLocation = serverEntry.renderAppToStringAtLocation;
+// const appLocales = serverEntry.appLocales;
+
+const { renderAppToStringAtLocation, appLocales } = serverEntry;
 
 function extractWebpackDllNamesFromPackage() {
   if (process.env.NODE_ENV === 'production') return [];
