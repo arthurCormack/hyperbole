@@ -1,0 +1,54 @@
+{
+  "errors": [
+    "./app/serverEntry.js\nModule not found: Error: Can't resolve 'react-router-config' in '/Users/a.cormack/Sites/hyperbole/spa/app'\n @ ./app/serverEntry.js 18:0-64 48:38-50 117:19-30\n @ multi ./node_modules/react-app-polyfill/ie11.js ./app/serverEntry.js",
+    "./app/serverEntry.js\nModule not found: Error: Can't resolve 'routes' in '/Users/a.cormack/Sites/hyperbole/spa/app'\n @ ./app/serverEntry.js 33:0-28 48:51-57 117:31-37\n @ multi ./node_modules/react-app-polyfill/ie11.js ./app/serverEntry.js",
+    "./app/serverEntry.js\nModule not found: Error: Can't resolve 'utils/monitorSagas' in '/Users/a.cormack/Sites/hyperbole/spa/app'\n @ ./app/serverEntry.js 38:0-46 114:20-32\n @ multi ./node_modules/react-app-polyfill/ie11.js ./app/serverEntry.js"
+  ],
+  "warnings": [],
+  "version": "4.29.6",
+  "hash": "31fff69a9c56614b8b3d",
+  "publicPath": "/",
+  "outputPath": "/Users/a.cormack/Sites/hyperbole/spa/server/middlewares",
+  "assetsByChunkName": {
+    "main": "generated.serverEntry.js"
+  },
+  "assets": [
+    {
+      "name": "generated.serverEntry.js",
+      "size": 58381,
+      "chunks": [
+        "main"
+      ],
+      "chunkNames": [
+        "main"
+      ],
+      "emitted": false
+    }
+  ],
+  "filteredAssets": 0,
+  "entrypoints": {
+    "main": {
+      "chunks": [
+        "main"
+      ],
+      "assets": [
+        "generated.serverEntry.js"
+      ],
+      "children": {},
+      "childAssets": {}
+    }
+  },
+  "namedChunkGroups": {
+    "main": {
+      "chunks": [
+        "main"
+      ],
+      "assets": [
+        "generated.serverEntry.js"
+      ],
+      "children": {},
+      "childAssets": {}
+    }
+  },
+  "children": []
+}

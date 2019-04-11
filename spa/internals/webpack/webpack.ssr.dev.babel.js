@@ -20,7 +20,7 @@ module.exports = {
   name: 'server',
   target: 'node',
   mode: 'development',
-  externals: [nodeExternals()],
+  externals: ['@loadable/component', nodeExternals()],
   entry: [
     require.resolve('react-app-polyfill/ie11'),
     path.join(process.cwd(), 'app/serverEntry.js'),
@@ -139,7 +139,8 @@ module.exports = {
         SERVER_API_URL: JSON.stringify(process.env.SERVER_API_URL),
       }
     }),
-    new webpack.NamedModulesPlugin()
+    new webpack.NamedModulesPlugin(),
+    new LoadablePlugin(), new MiniCssExtractPlugin()
   ],
 
   resolve: {
