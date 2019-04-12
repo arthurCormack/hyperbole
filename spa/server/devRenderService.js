@@ -15,6 +15,9 @@ const debug = console.log.bind(console, chalk.cyan('[ssr service]'));
 function ensureAllGeneratedFilesExist() {
   // but now, instead of looking into generated.assets.json, we instead want to look into loadable-stats
   console.log(`ensureAllGeneratedFilesExist()`);
+  // we need to look in the build directory, to find the generated.assets.json.
+  // how do we ensure that the build phase has completed before this phase? we might have to change the build script to make them build in sequence.
+  // import the loadable-stats.json from the build dir, and then extract an array of things to load in. all the chunks, all the css.
   const modules = [
     path.join(__dirname, 'middlewares', 'generated.assets.json'),
     path.join(__dirname, 'middlewares', 'generated.serverEntry'),
