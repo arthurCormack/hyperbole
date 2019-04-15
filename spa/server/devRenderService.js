@@ -12,35 +12,95 @@ const enableDestroy = require('server-destroy');
 
 const debug = console.log.bind(console, chalk.cyan('[ssr service]'));
 
+// function ensureAllGeneratedFilesExist() {
+//   // but now, instead of looking into generated.assets.json, we instead want to look into loadable-stats
+//   console.log(`ensureAllGeneratedFilesExist()`);
+//   // we need to look in the build directory, to find the generated.assets.json.
+//   // how do we ensure that the build phase has completed before this phase? we might have to change the build script to make them build in sequence.
+//   // import the loadable-stats.json from the build dir, and then extract an array of things to load in. all the chunks, all the css.
+//   const modules = [
+//     path.join(__dirname, 'middlewares', 'generated.assets.json'),
+//     path.join(__dirname, 'middlewares', 'generated.serverEntry'),
+//   ];
+
+//   let modulePath;
+//   try {
+//     for (modulePath of modules) { // eslint-disable-line no-restricted-syntax
+//       console.log(`modulePath==${modulePath}`);// all that this means is that the serverEntry has some sort of error in it.
+
+//       // console.log('modulePath=='+modulePath);// all that this means is that the serverEntry has some sort of error in it.
+//       // but where is it?
+//       require(modulePath);
+//     }
+//   } catch (e) {
+//     // console.log(e);
+//     if (e.code === 'MODULE_NOT_FOUND') {
+//       debug(chalk.gray(`...waiting for '${modulePath}'`));
+//       process.exit(1);
+//     } else {
+//       throw e;
+//     }
+//   }
+// }
+
 function ensureAllGeneratedFilesExist() {
   // but now, instead of looking into generated.assets.json, we instead want to look into loadable-stats
   console.log(`ensureAllGeneratedFilesExist()`);
+  console.log(`attempting to load in the serverEntryModule ...`);
   // we need to look in the build directory, to find the generated.assets.json.
   // how do we ensure that the build phase has completed before this phase? we might have to change the build script to make them build in sequence.
   // import the loadable-stats.json from the build dir, and then extract an array of things to load in. all the chunks, all the css.
-  const modules = [
-    path.join(__dirname, 'middlewares', 'generated.assets.json'),
-    path.join(__dirname, 'middlewares', 'generated.serverEntry'),
-  ];
+  // const modules = [
+  //   path.join(__dirname, 'middlewares', 'generated.assets.json'),
+  //   path.join(__dirname, 'middlewares', 'generated.serverEntry'),
+  // ];
 
-  let modulePath;
+  // let modulePath;
+  // try {
+  //   for (modulePath of modules) { // eslint-disable-line no-restricted-syntax
+  //     console.log(`modulePath==${modulePath}`);// all that this means is that the serverEntry has some sort of error in it.
+
+  //     // console.log('modulePath=='+modulePath);// all that this means is that the serverEntry has some sort of error in it.
+  //     // but where is it?
+  //     require(modulePath);
+  //   }
+  // } catch (e) {
+  //   // console.log(e);
+  //   if (e.code === 'MODULE_NOT_FOUND') {
+  //     debug(chalk.gray(`...waiting for '${modulePath}'`));
+  //     process.exit(1);
+  //   } else {
+  //     throw e;
+  //   }
+  // }
+  const serverEntryModule = path.join(__dirname, 'middlewares', 'generated.serverEntry');
+  console.log(`serverEntryModule`, serverEntryModule);
   try {
-    for (modulePath of modules) { // eslint-disable-line no-restricted-syntax
-      console.log(`modulePath==${modulePath}`);// all that this means is that the serverEntry has some sort of error in it.
-
-      // console.log('modulePath=='+modulePath);// all that this means is that the serverEntry has some sort of error in it.
-      // but where is it?
-      require(modulePath);
-    }
-  } catch (e) {
-    // console.log(e);
+    require(serverEntryModule);
+  } catch(e) {
     if (e.code === 'MODULE_NOT_FOUND') {
-      debug(chalk.gray(`...waiting for '${modulePath}'`));
+      debug(chalk.gray(`...waiting for '${serverEntryModule}'`));
       process.exit(1);
     } else {
       throw e;
     }
   }
+  console.log(`after requiring serverEntryModule`);
+
+  // const loadableStatsFile = path.resolve(__dirname, '../build/loadable-stats.json');
+  // // now we need to put together an array of importables, and iterate over those, requiring them in
+  // console.log(`loadableStatsFile`, loadableStatsFile);
+  // try {
+  //   const loadableStatsData = require(loadableStatsFile);
+  // } catch (e) {
+  //   if (e.code === 'MODULE_NOT_FOUND') {
+  //     debug(chalk.gray(`...waiting for '${loadableStatsData}'`));
+  //     process.exit(1);
+  //   } else {
+  //     throw e;
+  //   }
+  // }
+  // console.log(`ok, we got some loadableStatsData,`, loadableStatsData);
 }
 
 if (require.main === module) {

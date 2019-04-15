@@ -43,11 +43,11 @@ module.exports = function addDevMiddlewares(app, webpackConfig) {
 
 
   app.get('*', (req, res) => {
-    console.log(`nodeStats`, nodeStats);
+    // console.log(`nodeStats`, nodeStats);
     const nodeExtractor = new loadableServer.ChunkExtractor({
       statsFile: nodeStats
     });
-    console.log(`nodeExtractor`, nodeExtractor);
+    // console.log(`nodeExtractor`, nodeExtractor);
     const {
       default: App
     } = nodeExtractor.requireEntrypoint();
@@ -78,6 +78,5 @@ module.exports = function addDevMiddlewares(app, webpackConfig) {
         ${webExtractor.getScriptTags()}
       </body>
       </html>`);
-    
   });
 };

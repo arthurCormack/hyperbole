@@ -24,6 +24,8 @@ import { ConnectedRouter } from 'connected-react-router';
 
 // import { createMemoryHistory } from 'history';
 import createMemoryHistory from 'history/createMemoryHistory';
+// const createMemoryHistory = require("history").createMemoryHistory;
+
 
 import { END } from 'redux-saga';
 import Helmet from 'react-helmet';
