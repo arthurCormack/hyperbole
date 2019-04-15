@@ -73,6 +73,42 @@ function ensureAllGeneratedFilesExist() {
   //     throw e;
   //   }
   // }
+
+  const loadableStatsFile = path.resolve(__dirname, '../build/loadable-stats.json');
+  // now we need to put together an array of importables, and iterate over those, requiring them in
+  console.log(`loadableStatsFile`, loadableStatsFile);
+  try {
+    const loadableStatsData = require(loadableStatsFile);
+    console.log(`ok, we got some loadableStatsData,`, loadableStatsData);
+  } catch (e) {
+    if (e.code === 'MODULE_NOT_FOUND') {
+      debug(chalk.gray(`...waiting for '${loadableStatsData}'`));
+      process.exit(1);
+    } else {
+      throw e;
+    }
+  }
+  // 
+  // assetsByChunkName
+  if (loadableStatsData) {// this does not seem to exist at the time that we are calling it ... asynchronous ... we need to promisify it, because it is asynchronous
+    try {
+      for (moduleFile of loadableStatsData.assetsByChunkName) {
+        const modulePath = path.resolve(__dirname, `../build/${moduleFile}`);
+        require(modulePath);
+      }
+    } catch (e) {
+      if (e.code === 'MODULE_NOT_FOUND') {
+        debug(chalk.gray(`...waiting for '${modulePath}'`));
+        process.exit(1);
+      } else {
+        throw e;
+      }
+    }
+  }
+  console.log(`after importing all of the assetsByChunkName`);
+  // and then we would inspect loadableStatsData, and build an array of importable modules, and require them in.
+
+
   const serverEntryModule = path.join(__dirname, 'middlewares', 'generated.serverEntry');
   console.log(`serverEntryModule`, serverEntryModule);
   try {
