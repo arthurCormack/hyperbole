@@ -46,65 +46,82 @@ const debug = console.log.bind(console, chalk.cyan('[ssr service]'));
 function ensureAllGeneratedFilesExist() {
   // but now, instead of looking into generated.assets.json, we instead want to look into loadable-stats
   console.log(`ensureAllGeneratedFilesExist()`);
-  console.log(`attempting to load in the serverEntryModule ...`);
+  
   // we need to look in the build directory, to find the generated.assets.json.
   // how do we ensure that the build phase has completed before this phase? we might have to change the build script to make them build in sequence.
   // import the loadable-stats.json from the build dir, and then extract an array of things to load in. all the chunks, all the css.
-  // const modules = [
-  //   path.join(__dirname, 'middlewares', 'generated.assets.json'),
-  //   path.join(__dirname, 'middlewares', 'generated.serverEntry'),
-  // ];
+  const modules = [
+    path.join(__dirname, 'middlewares', 'generated.assets.json'),
+    path.join(__dirname, 'middlewares', 'generated.serverEntry'),
+  ];
 
-  // let modulePath;
+  let modulePath;
+  try {
+    for (modulePath of modules) { // eslint-disable-line no-restricted-syntax
+      console.log(`modulePath==${modulePath}`);// all that this means is that the serverEntry has some sort of error in it.
+
+      // console.log('modulePath=='+modulePath);// all that this means is that the serverEntry has some sort of error in it.
+      // but where is it?
+      require(modulePath);
+    }
+  } catch (e) {
+    // console.log(e);
+    if (e.code === 'MODULE_NOT_FOUND') {
+      debug(chalk.gray(`...waiting for '${modulePath}'`));
+      process.exit(1);
+    } else {
+      throw e;
+    }
+  }
+
+  // const loadableStatsFile = path.resolve(__dirname, '../build/loadable-stats.json');
+  // // now we need to put together an array of importables, and iterate over those, requiring them in
+  // console.log(`loadableStatsFile`, loadableStatsFile);
   // try {
-  //   for (modulePath of modules) { // eslint-disable-line no-restricted-syntax
-  //     console.log(`modulePath==${modulePath}`);// all that this means is that the serverEntry has some sort of error in it.
-
-  //     // console.log('modulePath=='+modulePath);// all that this means is that the serverEntry has some sort of error in it.
-  //     // but where is it?
-  //     require(modulePath);
+  //   const loadableStatsData = require(loadableStatsFile);
+  //   console.log(`ok, we got some loadableStatsData,`, loadableStatsData);
+  //   console.log(`loadableStatsData.entrypoints.main.chunks,`, loadableStatsData.entrypoints.main.chunks);
+  //   try {
+  //     for (moduleFile in loadableStatsData.entrypoints.main.chunks) {
+  //       console.log(`attempting to require in: `, moduleFile);
+  //       const modulePath = path.resolve(__dirname, `../build/${moduleFile}`);
+  //       require(modulePath);
+  //     }
+  //   } catch (err) {
+  //     if (err.code === 'MODULE_NOT_FOUND') {
+  //       debug(chalk.gray(`...waiting for '${modulePath}'`));
+  //       process.exit(1);
+  //     } else {
+  //       throw err;
+  //     }
   //   }
   // } catch (e) {
-  //   // console.log(e);
   //   if (e.code === 'MODULE_NOT_FOUND') {
-  //     debug(chalk.gray(`...waiting for '${modulePath}'`));
+  //     debug(chalk.gray(`...waiting for '${loadableStatsData}'`));
   //     process.exit(1);
   //   } else {
   //     throw e;
   //   }
   // }
 
-  const loadableStatsFile = path.resolve(__dirname, '../build/loadable-stats.json');
-  // now we need to put together an array of importables, and iterate over those, requiring them in
-  console.log(`loadableStatsFile`, loadableStatsFile);
-  try {
-    const loadableStatsData = require(loadableStatsFile);
-    console.log(`ok, we got some loadableStatsData,`, loadableStatsData);
-  } catch (e) {
-    if (e.code === 'MODULE_NOT_FOUND') {
-      debug(chalk.gray(`...waiting for '${loadableStatsData}'`));
-      process.exit(1);
-    } else {
-      throw e;
-    }
-  }
+
   // 
   // assetsByChunkName
-  if (loadableStatsData) {// this does not seem to exist at the time that we are calling it ... asynchronous ... we need to promisify it, because it is asynchronous
-    try {
-      for (moduleFile of loadableStatsData.assetsByChunkName) {
-        const modulePath = path.resolve(__dirname, `../build/${moduleFile}`);
-        require(modulePath);
-      }
-    } catch (e) {
-      if (e.code === 'MODULE_NOT_FOUND') {
-        debug(chalk.gray(`...waiting for '${modulePath}'`));
-        process.exit(1);
-      } else {
-        throw e;
-      }
-    }
-  }
+  // if (loadableStatsData) {// this does not seem to exist at the time that we are calling it ... asynchronous ... we need to promisify it, because it is asynchronous
+  //   try {
+  //     for (moduleFile of loadableStatsData.assetsByChunkName) {
+  //       const modulePath = path.resolve(__dirname, `../build/${moduleFile}`);
+  //       require(modulePath);
+  //     }
+  //   } catch (e) {
+  //     if (e.code === 'MODULE_NOT_FOUND') {
+  //       debug(chalk.gray(`...waiting for '${modulePath}'`));
+  //       process.exit(1);
+  //     } else {
+  //       throw e;
+  //     }
+  //   }
+  // }
   console.log(`after importing all of the assetsByChunkName`);
   // and then we would inspect loadableStatsData, and build an array of importable modules, and require them in.
 

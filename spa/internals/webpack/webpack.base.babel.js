@@ -9,6 +9,12 @@ const nodeExternals = require('webpack-node-externals');
 const LoadablePlugin = require('@loadable/webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
+const AssetsPlugin = require('assets-webpack-plugin');
+const assetsPluginInstance = new AssetsPlugin({
+  path: path.join(process.cwd(), 'server', 'middlewares'),
+  filename: 'generated.assets.json',
+});
+
 module.exports = options => ({
   mode: options.mode,
   entry: options.entry,
@@ -122,7 +128,7 @@ module.exports = options => ({
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'development',
     }),
-    new LoadablePlugin(), new MiniCssExtractPlugin()
+    new LoadablePlugin(), new MiniCssExtractPlugin(), assetsPluginInstance
   ]),
   resolve: {
     modules: ['node_modules', 'app'],

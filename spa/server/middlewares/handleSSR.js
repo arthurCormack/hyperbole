@@ -28,6 +28,7 @@ function printError(e) {
 }
 
 module.exports = function handleSSR(req, res) {
+  console.log(`handleSSR()`);
   const options = {
     assets,
     // webpackDllNames: extractWebpackDllNamesFromPackage(),

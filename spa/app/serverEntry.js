@@ -22,8 +22,8 @@ import { ConnectedRouter } from 'connected-react-router';
 
 // import { match, RouterContext } from 'react-router';// match doesn't seem toi exist anymore in RR4. does RouterContext?
 
-// import { createMemoryHistory } from 'history';
-import createMemoryHistory from 'history/createMemoryHistory';
+import { createMemoryHistory } from 'history';
+// import createMemoryHistory from 'history/createMemoryHistory';
 // const createMemoryHistory = require("history").createMemoryHistory;
 
 
