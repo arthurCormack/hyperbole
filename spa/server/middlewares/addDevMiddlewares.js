@@ -12,8 +12,8 @@ const renderServiceUrl = `http://localhost:${renderServiceProxyPort}`;
 // import { renderToString } from 'react-dom/server'
 // import { ChunkExtractor } from '@loadable/server'
 
-const reactDOMServer = require("react-dom/server");
-const loadableServer = require("@loadable/server");
+// const reactDOMServer = require("react-dom/server");
+// const loadableServer = require("@loadable/server");
 
 // function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 

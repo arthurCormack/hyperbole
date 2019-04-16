@@ -4,6 +4,17 @@ require('isomorphic-fetch');// do we need this if we have whatwg-fetch?
 // I think we need to import the loadable-stats.json
 // 
 
+// import { ChunkExtractor } from '@loadable/server'
+// const ChunkExtractor = require('@loadable/server').ChunkExtractor;
+
+// const reactDOMServer = require("react-dom/server");
+const loadableServer = require("@loadable/server");
+
+const nodeStats = path.resolve(__dirname, 'loadable-stats.json');// in server/
+// const webStats = path.join(compiler.outputPath, 'loadable-stats.json');
+
+
+
 const assets = require('./generated.assets.json'); // eslint-disable-line import/no-unresolved
 
 const serverEntry = require('./generated.serverEntry'); // eslint-disable-line import/no-unresolved
