@@ -44,6 +44,8 @@ import Routes from 'routes';// so ... this is no longer a function, its a simple
 // Import Language Provider
 import LanguageProvider from 'containers/LanguageProvider';
 
+import HtmlDocument from 'components/HtmlDocument';
+
 import { changeLocale } from 'containers/LanguageProvider/actions';
 
 import monitorSagas from 'utils/monitorSagas';
