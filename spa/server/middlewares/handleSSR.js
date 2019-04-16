@@ -1,5 +1,6 @@
 /* eslint-disable global-require */
-require('isomorphic-fetch');// do we need this if we have whatwg-fetch?
+// require('isomorphic-fetch');// do we need this if we have whatwg-fetch?
+import 'whatwg-fetch';
 
 // I think we need to import the loadable-stats.json
 // 
@@ -10,14 +11,14 @@ require('isomorphic-fetch');// do we need this if we have whatwg-fetch?
 // const reactDOMServer = require("react-dom/server");
 const loadableServer = require("@loadable/server");
 
-const nodeStats = path.resolve(__dirname, 'loadable-stats.json');// in server/
-// const webStats = path.join(compiler.outputPath, 'loadable-stats.json');
-
-
+const nodeStats = path.resolve(__dirname, 'loadable-stats.json'); // in server/
+const webStats = path.resolve(process.cwd(), 'build/loadable-stats.json');
 
 const assets = require('./generated.assets.json'); // eslint-disable-line import/no-unresolved
 
 const serverEntry = require('./generated.serverEntry'); // eslint-disable-line import/no-unresolved
+
+
 
 // const environment = require('./environment.json'); // eslint-disable-line import/no-unresolved
 
@@ -42,6 +43,8 @@ module.exports = function handleSSR(req, res) {
   console.log(`handleSSR()`);
   const options = {
     assets,
+    nodeStats,
+    webStats,
     // webpackDllNames: extractWebpackDllNamesFromPackage(),
     lang: req.acceptsLanguages(appLocales),
     // environment,

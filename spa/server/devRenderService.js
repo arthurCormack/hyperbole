@@ -159,8 +159,8 @@ function ensureAllGeneratedFilesExist() {
 if (require.main === module) {
   ensureAllGeneratedFilesExist();
   console.log(`passed ensureAllGeneratedFilesExist()`);
-  const handleSSR = require('./middlewares/handleSSR');
-
+  const handleSSR = require('./middlewares/handleSSR');// perhaps it might be possible to have handleSSR be a function that we have to invoke, and pass in config options, like the web and node chunk collectors.
+  // const handleSSR = require('./middlewares/getHandleSSR');
   const app = express();
   app.use(handleSSR);
 

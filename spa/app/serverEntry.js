@@ -72,8 +72,14 @@ function renderAppToString(url, store, history, styleSheet ) {
 
 
 // store, sagasDone, assets, webpackDllNames
-async function renderHtmlDocument({ url, store, sagasDone, assets, webpackDllNames, memHistory }) {// renderProps is always going to be App.
+async function renderHtmlDocument({ url, store, sagasDone, assets, webpackDllNames, memHistory, nodeStats, webStats }) {// renderProps is always going to be App.
+  // woo hoo, we now have nodeStats, webStats! we should now be able to get on with the chunk collection!
+  const nodeExtractor = new ChunkExtractor({ statsFile: nodeStats });
+  const { default: App } = nodeExtractor.requireEntrypoint();
 
+  const webExtractor = new ChunkExtractor({ statsFile: webStats })
+  // huh ... what comes next ...
+   
   // 1st render phase - triggers the sagas
   renderAppToString(url, store, memHistory);// one
 
@@ -125,7 +131,13 @@ function getCAARDD(store) {
 // and switch the structure of the containers export so that it exports an object that has both loader and compoentn params.
 
 
-function renderAppToStringAtLocation(url, { webpackDllNames = [], assets, lang }, callback) {
+function renderAppToStringAtLocation(url, { webpackDllNames = [], assets, nodeStats, webStats, lang }, callback) {
+  /*
+    we should now have
+    nodeStats,
+    webStats,
+    passed in, from the handleSSR
+  */
   console.log(`renderAppToStringAtLocation()`);
   const memHistory = createMemoryHistory({
     initialEntries: [url],
@@ -165,7 +177,7 @@ function renderAppToStringAtLocation(url, { webpackDllNames = [], assets, lang }
     // const context = {};
     // const content = renderer(req, store, context);
 
-    renderHtmlDocument({ url, store, sagasDone, assets, webpackDllNames, memHistory })
+    renderHtmlDocument({ url, store, sagasDone, assets, webpackDllNames, memHistory, nodeStats, webStats })
           .then((html) => {
             // const notFound = is404(renderProps.routes);// is404 only looks at matching route patterns, but doesn't care what the Content Authority thinks about whether a route exists or not, or whether there is a redirection
             const notFound = null;
