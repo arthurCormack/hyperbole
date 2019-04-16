@@ -61,17 +61,12 @@ export default function HtmlDocument({ lang, head, css, appMarkup, state, assets
           <script data-dll key={dllName} src={`/${dllName}.dll.js`}></script>
         )}
 
-
-
         {/* our app code */}
         <script type="text/javascript" src={assets.main.js}></script>
         {/* <script type="text/javascript" src={assets.vendor.js}></script> */}
 
-
         {/* see app/setup/openSansObserver.js */}
-        <!-- Open Sans Font -->
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">  
-
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet" />  
       </body>
     </html>
   );
