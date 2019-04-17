@@ -58,7 +58,7 @@ import { appLocales, translationMessages as messages} from './i18n';
 
 function renderAppToString(url, store, history, styleSheet ) {
   console.log(`renderAppToString()`);
-  
+
   const app = (
     <Provider store={store}>
       <LanguageProvider messages={messages}>
@@ -82,8 +82,6 @@ async function renderHtmlDocument({ url, store, sagasDone, assets, webpackDllNam
   // console.log(`This is a Helmet`, Helmet);
   const nodeExtractor = new ChunkExtractor({ statsFile: nodeStats });
   const { default: App } = nodeExtractor.requireEntrypoint();// this is the main thing. the entryPoint in the main
-  // 
-
   const webExtractor = new ChunkExtractor({ statsFile: webStats })
   // huh ... what comes next ...
    
@@ -107,11 +105,20 @@ async function renderHtmlDocument({ url, store, sagasDone, assets, webpackDllNam
 
   // 2nd render phase - the sagas triggered in the first phase are resolved by now
   const appMarkup = renderAppToString(url, store, memHistory, styleSheet);// two
+  console.log(`appMarkup ...`);
+  console.log(appMarkup);
+  
   // should we dispathc END again, and await sagasDone, again? let's try.
   // store.dispatch(END);
   // await sagasDone();
 
   // capture the generated css
+  // const jsx = webExtractor.collectChunks(<App />)
+  // const html = renderToString(jsx)
+  // ${webExtractor.getLinkTags()}
+  // ${webExtractor.getStyleTags()}
+  // ${webExtractor.getScriptTags()}
+
   const css = styleSheet.getStyleElement();
 
   const doc = renderToStaticMarkup(
