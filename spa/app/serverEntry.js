@@ -105,9 +105,9 @@ async function renderHtmlDocument({ url, store, sagasDone, assets, webpackDllNam
 
   // 2nd render phase - the sagas triggered in the first phase are resolved by now
   const appMarkup = renderAppToString(url, store, memHistory, styleSheet);// two
-  console.log(`appMarkup ...`);
-  console.log(appMarkup);
-  
+  // console.log(`appMarkup ...`);
+  // console.log(appMarkup);
+
   // should we dispathc END again, and await sagasDone, again? let's try.
   // store.dispatch(END);
   // await sagasDone();
