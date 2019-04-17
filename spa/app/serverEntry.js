@@ -28,7 +28,7 @@ import { createMemoryHistory } from 'history';
 
 
 import { END } from 'redux-saga';
-import Helmet from 'react-helmet';
+import { Helmet } from 'react-helmet';
 // import styleSheet from 'styled-components/lib/models/StyleSheet';
 import { ServerStyleSheet } from 'styled-components';
 
@@ -57,6 +57,8 @@ import { appLocales, translationMessages as messages} from './i18n';
 
 
 function renderAppToString(url, store, history, styleSheet ) {
+  console.log(`renderAppToString()`);
+  
   const app = (
     <Provider store={store}>
       <LanguageProvider messages={messages}>
@@ -77,7 +79,7 @@ function renderAppToString(url, store, history, styleSheet ) {
 async function renderHtmlDocument({ url, store, sagasDone, assets, webpackDllNames, memHistory, nodeStats, webStats }) {// renderProps is always going to be App.
   // woo hoo, we now have nodeStats, webStats! we should now be able to get on with the chunk collection!
   console.log( `renderHtmlDocument()`);
-  console.log(`This is a Helmet`, Helmet);
+  // console.log(`This is a Helmet`, Helmet);
   const nodeExtractor = new ChunkExtractor({ statsFile: nodeStats });
   const { default: App } = nodeExtractor.requireEntrypoint();// this is the main thing. the entryPoint in the main
   // 
