@@ -77,6 +77,7 @@ function renderAppToString(url, store, history, styleSheet ) {
 async function renderHtmlDocument({ url, store, sagasDone, assets, webpackDllNames, memHistory, nodeStats, webStats }) {// renderProps is always going to be App.
   // woo hoo, we now have nodeStats, webStats! we should now be able to get on with the chunk collection!
   console.log( `renderHtmlDocument()`);
+  console.log(`This is a Helmet`, Helmet);
   const nodeExtractor = new ChunkExtractor({ statsFile: nodeStats });
   const { default: App } = nodeExtractor.requireEntrypoint();// this is the main thing. the entryPoint in the main
   // 
@@ -97,8 +98,8 @@ async function renderHtmlDocument({ url, store, sagasDone, assets, webpackDllNam
   await sagasDone();
 
   // capture the state after the first render
-  const state = store.getState().toJS();
-
+  // const state = store.getState().toJS();// we are not immutable anymore!
+  const state = store.getState();
   // prepare style sheet to collect generated css
   const styleSheet = new ServerStyleSheet();
 
@@ -116,7 +117,7 @@ async function renderHtmlDocument({ url, store, sagasDone, assets, webpackDllNam
       appMarkup={appMarkup}
       lang={state.language.locale}
       state={state}
-      head={Helmet.rewind()}
+      head={Helmet.renderStatic()}
       assets={assets}
       css={css}
       webpackDllNames={webpackDllNames}

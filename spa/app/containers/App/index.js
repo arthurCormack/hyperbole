@@ -24,8 +24,8 @@ const withSaga = injectSaga({ key: 'App', saga, mode: DAEMON });
 // import HomePage from 'containers/HomePage/Loadable';
 // import FeaturePage from 'containers/FeaturePage/Loadable';
 // import NotFoundPage from 'containers/NotFoundPage/Loadable';
-// import Header from 'components/Header';
-// import Footer from 'components/Footer';
+import Header from 'components/Header';
+import Footer from 'components/Footer';
 
 import GlobalStyle from '../../global-styles';
 
@@ -38,22 +38,53 @@ const AppWrapper = styled.div`
   flex-direction: column;
 `;
 
-export function App() {
+
+const App = ({ route }) => {
+  // console.log(`App(), route:`, route);
+  // console.log(`...App()`);
   return (
     <AppWrapper>
+      {/* <GoogleTagManager gtmId='GTM-5RD8FD' /> */}
       <Helmet
-        titleTemplate="%s - React.js Boilerplate"
-        defaultTitle="React.js Boilerplate"
+        titleTemplate="%s - Hyperbole"
+        defaultTitle="Hyperbole"
+        meta={[
+          { name: 'description', content: 'Hyperbole' },
+          // { property: 'fb:app_id', content: 534273583592060 },
+        ]}
       >
-        <meta name="description" content="A React.js Boilerplate application" />
+        <meta name="description" content="Hyperbole" />
       </Helmet>
-      <Header />
-      {renderRoutes(route.routes)}
-      <Footer />
-      <GlobalStyle />
+      {/* <Wallpaper /> */}
+
+      {/* <PageWrapper> */}
+
+        {renderRoutes(route.routes)}
+
+
+      {/* </PageWrapper> */}
+
     </AppWrapper>
   );
-}
+};
+
+// export function App() {
+//   console.log(`App()`);
+//   return (
+//     <AppWrapper>
+//       <Helmet
+//         titleTemplate="%s - React.js Boilerplate"
+//         defaultTitle="React.js Boilerplate"
+//       >
+//         <meta name="description" content="A React.js Boilerplate application" />
+//       </Helmet>
+//       <Header />
+//       {renderRoutes(route.routes)}
+//       <Footer />
+//       <GlobalStyle />
+//     </AppWrapper>
+//   );
+// }
 
 export default {
   component: compose(
