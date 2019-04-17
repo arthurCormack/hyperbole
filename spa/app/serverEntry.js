@@ -12,8 +12,8 @@ import '@babel/polyfill'; // for regeneratorRuntime
 import React from 'react';
 
 import { renderToString, renderToStaticMarkup } from 'react-dom/server';
+import { ChunkExtractor } from '@loadable/server'
 
-// import { StaticRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { renderRoutes, matchRoutes } from 'react-router-config';
 
@@ -40,6 +40,8 @@ import createStore from 'configureStore';
 
 // import createRoutes from 'routes';// so ... this is no longer a function, its a simple array
 import Routes from 'routes';// so ... this is no longer a function, its a simple array
+
+import { history } from 'utils/history';
 
 // Import Language Provider
 import LanguageProvider from 'containers/LanguageProvider';
@@ -74,8 +76,10 @@ function renderAppToString(url, store, history, styleSheet ) {
 // store, sagasDone, assets, webpackDllNames
 async function renderHtmlDocument({ url, store, sagasDone, assets, webpackDllNames, memHistory, nodeStats, webStats }) {// renderProps is always going to be App.
   // woo hoo, we now have nodeStats, webStats! we should now be able to get on with the chunk collection!
+  console.log( `renderHtmlDocument()`);
   const nodeExtractor = new ChunkExtractor({ statsFile: nodeStats });
-  const { default: App } = nodeExtractor.requireEntrypoint();
+  const { default: App } = nodeExtractor.requireEntrypoint();// this is the main thing. the entryPoint in the main
+  // 
 
   const webExtractor = new ChunkExtractor({ statsFile: webStats })
   // huh ... what comes next ...

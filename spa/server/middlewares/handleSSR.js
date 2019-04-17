@@ -1,6 +1,6 @@
 /* eslint-disable global-require */
-// require('isomorphic-fetch');// do we need this if we have whatwg-fetch?
-import 'whatwg-fetch';
+require('isomorphic-fetch');// do we need this if we have whatwg-fetch?
+// require('whatwg-fetch');
 
 // I think we need to import the loadable-stats.json
 // 
@@ -9,7 +9,9 @@ import 'whatwg-fetch';
 // const ChunkExtractor = require('@loadable/server').ChunkExtractor;
 
 // const reactDOMServer = require("react-dom/server");
-const loadableServer = require("@loadable/server");
+const path = require('path');
+
+// const loadableServer = require("@loadable/server");
 
 const nodeStats = path.resolve(__dirname, 'loadable-stats.json'); // in server/
 const webStats = path.resolve(process.cwd(), 'build/loadable-stats.json');

@@ -3,8 +3,8 @@
  */
 
 import { combineReducers } from 'redux';
-import { routerReducer, LOCATION_CHANGE } from 'connected-react-router';
-
+import { routerReducer, LOCATION_CHANGE, connectRouter } from 'connected-react-router';
+import { history as initialHistory} from 'utils/history';
 // import history from 'utils/history';
 import globalReducer from 'containers/App/reducer';
 import languageProviderReducer from 'containers/LanguageProvider/reducer';
@@ -24,12 +24,13 @@ export function location(state = null, action) {
 /**
  * Merges the main reducer with the router state and dynamically injected reducers
  */
-export default function createReducer(injectedReducers = {}) {
+export default function createReducer(injectedReducers = {}, history = initialHistory) {
+  
   const rootReducer = combineReducers({
     global: globalReducer,
     language: languageProviderReducer,
-    // router: connectRouter(history),
-    router: routerReducer,
+    router: connectRouter(history),
+    // router: routerReducer,
     location,
     ...injectedReducers,
   });
