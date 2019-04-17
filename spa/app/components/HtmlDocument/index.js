@@ -2,6 +2,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import htmlescape from 'htmlescape';
 import he from 'he';
 
 // We use this component only on the server side.
@@ -54,7 +55,7 @@ export default function HtmlDocument({ lang, head, css, appMarkup, state, assets
         </div>
 
         {/* our app state */}
-        <script dangerouslySetInnerHTML={{ __html: `APP_STATE = ${he.encode(state)}` }} />
+        <script dangerouslySetInnerHTML={{ __html: `APP_STATE = ${htmlescape(state)}` }} />
 
         {/* dev only */}
         {(webpackDllNames || []).map((dllName) =>
