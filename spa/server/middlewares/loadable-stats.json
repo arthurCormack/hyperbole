@@ -1,10 +1,8 @@
 {
   "errors": [],
-  "warnings": [
-    "./app/containers/App/selectors.js 7:46-58\n\"export 'initialState' was not found in './reducer'\n @ ./app/containers/HomePage/index.js\n @ ./app/routes.js\n @ ./app/serverEntry.js\n @ multi ./node_modules/react-app-polyfill/ie11.js ./app/serverEntry.js"
-  ],
+  "warnings": [],
   "version": "4.29.6",
-  "hash": "5e251d92df8421576fd7",
+  "hash": "3e863cb5a51fb24a1e81",
   "publicPath": "/",
   "outputPath": "/Users/a.cormack/Sites/hyperbole/spa/server/middlewares",
   "assetsByChunkName": {
@@ -13,7 +11,7 @@
   "assets": [
     {
       "name": "generated.serverEntry.js",
-      "size": 194526,
+      "size": 195233,
       "chunks": [
         "main"
       ],

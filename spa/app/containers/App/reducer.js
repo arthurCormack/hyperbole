@@ -11,6 +11,8 @@ import produce from 'immer';
 import { combineReducers } from 'redux';
 // import { LOAD_REPOS_SUCCESS, LOAD_REPOS, LOAD_REPOS_ERROR } from './constants';
 
+// import { LOAD_POSTDATA_SUCCESS } from 'containers/SinglePostPage/constants';
+
 // The initial state of the App
 // export const initialState = {
 //   loading: false,
@@ -58,14 +60,19 @@ import { combineReducers } from 'redux';
  * Well, in this case, we are assuming that the Content Authority is a wordpress json api, and that we are requesting either a post, an archive (category or tag), or a page.
  * (permalink structure.)
  */
-const caardd = (state = {}, action) =>
+const initialCAARDDState = null;
+const caardd = (state = initialCAARDDState, action) =>
   produce(state, draft => {
     switch (action.type) {
 
     } 
   });
 
-appReducer = combineReducers({
+export const initialState = {
+  caardd: null,
+};
+
+const appReducer = combineReducers({
   caardd,
 });
 

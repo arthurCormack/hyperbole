@@ -58,12 +58,12 @@ const App = ({ route }) => {
       {/* <Wallpaper /> */}
 
       {/* <PageWrapper> */}
-
-        {renderRoutes(route.routes)}
-
+      <Header />
+      {renderRoutes(route.routes)}
+      <Footer />
 
       {/* </PageWrapper> */}
-
+      <GlobalStyle />
     </AppWrapper>
   );
 };
