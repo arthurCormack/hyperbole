@@ -2,7 +2,7 @@
   "errors": [],
   "warnings": [],
   "version": "4.29.6",
-  "hash": "3e863cb5a51fb24a1e81",
+  "hash": "59d7f9473b31f4d2bd1d",
   "publicPath": "/",
   "outputPath": "/Users/a.cormack/Sites/hyperbole/spa/server/middlewares",
   "assetsByChunkName": {
@@ -11,14 +11,14 @@
   "assets": [
     {
       "name": "generated.serverEntry.js",
-      "size": 195233,
+      "size": 152775,
       "chunks": [
         "main"
       ],
       "chunkNames": [
         "main"
       ],
-      "emitted": true
+      "emitted": false
     }
   ],
   "filteredAssets": 0,
