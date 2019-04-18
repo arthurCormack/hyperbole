@@ -1,6 +1,6 @@
 {
   "name": "react-boilerplate",
-  "version": "3.7.0",
+  "version": "4.0.0",
   "description": "A highly scalable, offline-first foundation with the best DX and a focus on performance and best practices",
   "repository": {
     "type": "git",
@@ -8,7 +8,7 @@
   },
   "engines": {
     "npm": ">=5",
-    "node": ">=8.10.0"
+    "node": ">=8.15.1"
   },
   "author": "Max Stoiber",
   "license": "MIT",
