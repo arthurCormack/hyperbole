@@ -12,7 +12,7 @@ import '@babel/polyfill'; // for regeneratorRuntime
 import React from 'react';
 
 import { renderToString, renderToStaticMarkup } from 'react-dom/server';
-import { ChunkExtractor } from '@loadable/server'
+import { ChunkExtractor, ChunkExtractorManager } from '@loadable/server'
 
 import { Provider } from 'react-redux';
 import { renderRoutes, matchRoutes } from 'react-router-config';
@@ -56,21 +56,26 @@ import { appLocales, translationMessages as messages} from './i18n';
 
 
 
-function renderAppToString(url, store, history, styleSheet ) {
+function renderAppToString(url, store, history, styleSheet, extractor ) {
   console.log(`renderAppToString()`);
 
   const app = (
-    <Provider store={store}>
-      <LanguageProvider messages={messages}>
-        <ConnectedRouter history={history}>
-          <div>{renderRoutes(Routes)}</div>
-        </ConnectedRouter>
-      </LanguageProvider>
-    </Provider>
+    <ChunkExtractorManager extractor={extractor}>
+      <Provider store={store}>
+        <LanguageProvider messages={messages}>
+          <ConnectedRouter history={history}>
+            <div>{renderRoutes(Routes)}</div>
+          </ConnectedRouter>
+        </LanguageProvider>
+      </Provider>
+    </ChunkExtractorManager>
   );
 
+  // return renderToString(
+  //   styleSheet ? styleSheet.collectStyles(app) : app
+  // );
   return renderToString(
-    styleSheet ? styleSheet.collectStyles(app) : app
+    app
   );
 }
 
@@ -82,11 +87,14 @@ async function renderHtmlDocument({ url, store, sagasDone, assets, webpackDllNam
   // console.log(`This is a Helmet`, Helmet);
   const nodeExtractor = new ChunkExtractor({ statsFile: nodeStats });
   const { default: App } = nodeExtractor.requireEntrypoint();// this is the main thing. the entryPoint in the main
+  // this is why we aren't getting the styles ... because we have to make it render this App thing!
   const webExtractor = new ChunkExtractor({ statsFile: webStats })
   // huh ... what comes next ...
-   
+  
+  // const jsx = webExtractor.collectChunks(<App />) !!!
+  // const html = renderToString(jsx)
   // 1st render phase - triggers the sagas
-  renderAppToString(url, store, memHistory);// one
+  renderAppToString(url, store, memHistory, webExtractor);// one
 
   //
 
@@ -119,7 +127,15 @@ async function renderHtmlDocument({ url, store, sagasDone, assets, webpackDllNam
   // ${webExtractor.getStyleTags()}
   // ${webExtractor.getScriptTags()}
 
-  const css = styleSheet.getStyleElement();
+  // const css = styleSheet.getStyleElement();
+  const css = webExtractor.getStyleTags();
+  console.log(`css`, css);
+
+  const links = webExtractor.getLinkTags();
+  console.log(`links`, links);
+
+  const scripts = webExtractor.getScriptTags();
+  console.log(`scripts`, scripts);
 
   const doc = renderToStaticMarkup(
     <HtmlDocument
