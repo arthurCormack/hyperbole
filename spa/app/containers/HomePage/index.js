@@ -46,11 +46,11 @@ export function HomePage({
     if (username && username.trim().length > 0) onSubmitForm();
   }, []);
 
-  const reposListProps = {
-    loading,
-    error,
-    repos,
-  };
+  // const reposListProps = {
+  //   loading,
+  //   error,
+  //   repos,
+  // };
 
   return (
     <article>

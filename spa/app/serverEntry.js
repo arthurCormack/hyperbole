@@ -138,7 +138,7 @@ async function renderHtmlDocument({ url, store, sagasDone, assets, webpackDllNam
 
 function getCAARDD(store) {
   console.log(`getCAARDD()`);
-  console.log(store.getState());
+  // console.log(store.getState());
   // const caardd = typeof store.getState().getIn(['global', 'caardd']) !== 'undefined' ? store.getState().getIn(['global', 'caardd']) : false;
   const caardd = store.getState().global.caardd;
   console.log(caardd);

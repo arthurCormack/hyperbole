@@ -60,7 +60,7 @@ import { combineReducers } from 'redux';
  * Well, in this case, we are assuming that the Content Authority is a wordpress json api, and that we are requesting either a post, an archive (category or tag), or a page.
  * (permalink structure.)
  */
-const initialCAARDDState = null;
+const initialCAARDDState = false;
 const caardd = (state = initialCAARDDState, action) =>
   produce(state, draft => {
     switch (action.type) {
@@ -69,7 +69,7 @@ const caardd = (state = initialCAARDDState, action) =>
   });
 
 export const initialState = {
-  caardd: null,
+  caardd: false,
 };
 
 const appReducer = combineReducers({

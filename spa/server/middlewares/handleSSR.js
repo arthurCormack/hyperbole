@@ -60,7 +60,7 @@ module.exports = function handleSSR(req, res) {
       res.redirect(302, response.redirectLocation);
     } else if (response.notFound) {
       res.status(404).send(response.html);
-    } else if (typeof response.caardd === 'object') {
+    } else if (typeof response.caardd === 'object') {// remember, typeof null === 'object'
       if (response.caardd.notFound) {
         if (response.caardd.redirectLocation) {
           res.redirect(301, response.caardd.redirectLocation);
