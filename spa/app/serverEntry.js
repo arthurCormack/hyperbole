@@ -128,7 +128,7 @@ async function renderHtmlDocument({ url, store, sagasDone, assets, webpackDllNam
   // ${webExtractor.getScriptTags()}
 
   // const css = styleSheet.getStyleElement();
-  const css = webExtractor.getStyleTags();
+  const css = webExtractor.getStyleTags();// is it because they are styled-components? maybe
   console.log(`css`, css);
 
   const links = webExtractor.getLinkTags();

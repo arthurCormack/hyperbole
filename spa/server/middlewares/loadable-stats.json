@@ -2,7 +2,7 @@
   "errors": [],
   "warnings": [],
   "version": "4.29.6",
-  "hash": "066426dde50cbdb0bbe4",
+  "hash": "008ef9c0ce5aa22ebb47",
   "publicPath": "/",
   "outputPath": "/Users/arthur/Sites/hyperbole/spa/server/middlewares",
   "assetsByChunkName": {
@@ -11,7 +11,7 @@
   "assets": [
     {
       "name": "generated.serverEntry.js",
-      "size": 153466,
+      "size": 153519,
       "chunks": [
         "main"
       ],
