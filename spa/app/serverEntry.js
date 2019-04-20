@@ -59,9 +59,9 @@ import { appLocales, translationMessages as messages} from './i18n';
 function renderAppToString(url, store, history, styleSheet, extractor ) {
   console.log(`renderAppToString()`);
 
-  const app = extractor ? (
+  const app = (
     <ChunkExtractorManager extractor={extractor}>
-      {/* <StyleSheetManager sheet={styleSheet.instance}> */}
+      <StyleSheetManager sheet={styleSheet.instance}>
         <Provider store={store}>
           <LanguageProvider messages={messages}>
             <ConnectedRouter history={history}>
@@ -69,24 +69,16 @@ function renderAppToString(url, store, history, styleSheet, extractor ) {
             </ConnectedRouter>
           </LanguageProvider>
         </Provider>
-      {/* </StyleSheetManager> */}
+      </StyleSheetManager>
     </ChunkExtractorManager>
-  ) : (
-    <Provider store={store}>
-      <LanguageProvider messages={messages}>
-        <ConnectedRouter history={history}>
-          <div>{renderRoutes(Routes)}</div>
-        </ConnectedRouter>
-      </LanguageProvider>
-    </Provider>
   );
 
-  return renderToString(
-    styleSheet ? styleSheet.collectStyles(app) : app
-  );
   // return renderToString(
-  //   app
+  //   styleSheet ? styleSheet.collectStyles(app) : app
   // );
+  return renderToString(
+    app
+  );
 }
 
 
@@ -104,7 +96,7 @@ async function renderHtmlDocument({ url, store, sagasDone, assets, webpackDllNam
   // const jsx = webExtractor.collectChunks(<App />) !!!
   // const html = renderToString(jsx)
   // 1st render phase - triggers the sagas
-  renderAppToString(url, store, memHistory, null, null);// one
+  // renderAppToString(url, store, memHistory, null, null);// one
 
   //
 
@@ -113,15 +105,14 @@ async function renderHtmlDocument({ url, store, sagasDone, assets, webpackDllNam
   // do we really want to do 2 renders here?
   // we need to if we are going to have any dynamic sagas inside that load data.
   //  we need to make a decision to either only have dynamic data triggered in loading functions, and disable other ones during ssr.
-  
 
-  store.dispatch(END);
+
+  // store.dispatch(END);
 
   // wait for all tasks to finish
-  await sagasDone();
+  // await sagasDone();
 
-  // capture the state after the first render
-  // const state = store.getState().toJS();// we are not immutable anymore!
+  // capture the state after the first render, or after loadCOntent promises are resolved,
   const state = store.getState();
   // prepare style sheet to collect generated css
   const styleSheet = new ServerStyleSheet();
@@ -182,7 +173,7 @@ function getCAARDD(store) {
 // and switch the structure of the containers export so that it exports an object that has both loader and compoentn params.
 
 
-function renderAppToStringAtLocation(url, { webpackDllNames = [], assets, nodeStats, webStats, lang }, callback) {
+function renderAppToStringAtLocation(url, { assets, nodeStats, webStats, lang }, callback) {
   /*
     we should now have
     nodeStats,
@@ -212,8 +203,8 @@ function renderAppToStringAtLocation(url, { webpackDllNames = [], assets, nodeSt
       // we could call the loadData function here, but inport another function result, from the saga, that would deduce the computed url that we are supposed to calls
       // thats the problem, the saga has the job of extracting slug items from the url path, and putting together a complete url to call the api with;
       // ont that passes all of the permalink items required to make a successful api call.catch((//) => {})
-      // return route.loadData ? route.loadData(store) : null;
-      return null;// what if we don't run the loadData ... what if our saga will do it for us?
+      return route.loadContent ? route.loadContent(store) : null;
+      // return null;// what if we don't run the loadData ... what if our saga will do it for us?
     })
     .map(promise => {
       // console.log(``);
@@ -224,11 +215,12 @@ function renderAppToStringAtLocation(url, { webpackDllNames = [], assets, nodeSt
       }
     });
     // console.log(promises);// why is the first one undefined? does that matter?
-  Promise.all(promises).then(() => {
+    // do we need to collect state / store first?
+    Promise.all(promises).then(() => {
     // const context = {};
     // const content = renderer(req, store, context);
 
-    renderHtmlDocument({ url, store, sagasDone, assets, webpackDllNames, memHistory, nodeStats, webStats })
+    renderHtmlDocument({ url, store, sagasDone, assets, memHistory, nodeStats, webStats })
           .then((html) => {
             // const notFound = is404(renderProps.routes);// is404 only looks at matching route patterns, but doesn't care what the Content Authority thinks about whether a route exists or not, or whether there is a redirection
             const notFound = null;
