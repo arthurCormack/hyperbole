@@ -30,7 +30,7 @@ import { createMemoryHistory } from 'history';
 import { END } from 'redux-saga';
 import { Helmet } from 'react-helmet';
 // import styleSheet from 'styled-components/lib/models/StyleSheet';
-import { ServerStyleSheet } from 'styled-components';
+import { ServerStyleSheet, StyleSheetManager } from 'styled-components';
 
 // Global styles should be injected before any other scoped style, so make sure
 // this file is imported before any styled component.
@@ -59,24 +59,34 @@ import { appLocales, translationMessages as messages} from './i18n';
 function renderAppToString(url, store, history, styleSheet, extractor ) {
   console.log(`renderAppToString()`);
 
-  const app = (
+  const app = extractor ? (
     <ChunkExtractorManager extractor={extractor}>
-      <Provider store={store}>
-        <LanguageProvider messages={messages}>
-          <ConnectedRouter history={history}>
-            <div>{renderRoutes(Routes)}</div>
-          </ConnectedRouter>
-        </LanguageProvider>
-      </Provider>
+      {/* <StyleSheetManager sheet={styleSheet.instance}> */}
+        <Provider store={store}>
+          <LanguageProvider messages={messages}>
+            <ConnectedRouter history={history}>
+              <div>{renderRoutes(Routes)}</div>
+            </ConnectedRouter>
+          </LanguageProvider>
+        </Provider>
+      {/* </StyleSheetManager> */}
     </ChunkExtractorManager>
+  ) : (
+    <Provider store={store}>
+      <LanguageProvider messages={messages}>
+        <ConnectedRouter history={history}>
+          <div>{renderRoutes(Routes)}</div>
+        </ConnectedRouter>
+      </LanguageProvider>
+    </Provider>
   );
 
-  // return renderToString(
-  //   styleSheet ? styleSheet.collectStyles(app) : app
-  // );
   return renderToString(
-    app
+    styleSheet ? styleSheet.collectStyles(app) : app
   );
+  // return renderToString(
+  //   app
+  // );
 }
 
 
@@ -86,7 +96,7 @@ async function renderHtmlDocument({ url, store, sagasDone, assets, webpackDllNam
   console.log( `renderHtmlDocument()`);
   // console.log(`This is a Helmet`, Helmet);
   const nodeExtractor = new ChunkExtractor({ statsFile: nodeStats });
-  const { default: App } = nodeExtractor.requireEntrypoint();// this is the main thing. the entryPoint in the main
+  // const { default: App } = nodeExtractor.requireEntrypoint();// this is the main thing. the entryPoint in the main. we need to pass this along?
   // this is why we aren't getting the styles ... because we have to make it render this App thing!
   const webExtractor = new ChunkExtractor({ statsFile: webStats })
   // huh ... what comes next ...
@@ -94,12 +104,17 @@ async function renderHtmlDocument({ url, store, sagasDone, assets, webpackDllNam
   // const jsx = webExtractor.collectChunks(<App />) !!!
   // const html = renderToString(jsx)
   // 1st render phase - triggers the sagas
-  renderAppToString(url, store, memHistory, webExtractor);// one
+  renderAppToString(url, store, memHistory, null, null);// one
 
   //
 
-  // th thing is, with the way that the sagas,
+  // the thing is, with the way that the sagas,
   // send signal to sagas that we're done
+  // do we really want to do 2 renders here?
+  // we need to if we are going to have any dynamic sagas inside that load data.
+  //  we need to make a decision to either only have dynamic data triggered in loading functions, and disable other ones during ssr.
+  
+
   store.dispatch(END);
 
   // wait for all tasks to finish
@@ -112,7 +127,7 @@ async function renderHtmlDocument({ url, store, sagasDone, assets, webpackDllNam
   const styleSheet = new ServerStyleSheet();
 
   // 2nd render phase - the sagas triggered in the first phase are resolved by now
-  const appMarkup = renderAppToString(url, store, memHistory, styleSheet);// two
+  const appMarkup = renderAppToString(url, store, memHistory, styleSheet, webExtractor);// two
   // console.log(`appMarkup ...`);
   // console.log(appMarkup);
 
@@ -127,9 +142,10 @@ async function renderHtmlDocument({ url, store, sagasDone, assets, webpackDllNam
   // ${webExtractor.getStyleTags()}
   // ${webExtractor.getScriptTags()}
 
-  // const css = styleSheet.getStyleElement();
-  const css = webExtractor.getStyleTags();// is it because they are styled-components? maybe
+  const css = styleSheet.getStyleElement();
   console.log(`css`, css);
+  // const css = webExtractor.getStyleTags();// is it because they are styled-components? maybe
+  // console.log(`css`, css);
 
   const links = webExtractor.getLinkTags();
   console.log(`links`, links);
@@ -145,7 +161,8 @@ async function renderHtmlDocument({ url, store, sagasDone, assets, webpackDllNam
       head={Helmet.renderStatic()}
       assets={assets}
       css={css}
-      webpackDllNames={webpackDllNames}
+      links={links}
+      scripts={scripts}
     />
   );
   return `<!DOCTYPE html>\n${doc}`;

@@ -6,7 +6,7 @@ import htmlescape from 'htmlescape';
 import he from 'he';
 
 // We use this component only on the server side.
-export default function HtmlDocument({ lang, head, css, appMarkup, state, assets, webpackDllNames }) {
+export default function HtmlDocument({ lang, head, css, appMarkup, state, assets, webpackDllNames, scripts }) {
   const attrs = head.htmlAttributes.toComponent();
   const t = new Date();
   const timstamp = `${t.toISOString()}`;
@@ -63,7 +63,9 @@ export default function HtmlDocument({ lang, head, css, appMarkup, state, assets
         )}
 
         {/* our app code */}
-        <script type="text/javascript" src={assets.main.js}></script>
+        {/* <script type="text/javascript" src={assets.main.js}></script> */}
+        {/* {scripts} */}
+        <div dangerouslySetInnerHTML={{ __html: scripts }} />
         {/* <script type="text/javascript" src={assets.vendor.js}></script> */}
 
         {/* see app/setup/openSansObserver.js */}
@@ -85,5 +87,5 @@ HtmlDocument.propTypes = {
       css: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
-  webpackDllNames: PropTypes.arrayOf(PropTypes.string),
+  
 };

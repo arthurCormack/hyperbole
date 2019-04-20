@@ -53,6 +53,7 @@ module.exports = function handleSSR(req, res) {
   };
 
   renderAppToStringAtLocation(req.url, options, (response) => {
+    
     if (response.error) {
       res.status(500).send(response.error.message);
       printError(response.error);
