@@ -6,10 +6,18 @@ import htmlescape from 'htmlescape';
 import he from 'he';
 
 // We use this component only on the server side.
-export default function HtmlDocument({ lang, head, css, appMarkup, state, assets, webpackDllNames, scripts }) {
+export default function HtmlDocument({ lang, head, css, appMarkup, state, assets, scripts }) {
   const attrs = head.htmlAttributes.toComponent();
   const t = new Date();
   const timstamp = `${t.toISOString()}`;
+
+  /**
+   * 
+   * So the problem with doing it this way, is that the getLinkTags, getStyleTags, and getScriptTags methods of the loadble components, return a string, which we can't put into the HTML DOcument easily or cleanly.
+   * They want to be injected into a string that would be returned to nodejs for return from the wserver to the client.
+   * So ... what can we do? Construct the html doc as a string instead;
+   * but what about all that helmet stuff?
+   */
   return (
     <html lang={lang} {...attrs}>
       <head>
@@ -58,9 +66,6 @@ export default function HtmlDocument({ lang, head, css, appMarkup, state, assets
         <script dangerouslySetInnerHTML={{ __html: `APP_STATE = ${htmlescape(state)}` }} />
 
         {/* dev only */}
-        {(webpackDllNames || []).map((dllName) =>
-          <script data-dll key={dllName} src={`/${dllName}.dll.js`}></script>
-        )}
 
         {/* our app code */}
         {/* <script type="text/javascript" src={assets.main.js}></script> */}

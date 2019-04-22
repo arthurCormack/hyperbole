@@ -115,10 +115,10 @@ async function renderHtmlDocument({ url, store, sagasDone, assets, webpackDllNam
   // capture the state after the first render, or after loadCOntent promises are resolved,
   const state = store.getState();
   // prepare style sheet to collect generated css
-  const styleSheet = new ServerStyleSheet();
+  const sheet = new ServerStyleSheet();
 
   // 2nd render phase - the sagas triggered in the first phase are resolved by now
-  const appMarkup = renderAppToString(url, store, memHistory, styleSheet, webExtractor);// two
+  const appMarkup = renderAppToString(url, store, memHistory, sheet, webExtractor);// two
   // console.log(`appMarkup ...`);
   // console.log(appMarkup);
 
@@ -133,7 +133,7 @@ async function renderHtmlDocument({ url, store, sagasDone, assets, webpackDllNam
   // ${webExtractor.getStyleTags()}
   // ${webExtractor.getScriptTags()}
 
-  const css = styleSheet.getStyleElement();
+  const css = sheet.getStyleTags();
   console.log(`css`, css);
   // const css = webExtractor.getStyleTags();// is it because they are styled-components? maybe
   // console.log(`css`, css);
@@ -157,6 +157,68 @@ async function renderHtmlDocument({ url, store, sagasDone, assets, webpackDllNam
     />
   );
   return `<!DOCTYPE html>\n${doc}`;
+
+
+  // const t = new Date();
+  // const timstamp = `${t.toISOString()}`;
+  // const html = `<html lang=${state.language.locale}>`;
+
+  // const html = `<html lang=${lang}>
+  //     <head>
+  //       <meta charSet="utf-8" />
+  //       <meta name="viewport" content="width=device-width, initial-scale=1" />
+  //       <meta name="ssr-timestamp" content=${timstamp} />
+  //       <meta name="google-site-verification" content="insert-your-google-site-verification-or-remove-this-tag" />
+  //       ${/* Allow installing the app to the homescreen */}
+
+  //       <link rel="manifest" href="/manifest.json" />
+  //       <meta name="mobile-web-app-capable" content="yes" />
+  //       <meta name="apple-mobile-web-app-title" content="Everything Zoomer" />
+
+  //       ${/* iOS home screen icons */}
+  //       <link rel="apple-touch-icon" sizes="120x120" href="/icon-120x120.png" />
+  //       <link rel="apple-touch-icon" sizes="152x152" href="/icon-152x152.png" />
+  //       <link rel="apple-touch-icon" sizes="167x167" href="/icon-167x167.png" />
+  //       <link rel="apple-touch-icon" sizes="180x180" href="/icon-180x180.png" />
+  //       <link rel="icon" href="/favicon.ico" />
+
+  //       ${head.title.toString()}
+  //       ${head.meta.toString()}
+  //       ${head.link.toString()}
+  //       ${/* figure out how to include the manifest proper;ly, and maybe we won't need to include all those links to apple touch icons above */}
+  //       ${/* vendor.css */}
+  //       <link href={assets.main.css} rel="stylesheet" />
+  //       ${/* app css */}
+  //       ${/* <style type="text/css" dangerouslySetInnerHTML={{ __html: css }} /> */}
+  //       ${/* server side rendered css style tags */}
+  //       { css }
+  //     </head>
+  //     <body>
+
+  //       ${/* Display a message if JS has been disabled on the browser. */}
+  //       <noscript>
+  //         If you are seeing this message, that means <strong>JavaScript has been disabled on your browser</strong>
+  //         , please <strong>enable JS</strong> to make this app work.
+  //       </noscript>
+
+  //       <div id="app">
+  //         ${/* our app markup */}
+  //         ${appMarkup}
+  //       </div>
+
+  //       ${/* our app state */}
+       
+  //       <script APP_STATE = ${htmlescape(state)} />
+  //       ${/* dev only */}
+
+  //       ${/* our app code */}
+  //       ${/* <script type="text/javascript" src={assets.main.js}></script> */}
+  //       ${scripts}
+
+  //       ${/* see app/setup/openSansObserver.js */}
+  //       <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet" />  
+  //     </body>
+  //   </html>`;
 }
 
 
