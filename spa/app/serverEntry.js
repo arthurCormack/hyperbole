@@ -199,12 +199,13 @@ async function renderHtmlDocument({ url, store, sagasDone, assets, webpackDllNam
     </head>
     <body>
       ${css}
+      ${links}
       <div id="app">
         ${appMarkup}
       </div>
       <script>APP_STATE = ${htmlescape(state)}</script>
       ${scripts}
-      
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet" /> 
     </body>
   </html>
   `;

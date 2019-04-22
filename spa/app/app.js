@@ -35,6 +35,7 @@ import configureStore from './configureStore';
 import { translationMessages } from './i18n';
 
 import renderInBrowser from './renderInBrowser';
+import Routes from './routes';// so ... this is no longer a function, its a simple array
 
 // Observe loading of Open Sans (to remove open sans, remove the <link> tag in
 // the index.html file and this observer)
@@ -62,7 +63,7 @@ loadableReady(() => {
   //     </ConnectedRouter>
   //   </LanguageProvider>
   // </Provider>, MOUNT_NODE)
-  renderInBrowser({ messages, store, Routes, history });
+  renderInBrowser({ translationMessages, store, Routes, history });
 });
 
 // const render = messages => {
@@ -78,7 +79,7 @@ loadableReady(() => {
 //   );
 // };
 function render() {
-  renderInBrowser({ messages, store, Routes, history });
+  renderInBrowser({ translationMessages, store, Routes, history });
 }
 
 if (module.hot) {
