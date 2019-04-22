@@ -25,7 +25,7 @@ import { ConnectedRouter } from 'connected-react-router';
 import { createMemoryHistory } from 'history';
 // import createMemoryHistory from 'history/createMemoryHistory';
 // const createMemoryHistory = require("history").createMemoryHistory;
-
+import htmlescape from 'htmlescape';
 
 import { END } from 'redux-saga';
 import { Helmet } from 'react-helmet';
@@ -59,7 +59,7 @@ import { appLocales, translationMessages as messages} from './i18n';
 function renderAppToString(url, store, history, styleSheet, extractor ) {
   console.log(`renderAppToString()`);
 
-  const app = (
+  const app = styleSheet ? (
     <ChunkExtractorManager extractor={extractor}>
       <StyleSheetManager sheet={styleSheet.instance}>
         <Provider store={store}>
@@ -71,6 +71,14 @@ function renderAppToString(url, store, history, styleSheet, extractor ) {
         </Provider>
       </StyleSheetManager>
     </ChunkExtractorManager>
+  ) : (
+    <Provider store={store}>
+      <LanguageProvider messages={messages}>
+        <ConnectedRouter history={history}>
+          <div>{renderRoutes(Routes)}</div>
+        </ConnectedRouter>
+      </LanguageProvider>
+    </Provider>
   );
 
   // return renderToString(
@@ -96,9 +104,7 @@ async function renderHtmlDocument({ url, store, sagasDone, assets, webpackDllNam
   // const jsx = webExtractor.collectChunks(<App />) !!!
   // const html = renderToString(jsx)
   // 1st render phase - triggers the sagas
-  // renderAppToString(url, store, memHistory, null, null);// one
-
-  //
+  renderAppToString(url, store, memHistory, null, null);// one
 
   // the thing is, with the way that the sagas,
   // send signal to sagas that we're done
@@ -107,10 +113,10 @@ async function renderHtmlDocument({ url, store, sagasDone, assets, webpackDllNam
   //  we need to make a decision to either only have dynamic data triggered in loading functions, and disable other ones during ssr.
 
 
-  // store.dispatch(END);
+  store.dispatch(END);
 
   // wait for all tasks to finish
-  // await sagasDone();
+  await sagasDone();
 
   // capture the state after the first render, or after loadCOntent promises are resolved,
   const state = store.getState();
@@ -134,6 +140,17 @@ async function renderHtmlDocument({ url, store, sagasDone, assets, webpackDllNam
   // ${webExtractor.getScriptTags()}
 
   const css = sheet.getStyleTags();
+  sheet.seal();
+  // try {
+  //   const html = renderToString(sheet.collectStyles(<YourApp />))
+  //   const styleTags = sheet.getStyleTags() // or sheet.getStyleElement();
+  // } catch (error) {
+  //   // handle error
+  //   console.error(error)
+  // } finally {
+  //   sheet.seal()
+  // }
+
   console.log(`css`, css);
   // const css = webExtractor.getStyleTags();// is it because they are styled-components? maybe
   // console.log(`css`, css);
@@ -144,23 +161,57 @@ async function renderHtmlDocument({ url, store, sagasDone, assets, webpackDllNam
   const scripts = webExtractor.getScriptTags();
   console.log(`scripts`, scripts);
 
-  const doc = renderToStaticMarkup(
-    <HtmlDocument
-      appMarkup={appMarkup}
-      lang={state.language.locale}
-      state={state}
-      head={Helmet.renderStatic()}
-      assets={assets}
-      css={css}
-      links={links}
-      scripts={scripts}
-    />
-  );
+  // const doc = renderToStaticMarkup(
+  //   <HtmlDocument
+  //     appMarkup={appMarkup}
+  //     lang={state.language.locale}
+  //     state={state}
+  //     head={Helmet.renderStatic()}
+  //     assets={assets}
+  //     css={css}
+  //     links={links}
+  //     scripts={scripts}
+  //   />
+  // );
+  // return `<!DOCTYPE html>\n${doc}`;
+  const t = new Date();
+  const timstamp = `${t.toISOString()}`;
+  // const doc = renderToStaticMarkup(
+  //   <html>
+  //     <head>
+  //       <meta charSet="utf-8" />
+  //       <meta name="ssr-timestamp" content={timstamp} />
+  //       <meta name="google-site-verification" content="insert-your-google-site-verification-or-remove-this-tag" />
+  //       {/* Allow installing the app to the homescreen */}
+  //     </head>
+  //     <body>
+  //       Hello World! {timstamp}
+  //     </body>
+  //   </html>
+  // );
+  const head = Helmet.renderStatic();
+  const doc = `<html>
+    <head>
+      <meta charSet="utf-8" />
+      <meta name="ssr-timestamp" content=${timstamp} />
+      <meta name="google-site-verification" content="insert-your-google-site-verification-or-remove-this-tag" />
+      ${head.title.toString()}
+      ${head.meta.toString()}
+      ${head.link.toString()}
+    </head>
+    <body>
+      ${css}
+      <div id="app">
+        ${appMarkup}
+      </div>
+      <script>APP_STATE = ${htmlescape(state)}</script>
+      
+      
+    </body>
+  </html>
+  `;
   return `<!DOCTYPE html>\n${doc}`;
 
-
-  // const t = new Date();
-  // const timstamp = `${t.toISOString()}`;
   // const html = `<html lang=${state.language.locale}>`;
 
   // const html = `<html lang=${lang}>
