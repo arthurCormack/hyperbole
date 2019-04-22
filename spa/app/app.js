@@ -51,15 +51,18 @@ const initialState = {};
 const store = configureStore(initialState, history);
 const MOUNT_NODE = document.getElementById('app');
 
+console.log(`app.js!`);
 loadableReady(() => {
-  ReactDOM.hydrate(
-  <Provider store={store}>
-    <LanguageProvider messages={translationMessages}>
-      <ConnectedRouter history={history}>
-        <App />
-      </ConnectedRouter>
-    </LanguageProvider>
-  </Provider>, MOUNT_NODE)
+  console.log(`loadableReady()`);
+  // ReactDOM.hydrate(
+  // <Provider store={store}>
+  //   <LanguageProvider messages={translationMessages}>
+  //     <ConnectedRouter history={history}>
+  //       <App />
+  //     </ConnectedRouter>
+  //   </LanguageProvider>
+  // </Provider>, MOUNT_NODE)
+  renderInBrowser({ messages, store, Routes, history });
 });
 
 // const render = messages => {

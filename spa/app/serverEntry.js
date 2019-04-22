@@ -17,14 +17,12 @@ import { ChunkExtractor, ChunkExtractorManager } from '@loadable/server'
 import { Provider } from 'react-redux';
 import { renderRoutes, matchRoutes } from 'react-router-config';
 
-// import { ConnectedRouter } from 'react-router-redux';
+
 import { ConnectedRouter } from 'connected-react-router';
 
-// import { match, RouterContext } from 'react-router';// match doesn't seem toi exist anymore in RR4. does RouterContext?
-
 import { createMemoryHistory } from 'history';
-// import createMemoryHistory from 'history/createMemoryHistory';
-// const createMemoryHistory = require("history").createMemoryHistory;
+
+
 import htmlescape from 'htmlescape';
 
 import { END } from 'redux-saga';
@@ -41,7 +39,7 @@ import createStore from 'configureStore';
 // import createRoutes from 'routes';// so ... this is no longer a function, its a simple array
 import Routes from 'routes';// so ... this is no longer a function, its a simple array
 
-import { history } from 'utils/history';
+// import { history } from 'utils/history';
 
 // Import Language Provider
 import LanguageProvider from 'containers/LanguageProvider';
@@ -205,7 +203,7 @@ async function renderHtmlDocument({ url, store, sagasDone, assets, webpackDllNam
         ${appMarkup}
       </div>
       <script>APP_STATE = ${htmlescape(state)}</script>
-      
+      ${scripts}
       
     </body>
   </html>
