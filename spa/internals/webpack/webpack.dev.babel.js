@@ -25,9 +25,12 @@ module.exports = require('./webpack.base.babel')({
   },
 
   optimization: {
-    splitChunks: {
-      chunks: 'all',
-    },
+    // splitChunks: {
+    //   chunks: 'all',
+    // },
+   
+    minimize: false,
+  
   },
 
   // Add development plugins
@@ -72,5 +75,8 @@ module.exports = require('./webpack.base.babel')({
 
   performance: {
     hints: false,
+  },
+  node: {
+    fs: "empty"
   },
 });

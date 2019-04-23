@@ -1,7 +1,7 @@
 /* eslint-disable global-require */
-require('isomorphic-fetch');// do we need this if we have whatwg-fetch?
+// require('isomorphic-fetch');// do we need this if we have whatwg-fetch?
 // require('whatwg-fetch');
-
+require('unfetch');
 // I think we need to import the loadable-stats.json
 // 
 

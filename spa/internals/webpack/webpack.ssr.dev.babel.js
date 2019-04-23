@@ -20,7 +20,7 @@ module.exports = {
   name: 'server',
   target: 'node',
   mode: 'development',
-  externals: ['@loadable/component', nodeExternals()],
+  externals: [nodeExternals(), '@loadable/component'],
   entry: [
     require.resolve('react-app-polyfill/ie11'),
     path.join(process.cwd(), 'app/serverEntry.js'),
@@ -76,17 +76,19 @@ module.exports = {
 
           // {
           //   loader: 'url-loader',
-          //   // options: {
-          //   //   // Inline files smaller than 10 kB
-          //   //   limit: 10 * 1024,
-          //   // },
+          //   options: {
+          //     // Inline files smaller than 10 kB
+          //     limit: 10 * 1024,
+          //   },
           // },
 
           {
             loader: "file-loader",
             options: {
-              // name: "/images/[name].[ext]",
-              emitFile: false
+              // name: "[name].[ext]",
+              // outputPath: path.resolve(outputPath, 'build'),
+              // outputPath: '../../build',
+              emitFile: true
             }
           },
 

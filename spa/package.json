@@ -108,6 +108,7 @@
     "resize-observer-polyfill": "^1.5.1",
     "sanitize.css": "8.0.0",
     "styled-components": "4.2.0",
+    "unfetch": "^4.1.0",
     "warning": "^4.0.3"
   },
   "devDependencies": {
