@@ -88,7 +88,7 @@ module.exports = {
               // name: "[name].[ext]",
               // outputPath: path.resolve(outputPath, 'build'),
               // outputPath: '../../build',
-              emitFile: true
+              emitFile: false
             }
           },
 

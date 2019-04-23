@@ -54,7 +54,7 @@ function createServerRenderProxyMiddleware(serviceUrl) {
         <script>
         setTimeout(function() {
           window.location.reload(true);
-        }, 1337);
+        }, 500);
         </script>
         </html>
       `);

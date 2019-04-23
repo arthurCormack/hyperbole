@@ -52,9 +52,9 @@ const initialState = {};
 const store = configureStore(initialState, history);
 const MOUNT_NODE = document.getElementById('app');
 
-console.log(`app.js!`);
+// console.log(`app.js!`);
 loadableReady(() => {
-  console.log(`loadableReady()`);
+  // console.log(`loadableReady()`);
   // ReactDOM.hydrate(
   // <Provider store={store}>
   //   <LanguageProvider messages={translationMessages}>
