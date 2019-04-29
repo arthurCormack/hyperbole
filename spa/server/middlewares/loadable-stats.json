@@ -2,18 +2,18 @@
   "errors": [],
   "warnings": [],
   "version": "4.29.6",
-  "hash": "01c48e7bb0f19117d81e",
+  "hash": "bace576f4473bf31db97",
   "publicPath": "/",
-  "outputPath": "/Users/arthur/Sites/hyperbole/spa/server/middlewares",
+  "outputPath": "/Users/a.cormack/Sites/hyperbole/spa/server/middlewares",
   "assetsByChunkName": {
     "main": "generated.serverEntry.js"
   },
   "assets": [
     {
       "name": "generated.serverEntry.js",
-      "size": 153048,
+      "size": 25530,
       "chunks": [
-        "main"
+        0
       ],
       "chunkNames": [
         "main"
@@ -25,7 +25,7 @@
   "entrypoints": {
     "main": {
       "chunks": [
-        "main"
+        0
       ],
       "assets": [
         "generated.serverEntry.js"
@@ -37,7 +37,7 @@
   "namedChunkGroups": {
     "main": {
       "chunks": [
-        "main"
+        0
       ],
       "assets": [
         "generated.serverEntry.js"

@@ -7,7 +7,7 @@ const { HashedModuleIdsPlugin } = require('webpack');
 const TerserPlugin = require('terser-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 
-module.exports = require('./webpack.base.babel')({
+const clientConfig  = require('./webpack.base.babel')({
   mode: 'production',
 
   // In production, we skip all hot-reloading stuff
@@ -137,7 +137,7 @@ module.exports = require('./webpack.base.babel')({
         },
       ],
     }),
-
+   
     new HashedModuleIdsPlugin({
       hashFunction: 'sha256',
       hashDigest: 'hex',
@@ -150,3 +150,7 @@ module.exports = require('./webpack.base.babel')({
       !/(\.map$)|(^(main\.|favicon\.))/.test(assetFilename),
   },
 });
+
+const serverConfig = require('./webpack.ssr.prod.babel');
+
+module.exports = [clientConfig, serverConfig];
