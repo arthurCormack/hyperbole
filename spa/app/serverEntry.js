@@ -193,13 +193,12 @@ async function renderHtmlDocument({ url, store, sagasDone, assets, webpackDllNam
       <meta charSet="utf-8" />
       <meta name="ssr-timestamp" content=${timstamp} />
       <meta name="google-site-verification" content="insert-your-google-site-verification-or-remove-this-tag" />
+      ${css}
       ${head.title.toString()}
       ${head.meta.toString()}
       ${head.link.toString()}
     </head>
     <body>
-      ${css}
-      ${links}
       <div id="app">
         ${appMarkup}
       </div>
