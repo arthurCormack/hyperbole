@@ -3,20 +3,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import htmlescape from 'htmlescape';
+import he from 'he';
 
 // We use this component only on the server side.
-export default function HtmlDocument({ lang, head, css, appMarkup, state, assets }) {
+export default function HtmlDocument({ lang, head, css, appMarkup, state, assets, scripts }) {
   const attrs = head.htmlAttributes.toComponent();
   const t = new Date();
   const timstamp = `${t.toISOString()}`;
+
+  /**
+   * 
+   * So the problem with doing it this way, is that the getLinkTags, getStyleTags, and getScriptTags methods of the loadble components, return a string, which we can't put into the HTML DOcument easily or cleanly.
+   * They want to be injected into a string that would be returned to nodejs for return from the wserver to the client.
+   * So ... what can we do? Construct the html doc as a string instead;
+   * but what about all that helmet stuff?
+   */
   return (
     <html lang={lang} {...attrs}>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="ssr-timestamp" content={timstamp} />
+        <meta name="google-site-verification" content="insert-your-google-site-verification-or-remove-this-tag" />
         {/* Allow installing the app to the homescreen */}
-
 
         <link rel="manifest" href="/manifest.json" />
         <meta name="mobile-web-app-capable" content="yes" />
@@ -47,7 +56,7 @@ export default function HtmlDocument({ lang, head, css, appMarkup, state, assets
           If you are seeing this message, that means <strong>JavaScript has been disabled on your browser</strong>
           , please <strong>enable JS</strong> to make this app work.
         </noscript>
-        
+
         <div id="app">
           {/* our app markup */}
           <div dangerouslySetInnerHTML={{ __html: appMarkup }} />
@@ -57,17 +66,15 @@ export default function HtmlDocument({ lang, head, css, appMarkup, state, assets
         <script dangerouslySetInnerHTML={{ __html: `APP_STATE = ${htmlescape(state)}` }} />
 
         {/* dev only */}
-        {/*
-        {(webpackDllNames || []).map((dllName) =>
-          <script data-dll key={dllName} src={`/${dllName}.dll.js`}></script>
-        )}
-        */}
 
         {/* our app code */}
-        <script type="text/javascript" src={assets.main.js}></script>
+        {/* <script type="text/javascript" src={assets.main.js}></script> */}
+        {/* {scripts} */}
+        <div dangerouslySetInnerHTML={{ __html: scripts }} />
+        {/* <script type="text/javascript" src={assets.vendor.js}></script> */}
 
         {/* see app/setup/openSansObserver.js */}
-        <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet" />  
       </body>
     </html>
   );
@@ -85,4 +92,5 @@ HtmlDocument.propTypes = {
       css: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
+  
 };

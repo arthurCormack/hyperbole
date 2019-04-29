@@ -2,8 +2,8 @@
 const path = require('path');
 const webpack = require('webpack');
 const nodeExternals = require('webpack-node-externals');
-// const imageWebpackQuery = require('./imageWebpackQuery');
-
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import LoadablePlugin from '@loadable/webpack-plugin';
 const outputPath = path.join(process.cwd(), 'server', 'middlewares');
 
 
@@ -20,8 +20,9 @@ module.exports = {
   name: 'server',
   target: 'node',
   mode: 'development',
-  externals: [nodeExternals()],
+  externals: [nodeExternals(), '@loadable/component'],
   entry: [
+    require.resolve('react-app-polyfill/ie11'),
     path.join(process.cwd(), 'app/serverEntry.js'),
   ],
   output: {
@@ -37,7 +38,12 @@ module.exports = {
         exclude: /node_modules/,
         // use: ['dynamic-import-node'],
         use: [
-          { loader: 'babel-loader' },
+          {
+            loader: 'babel-loader', 
+            options: {
+              
+            }
+          },
         ],
       }, {
         test: /\.css$/,
@@ -46,7 +52,9 @@ module.exports = {
       }, {
         test: /\.css$/,
         exclude: /node_modules/,
-        use: ['style-loader', 'css-loader'],
+        use: [{
+          loader: MiniCssExtractPlugin.loader,
+        }, 'css-loader'],
       }, {
         test: /\.(eot|otf|ttf|woff|woff2)$/,
         use: 'file-loader',
@@ -68,16 +76,18 @@ module.exports = {
 
           // {
           //   loader: 'url-loader',
-          //   // options: {
-          //   //   // Inline files smaller than 10 kB
-          //   //   limit: 10 * 1024,
-          //   // },
+          //   options: {
+          //     // Inline files smaller than 10 kB
+          //     limit: 10 * 1024,
+          //   },
           // },
 
           {
             loader: "file-loader",
             options: {
-              // name: "/images/[name].[ext]",
+              // name: "[name].[ext]",
+              // outputPath: path.resolve(outputPath, 'build'),
+              // outputPath: '../../build',
               emitFile: false
             }
           },
@@ -86,11 +96,11 @@ module.exports = {
             loader: 'image-webpack-loader',
             options: {
               mozjpeg: {
-                // enabled: false,
+                enabled: false,
                 // NOTE: mozjpeg is disabled as it causes errors in some Linux environments
                 // Try enabling it in your environment by switching the config to:
-                enabled: true,
-                progressive: true,
+                // enabled: true,
+                // progressive: true,
               },
               gifsicle: {
                 interlaced: false,
@@ -119,7 +129,7 @@ module.exports = {
       },
 
     ],
-
+  
   },
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(true),
@@ -131,7 +141,8 @@ module.exports = {
         SERVER_API_URL: JSON.stringify(process.env.SERVER_API_URL),
       }
     }),
-    new webpack.NamedModulesPlugin()
+    new webpack.NamedModulesPlugin(),
+    new LoadablePlugin(), new MiniCssExtractPlugin()
   ],
 
   resolve: {
@@ -141,5 +152,6 @@ module.exports = {
       '.jsx',
       '.react.js',
     ],
+    mainFields: ['browser', 'jsnext:main', 'main'],
   },
 };

@@ -8,8 +8,6 @@ export default function monitorSagas(store) {
     return task;
   };
 
-
-
   return function done() {
     return Promise.all(allTasks.map((t) => t.done));
   };
