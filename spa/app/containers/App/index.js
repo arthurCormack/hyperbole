@@ -7,27 +7,25 @@
  */
 
 import React from 'react';
-
 import { renderRoutes } from 'react-router-config';
-
 import { Helmet } from 'react-helmet';
+import styled from 'styled-components';
+// import { Switch, Route } from 'react-router-dom';
 
 import injectSaga from 'utils/injectSaga';// for making of the global dynamic saga
 import { compose } from 'redux';
 
 import { DAEMON } from 'utils/constants';
-
-import styled from 'styled-components';
-
 import saga from './sagas';
 
-// import { Switch, Route } from 'react-router-dom';
+const withSaga = injectSaga({ key: 'App', saga, mode: DAEMON });
+
 
 // import HomePage from 'containers/HomePage/Loadable';
 // import FeaturePage from 'containers/FeaturePage/Loadable';
 // import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Header from 'components/Header';
-// import Footer from 'components/Footer';
+import Footer from 'components/Footer';
 
 import GlobalStyle from '../../global-styles';
 
@@ -38,29 +36,56 @@ const AppWrapper = styled.div`
   min-height: 100%;
   padding: 0 16px;
   flex-direction: column;
+  border: 12px solid green;
 `;
 
-const withSaga = injectSaga({ key: 'App', saga, mode: DAEMON });
+
 const App = ({ route }) => {
-  // console.log("App()");
+  // console.log(`App(), route:`, route);
+  // console.log(`...App()`);
   return (
     <AppWrapper>
+      {/* <GoogleTagManager gtmId='GTM-5RD8FD' /> */}
       <Helmet
         titleTemplate="%s - Hyperbole"
         defaultTitle="Hyperbole"
         meta={[
           { name: 'description', content: 'Hyperbole' },
-
+          // { property: 'fb:app_id', content: 534273583592060 },
         ]}
       >
         <meta name="description" content="Hyperbole" />
       </Helmet>
+      {/* <Wallpaper /> */}
+
+      {/* <PageWrapper> */}
       <Header />
       {renderRoutes(route.routes)}
+      <Footer />
+
+      {/* </PageWrapper> */}
       <GlobalStyle />
     </AppWrapper>
   );
 };
+
+// export function App() {
+//   console.log(`App()`);
+//   return (
+//     <AppWrapper>
+//       <Helmet
+//         titleTemplate="%s - React.js Boilerplate"
+//         defaultTitle="React.js Boilerplate"
+//       >
+//         <meta name="description" content="A React.js Boilerplate application" />
+//       </Helmet>
+//       <Header />
+//       {renderRoutes(route.routes)}
+//       <Footer />
+//       <GlobalStyle />
+//     </AppWrapper>
+//   );
+// }
 
 export default {
   component: compose(

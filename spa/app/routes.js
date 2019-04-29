@@ -19,12 +19,12 @@ export default [
         exact: true,
       },
       // {
-      //   ...SinglePage,
-      //   path: '/page',
-      // },
-      // {
       //   ...AuthorPage,
       //   path: '/author/:authorSlug',
+      // },
+      // {
+      //   ...DefaultPage,
+      //   path: '/(faq|supportpage|italy|about|auto-renewal|privacy-policy|advertise-with-us|contact-us|zoomer-magazine-mailing-schedule|terms-of-service|zoomerapp|vancouver-zoomershow/)',
       // },
       // {
       //   ...SinglePostPage,

@@ -1,4 +1,3 @@
-import 'whatwg-fetch';
 /**
  * Parses the JSON returned by a network request
  *
@@ -6,7 +5,7 @@ import 'whatwg-fetch';
  *
  * @return {object}          The parsed JSON from the request
  */
-export function parseJSON(response) {
+function parseJSON(response) {
   if (response.status === 204 || response.status === 205) {
     return null;
   }
@@ -20,7 +19,7 @@ export function parseJSON(response) {
  *
  * @return {object|undefined} Returns either the response, or throws an error
  */
-export function checkStatus(response) {
+function checkStatus(response) {
   if (response.status >= 200 && response.status < 300) {
     return response;
   }

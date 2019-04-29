@@ -3,54 +3,47 @@
  */
 
 import { createSelector } from 'reselect';
+import { initialState } from './reducer';
 
-const selectGlobal = state => state.get('global');
+const selectGlobal = state => state.global || initialState;
 
-const selectRouter = state => state.get('router');
+const selectRouter = state => state.router;
 
-// const makeSelectCurrentUser = () =>
-//   createSelector(
-//     selectGlobal,
-//     globalState => globalState.get('currentUser'),
-//   );
-//
-// const makeSelectLoading = () =>
-//   createSelector(
-//     selectGlobal,
-//     globalState => globalState.get('loading'),
-//   );
-//
-// const makeSelectError = () =>
-//   createSelector(
-//     selectGlobal,
-//     globalState => globalState.get('error'),
-//   );
-//
-// const makeSelectRepos = () =>
-//   createSelector(
-//     selectGlobal,
-//     globalState => globalState.getIn(['userData', 'repositories']),
-//   );
-//
-// const makeSelectLocation = () =>
-//   createSelector(
-//     selectRouter,
-//     routerState => routerState.get('location').toJS(),
-//   );
-const makeSelectPostStack = () =>
-  // console.log(`makeSelectPostStack()`);
+const makeSelectCurrentUser = () =>
   createSelector(
     selectGlobal,
-    globalState => globalState.get('postStack')
+    globalState => globalState.currentUser,
   );
 
+const makeSelectLoading = () =>
+  createSelector(
+    selectGlobal,
+    globalState => globalState.loading,
+  );
+
+const makeSelectError = () =>
+  createSelector(
+    selectGlobal,
+    globalState => globalState.error,
+  );
+
+const makeSelectRepos = () =>
+  createSelector(
+    selectGlobal,
+    globalState => globalState.userData.repositories,
+  );
+
+const makeSelectLocation = () =>
+  createSelector(
+    selectRouter,
+    routerState => routerState.location,
+  );
 
 export {
   selectGlobal,
-  // makeSelectCurrentUser,
-  // makeSelectLoading,
-  // makeSelectError,
-  // makeSelectRepos,
-  // makeSelectLocation,
-  makeSelectPostStack,
+  makeSelectCurrentUser,
+  makeSelectLoading,
+  makeSelectError,
+  makeSelectRepos,
+  makeSelectLocation,
 };

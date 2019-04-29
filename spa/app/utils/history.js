@@ -1,4 +1,11 @@
-// import createHistory from 'history/createBrowserHistory';
-import createHistory from 'history/createMemoryHistory';
-const history = createHistory();
+// import { isServer } from 'utils/detection';
+// import { createBrowserHistory, createMemoryHistory } from 'history';
+import { createMemoryHistory } from 'history';
+// but we don't want to be dealing with browserHistory, do we, we want to be dealing with MemoryHistpry, which workis in isomorphic/universal
+// const history = createBrowserHistory();
+// export const history = isServer ? createMemoryHistory() : createBrowserHistory();
+export const history = createMemoryHistory();
+
+
+// export const history = createMemoryHistory();
 export default history;
