@@ -32,7 +32,7 @@ import { ServerStyleSheet, StyleSheetManager } from 'styled-components';
 
 // Global styles should be injected before any other scoped style, so make sure
 // this file is imported before any styled component.
-import 'global-styles';
+// import 'global-styles';
 
 import createStore from 'configureStore';
 
@@ -44,7 +44,7 @@ import Routes from 'routes';// so ... this is no longer a function, its a simple
 // Import Language Provider
 import LanguageProvider from 'containers/LanguageProvider';
 
-import HtmlDocument from 'components/HtmlDocument';
+// import HtmlDocument from 'components/HtmlDocument';
 
 import { changeLocale } from 'containers/LanguageProvider/actions';
 
