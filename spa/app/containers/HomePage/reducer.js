@@ -24,58 +24,14 @@ const initialPostsState = {
   posts: false,// false or []
 };
 
-// /* eslint-disable default-case, no-param-reassign */
-// const initialPosts = (state = initialPostsState, action) => {
-//   produce(state, draft => {
-//     switch(action.type) {
-//       case LOAD_HOMEPAGE_INITIALPOSTS:
-//         draft.loading = true;
-//         draft.error = false;
-//         draft.posts = false;
-//         break;
-//       case LOAD_HOMEPAGE_INITIALPOSTS_SUCCESS:
-//         draft.loading = false;
-//         draft.error = false;
-//         draft.posts = action.posts;
-//         break;
-//       case LOAD_HOMEPAGE_INITIALPOSTS_FAILURE:
-//         draft.loading = false;
-//         draft.error = true;
-//         draft.posts = false;
-//         break;
-//       default:
-//         draft = draft;
-//     }
-//   })
-// }
-
 export const initialState = {
   initialPosts: initialPostsState,
 };
-// export const initialState = initialPostsState;
-// // const homeReducer = combineReducers({
-// //   // initialPosts,
-// // });
-
-// // export default homeReducer;
-// export default initialPosts;
-
-
-import { CHANGE_USERNAME } from './constants';
-
-// The initial state of the App
-// export const initialState = {
-//   username: '',
-// };
 
 /* eslint-disable default-case, no-param-reassign */
 const initialPosts = (state = initialState, action) =>
   produce(state, draft => {
     switch (action.type) {
-      case CHANGE_USERNAME:
-        // Delete prefixed '@' from the github username
-        draft.username = action.username.replace(/@/gi, '');
-        break;
       case LOAD_HOMEPAGE_INITIALPOSTS:
         draft.loading = true;
         draft.error = false;
