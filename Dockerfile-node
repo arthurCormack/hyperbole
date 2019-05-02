@@ -1,17 +1,24 @@
 # base image
-FROM node:11.14.0-alpine
+FROM node:latest
+# add dependencies so that we can build some native node_modules
+#RUN apk --no-cache add --virtual native-deps \
+#  g++ gcc libgcc libstdc++ linux-headers make python && \
+#  npm install --quiet node-gyp -g &&\
+#  npm install --quiet && \
+#  apk del native-deps
+
+
 
 # set working directory
-RUN mkdir /usr/src/app
-WORKDIR /usr/src/app
+RUN mkdir -p /usr/src/hyperbole-app
+WORKDIR /usr/src/hyperbole-app
 
-# add `/usr/src/app/node_modules/.bin` to $PATH
-ENV PATH /usr/src/app/node_modules/.bin:$PATH
+# add `/usr/src/hyperbole-app/node_modules/.bin` to $PATH
+ENV PATH /usr/src/hyperbole-app/node_modules/.bin:$PATH
 
 # install and cache app dependencies
-COPY package.json /usr/src/app/package.json
+COPY /spa/package.json /usr/src/hyperbole-app/package.json
 RUN npm install --silent
-RUN npm install react-scripts@1.1.1 -g --silent
 
 # start app
 CMD ["npm", "start"]
