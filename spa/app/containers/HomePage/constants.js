@@ -10,3 +10,8 @@
  */
 
 export const CHANGE_USERNAME = 'boilerplate/Home/CHANGE_USERNAME';
+
+
+export const LOAD_HOMEPAGE_INITIALPOSTS = 'boilerplate/Home/CHANGE_USERNAME';
+export const LOAD_HOMEPAGE_INITIALPOSTS_SUCCESS = 'boilerplate/Home/CHANGE_USERNAME';
+export const LOAD_HOMEPAGE_INITIALPOSTS_FAILURE = 'boilerplate/Home/CHANGE_USERNAME';

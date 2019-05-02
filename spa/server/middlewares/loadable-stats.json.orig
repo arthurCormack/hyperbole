@@ -2,7 +2,11 @@
   "errors": [],
   "warnings": [],
   "version": "4.29.6",
+<<<<<<< HEAD
   "hash": "888a7532532ad15733db",
+=======
+  "hash": "e977fca74500da25e3da",
+>>>>>>> origin/composingWPRoutes
   "publicPath": "/",
   "outputPath": "/Users/arthur/Sites/hyperbole/spa/server/middlewares",
   "assetsByChunkName": {
@@ -11,7 +15,11 @@
   "assets": [
     {
       "name": "generated.serverEntry.js",
+<<<<<<< HEAD
       "size": 145581,
+=======
+      "size": 156026,
+>>>>>>> origin/composingWPRoutes
       "chunks": [
         "main"
       ],
