@@ -18,12 +18,13 @@ services:
     container_name: wp
     depends_on:
       - db
+      - nginx-proxy
     image: wordpress:5.1.1-php7.1-apache
     ports:
       - "8080:80"
     restart: always
     volumes:
-      - ./wp-content:/var/www/html/wp-content
+      - ./wp/wp-content:/var/www/html/wp-content
     environment:
       WORDPRESS_DB_HOST: db:3306
       WORDPRESS_DB_USER: wordpress
@@ -31,18 +32,18 @@ services:
       WORDPRESS_DB_NAME: wordpress
       WP_DEBUG: 0
 
-  nginx:
-    container_name: proxy
-    depends_on:
-      - wordpress
+  nginx-proxy:
+    container_name: nginx-proxy
     restart: always
     build:
       context: .
       dockerfile: Dockerfile-nginx
     ports:
       - "80:80"
-  node:
-    container_name: ssr
+  node-ssr:
+    container_name: node-ssr
+    depends_on:
+      - nginx-proxy
     restart: always
     build:
       context: .
