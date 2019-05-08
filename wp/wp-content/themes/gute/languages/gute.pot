@@ -1,0 +1,316 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Gute\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-02-06 19:24+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.2.0; wp-4.9.9"
+
+#. 1: list of categories.
+#. 1: list of tags.
+#: inc/template-tags.php:39 inc/template-tags.php:46
+#, php-format
+msgid " %1$s"
+msgstr ""
+
+#. used between list items, there is a space after the comma
+#: inc/template-tags.php:36
+msgid ", "
+msgstr ""
+
+#. %s: post title
+#: inc/template-tags.php:56
+#, php-format
+msgid ""
+"<i class=\"fa fa-comments\"></i> <span class=\"screen-reader-text\"> on "
+"%s</span>"
+msgstr ""
+
+#: inc/bootstrap-navwalker.php:404
+msgid "Add a menu"
+msgstr ""
+
+#: functions.php:127
+msgid "Add footer widgets here."
+msgstr ""
+
+#: functions.php:136
+msgid "Add mail code widgets here."
+msgstr ""
+
+#: functions.php:118
+msgid "Add widgets here."
+msgstr ""
+
+#: inc/customizer.php:127
+msgid "Button one text"
+msgstr ""
+
+#: inc/customizer.php:142
+msgid "Button one url"
+msgstr ""
+
+#: inc/customizer.php:156
+msgid "Button two text"
+msgstr ""
+
+#: inc/customizer.php:171
+msgid "Button two url"
+msgstr ""
+
+#: inc/tgm-plugin.php:69
+msgid "Click To Top"
+msgstr ""
+
+#: comments.php:66
+msgid "Comments are closed."
+msgstr ""
+
+#. 1: comment count number, 2: title.
+#: comments.php:41
+#, php-format
+msgctxt "comments title"
+msgid "%1$s thought on &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
+msgstr[0] ""
+msgstr[1] ""
+
+#. %s: Name of current post. Only visible to screen readers
+#: template-parts/content.php:32
+#, php-format
+msgid "Continue reading<span class=\"screen-reader-text\"> \"%s\"</span>"
+msgstr ""
+
+#: inc/customizer.php:39
+msgid "Display header banner"
+msgstr ""
+
+#. %s: Name of current post. Only visible to screen readers
+#: inc/template-tags.php:76 template-parts/content-page.php:37
+#, php-format
+msgid "Edit <span class=\"screen-reader-text\">%s</span>"
+msgstr ""
+
+#: inc/customizer.php:128
+msgid "Enter button one text."
+msgstr ""
+
+#: inc/customizer.php:143
+msgid "Enter button one url."
+msgstr ""
+
+#: inc/customizer.php:157
+msgid "Enter button two text."
+msgstr ""
+
+#: inc/customizer.php:172
+msgid "Enter button two url."
+msgstr ""
+
+#: inc/customizer.php:85
+msgid "Enter your home image sub-title animation text one here."
+msgstr ""
+
+#: inc/customizer.php:114
+msgid "Enter your home image sub-title animation text three here."
+msgstr ""
+
+#: inc/customizer.php:100
+msgid "Enter your home image sub-title animation text two here."
+msgstr ""
+
+#: inc/customizer.php:70
+msgid ""
+"Enter your home image sub-title here. The sub-title only show in home page"
+msgstr ""
+
+#: inc/customizer.php:53
+msgid "Enter your home image title here. The title only show in home page"
+msgstr ""
+
+#: functions.php:48
+msgid "Footer Menu"
+msgstr ""
+
+#: functions.php:125
+msgid "Footer widget"
+msgstr ""
+
+#: inc/tgm-plugin.php:64
+msgid "Gallery Box"
+msgstr ""
+
+#: inc/customizer.php:200
+msgid "Grid view"
+msgstr ""
+
+#. Name of the theme
+msgid "Gute"
+msgstr ""
+
+#. Description of the theme
+msgid ""
+"gute is a full-width, fully responsive and highly customizable gutenberg "
+"ready free WordPress Theme."
+msgstr ""
+
+#: inc/customizer.php:181
+msgid "gute post"
+msgstr ""
+
+#: inc/customizer.php:183
+msgid "gute post settings section."
+msgstr ""
+
+#: inc/customizer.php:84
+msgid "Header animation text one"
+msgstr ""
+
+#: inc/customizer.php:113
+msgid "Header animation text three"
+msgstr ""
+
+#: inc/customizer.php:99
+msgid "Header animation text two"
+msgstr ""
+
+#: inc/customizer.php:69
+msgid "Header image home sub-title"
+msgstr ""
+
+#: inc/customizer.php:52
+msgid "Header image home title"
+msgstr ""
+
+#: footer.php:33
+msgid "https://wordpress.org/"
+msgstr ""
+
+#: 404.php:34
+msgid ""
+"It looks like nothing was found at this location. Maybe try one of the links "
+"below or a search?"
+msgstr ""
+
+#: template-parts/content-none.php:44
+msgid ""
+"It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
+"searching can help."
+msgstr ""
+
+#. used between list items, there is a space after the comma
+#: inc/template-tags.php:43
+msgctxt "list item separator"
+msgid ", "
+msgstr ""
+
+#: inc/customizer.php:201
+msgid "List view"
+msgstr ""
+
+#: functions.php:134
+msgid "Mail champ widget"
+msgstr ""
+
+#: 404.php:48
+msgid "Most Used Categories"
+msgstr ""
+
+#: template-parts/content-none.php:14
+msgid "Nothing Found"
+msgstr ""
+
+#. 1: title.
+#: comments.php:35
+#, php-format
+msgid "One thought on &ldquo;%1$s&rdquo;"
+msgstr ""
+
+#: 404.php:23
+msgid "Oops! That page can&rsquo;t be found."
+msgstr ""
+
+#: template-parts/content-page.php:24 template-parts/content.php:43
+msgid "Pages:"
+msgstr ""
+
+#. %s: post author.
+#: inc/template-tags.php:19
+#, php-format
+msgctxt "post author"
+msgid "by %s"
+msgstr ""
+
+#: inc/customizer.php:195
+msgid "Post view style"
+msgstr ""
+
+#: functions.php:47
+msgid "Primary"
+msgstr ""
+
+#. %s: CMS name, i.e. WordPress.
+#: footer.php:36
+#, php-format
+msgid "Proudly powered by %s"
+msgstr ""
+
+#: template-parts/content-search.php:35 template-parts/content.php:85
+msgid "Read more"
+msgstr ""
+
+#. 1: link to WP admin new post page.
+#: template-parts/content-none.php:24
+#, php-format
+msgid ""
+"Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr ""
+
+#. %s: search query.
+#: search.php:27
+#, php-format
+msgid "Search Results for: %s"
+msgstr ""
+
+#: functions.php:116
+msgid "Sidebar"
+msgstr ""
+
+#: header.php:25
+msgid "Skip to content"
+msgstr ""
+
+#: template-parts/content-none.php:37
+msgid ""
+"Sorry, but nothing matched your search terms. Please try again with some "
+"different keywords."
+msgstr ""
+
+#. 1: Theme name, 2: Theme author.
+#: footer.php:42
+#, php-format
+msgid "Theme: %1$s by %2$s."
+msgstr ""
+
+#: header.php:56
+msgid "Toggle Navigation"
+msgstr ""
+
+#. %1$s: smiley
+#: 404.php:68
+#, php-format
+msgid "Try looking in the monthly archives. %1$s"
+msgstr ""
+
+#. Author of the theme
+msgid "Wp theme space"
+msgstr ""

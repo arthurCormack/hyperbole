@@ -14,35 +14,43 @@ services:
       MYSQL_PASSWORD: eveneasier
     ports:
       - "3306:3306"
+    # networks:
+    #   - hyperbole-net
   wordpress:
     container_name: wp
     depends_on:
       - db
+      - nginx-proxy
     image: wordpress:5.1.1-php7.1-apache
     ports:
       - "8080:80"
     restart: always
     volumes:
-      - ./wp-content:/var/www/html/wp-content
+      - ./wp/wp-content:/var/www/html/wp-content
     environment:
       WORDPRESS_DB_HOST: db:3306
       WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: eveneasier
       WORDPRESS_DB_NAME: wordpress
       WP_DEBUG: 0
+    # networks:
+    #   - hyperbole-net
 
-  nginx:
-    container_name: proxy
-    depends_on:
-      - wordpress
+  nginx-proxy:
+    image: nginx:latest
+    container_name: nginx-proxy
     restart: always
-    build:
-      context: .
-      dockerfile: Dockerfile-nginx
+    volumes:
+      - ./nginx-proxy.conf:/etc/nginx/nginx.conf
     ports:
-      - "80:80"
-  node:
-    container_name: ssr
+      - 80:80
+      - 443:443
+    # networks:
+    #   - hyperbole-net
+  node-ssr:
+    container_name: node-ssr
+    depends_on:
+      - nginx-proxy
     restart: always
     build:
       context: .
@@ -55,3 +63,7 @@ services:
       - '/usr/src/hyperbole-app/node_modules'
     environment:
       - NODE_ENV=development
+    # networks:
+    #   - hyperbole-net
+  networks:
+    #hyperbole-net:

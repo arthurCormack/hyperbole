@@ -1,0 +1,618 @@
+/*!
+Theme Name: Gute
+Theme URI:  https://wpthemespace.com/product/gute/
+Author: Wp theme space
+Author URI: https://profiles.wordpress.org/wpthemespace
+Description: Description: gute is a full-width, fully responsive and highly customizable gutenberg ready free WordPress Theme. Gute is a awesome Blog WordPress theme. You can add your own logo, header, featured areas in this theme. This Gute theme also has several different layout and color that look great on devices of all sizes. Gute is a smart WordPress blog theme. Gute is right choice for your blog website. You can create full feature blog website by the Gute WordPress theme. Gute WordPress theme support custom header, header banner widget, home page feature section, feature image, color changing options, custom background, footer widget, font Awesome icons. So you can enjoy your blog or magazine website with the WordPress Gute theme. 
+Version: 1.0.7
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: gute
+Tags: Blog, portfolio, Two-columns, three-columns, custom-logo, Right-sidebar, left-sidebar, grid-layout, custom-header, custom-menu, featured-images, full-width-template, editor-style,news, microformats, post-formats, sticky-post, flexible-header, theme-options 
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+*/
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# Accessibility
+# Alignments
+# Clearings
+# Widgets
+# Content
+	## Posts and pages
+	## Comments
+# Infinite scroll
+# Media
+	## Captions
+	## Galleries
+--------------------------------------------------------------*/
+
+/*
+*
+* Header style
+*/
+
+.site-branding a{
+	text-transform:uppercase;
+}
+img.custom-logo {
+    width: 75%;
+    height: auto;
+}
+a.nav-link {
+    color: #fff;
+}
+
+header .header-top a,header .header-top {
+    color: #fff;
+}
+header .header-top ul li .sub-menu.dropdown-menu a {
+    color: #000;
+}
+.header-bottom {
+    background: #3e4449;
+    color: #fff;
+}
+.header-search {
+    position:  relative;
+}
+.header-search-form {
+    position: absolute;
+    top: 51px;
+    right: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.5s;
+}
+.header-search-form.show {
+    z-index: 999;
+	top:40px;
+    opacity: 1;
+    visibility: visible;
+    transition: 0.5s;
+}
+.search-icon {
+    margin-top: 16px;
+	text-align:right;
+}
+input.search-field.form-control.input-lg {
+    width: 500px;
+}
+section.home-banner {
+    position: relative;
+}
+.home-banner img {
+    width: 100%;
+}
+.banner-text {
+    position: absolute;
+    top: 30%;
+    left: 0;
+    width: 100%;
+}
+
+.banner-text h1 {
+    font-size: 57px;
+    font-weight: 700;
+    text-transform: capitalize;
+    margin: 20px 0;
+    text-shadow: 2px 5px 4px #000;
+}
+.banner-text h3 {
+    margin: 20px 0 30px;
+    font-size: 35px;
+    text-shadow: 2px 5px 4px #000;
+}
+.banner-text a {
+    margin-right: 10px;
+}
+.banner-text a.btn:hover {
+   color: #000;
+}
+.content-area {
+    margin-bottom: 50px;
+}
+.sticky .card.post-card {
+    background: #ededed;
+}
+.card.post-card:hover {
+    box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important;
+}
+.list-post article{
+    margin-bottom: 40px;
+}
+
+.list-post .card-footer {
+    display: block;
+    width: 100%;
+}
+
+.list-post .card.flex-md-row {
+    position: relative;
+}
+
+.list-post .card-footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: auto;
+    margin: auto 0 0 0;
+    text-align: right;
+    width: 30%;
+    float: right;
+}
+.list-post .card-footer {
+    padding: 10px;
+    background-color: inherit;
+    border-top: none;
+}
+/*--------------------------------------------------------------
+# Widget
+--------------------------------------------------------------*/
+.widget-404 .widget ul,
+.sidebar ul {
+    padding:  0;
+    margin:  0;
+    list-style:  none;
+}
+.widget-404 .widget{
+    margin: 20px 0;
+}
+.widget-404 .widget ul li,
+.sidebar ul li {
+    padding-bottom: 10px;
+    border-bottom:  1px solid #ededed;
+    margin-bottom: 5px;
+}
+
+.widget-404 .widget ul li:last-child, 
+.sidebar ul li:last-child {border:  inherit;}
+
+.widget-404 .widget.sidebar,
+section.widget.sidebar {
+    margin-bottom: 40px;
+}
+
+.widget-404 .widget h2,
+section.widget.sidebar h2 {
+    border: 1px solid #ccc;
+    margin-bottom: 15px;
+    padding: 10px 5px;
+    text-align: center;
+
+ }
+input.search-field {
+    width:  100%;
+    display:  block;
+    border: 1px solid #ccc;
+    padding: 5px;
+}
+
+input.search-submit {
+    width: 100%;
+    background:  #000;
+    color:  #fff;
+    padding: 5px 0;
+}
+
+.widget .search-form label {
+    width: 100%;
+}
+
+/*--------------------------------------------------------------
+# Accessibility
+--------------------------------------------------------------*/
+/* Text meant only for screen readers. */
+.screen-reader-text {
+	border: 0;
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute !important;
+	width: 1px;
+	word-wrap: normal !important; /* Many screen reader and browser combinations announce broken words as they would appear visually. */
+}
+
+.screen-reader-text:focus {
+	background-color: #f1f1f1;
+	border-radius: 3px;
+	box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+	clip: auto !important;
+	clip-path: none;
+	color: #21759b;
+	display: block;
+	font-size: 14px;
+	font-size: 0.875rem;
+	font-weight: bold;
+	height: auto;
+	left: 5px;
+	line-height: normal;
+	padding: 15px 23px 14px;
+	text-decoration: none;
+	top: 5px;
+	width: auto;
+	z-index: 100000;
+	/* Above WP toolbar. */
+}
+
+/* Do not show the outline on the skip link target. */
+#content[tabindex="-1"]:focus {
+	outline: 0;
+}
+
+/*--------------------------------------------------------------
+# Alignments
+--------------------------------------------------------------*/
+.alignleft {
+	display: inline;
+	float: left;
+	margin-right: 1.5em;
+}
+
+.alignright {
+	display: inline;
+	float: right;
+	margin-left: 1.5em;
+}
+
+.aligncenter {
+	clear: both;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/*--------------------------------------------------------------
+# Clearings
+--------------------------------------------------------------*/
+.clear:before,
+.clear:after,
+.entry-content:before,
+.entry-content:after,
+.comment-content:before,
+.comment-content:after,
+.site-header:before,
+.site-header:after,
+.site-content:before,
+.site-content:after,
+.site-footer:before,
+.site-footer:after {
+	content: "";
+	display: table;
+	table-layout: fixed;
+}
+
+.clear:after,
+.entry-content:after,
+.comment-content:after,
+.site-header:after,
+.site-content:after,
+.site-footer:after {
+	clear: both;
+}
+
+/*--------------------------------------------------------------
+## Comments
+--------------------------------------------------------------*/
+.comment-content a {
+	word-wrap: break-word;
+}
+
+.bypostauthor {
+	display: block;
+}
+
+/*--------------------------------------------------------------
+# Infinite scroll
+--------------------------------------------------------------*/
+/* Globally hidden elements when Infinite Scroll is supported and in use. */
+.infinite-scroll .posts-navigation,
+.infinite-scroll.neverending .site-footer {
+	/* Theme Footer (when set to scrolling) */
+	display: none;
+}
+
+/* When Infinite Scroll has reached its end we need to re-display elements that were hidden (via .neverending) before. */
+.infinity-end.neverending .site-footer {
+	display: block;
+}
+
+/*--------------------------------------------------------------
+# Media
+--------------------------------------------------------------*/
+.page-content .wp-smiley,
+.entry-content .wp-smiley,
+.comment-content .wp-smiley {
+	border: none;
+	margin-bottom: 0;
+	margin-top: 0;
+	padding: 0;
+}
+
+/* Make sure embeds and iframes fit their containers. */
+embed,
+iframe,
+object {
+	max-width: 100%;
+}
+
+/* Make sure logo link wraps around logo image. */
+.custom-logo-link {
+	display: inline-block;
+}
+
+/*--------------------------------------------------------------
+## Captions
+--------------------------------------------------------------*/
+.wp-caption {
+	margin-bottom: 1.5em;
+	max-width: 100%;
+}
+
+.wp-caption img[class*="wp-image-"] {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.wp-caption .wp-caption-text {
+	margin: 0.8075em 0;
+}
+
+.wp-caption-text {
+	text-align: center;
+}
+
+/*--------------------------------------------------------------
+## Galleries
+--------------------------------------------------------------*/
+.gallery {
+	margin-bottom: 1.5em;
+}
+
+.gallery-item {
+	display: inline-block;
+	text-align: center;
+	vertical-align: top;
+	width: 100%;
+}
+
+.gallery-columns-2 .gallery-item {
+	max-width: 50%;
+}
+
+.gallery-columns-3 .gallery-item {
+	max-width: 33.33%;
+}
+
+.gallery-columns-4 .gallery-item {
+	max-width: 25%;
+}
+
+.gallery-columns-5 .gallery-item {
+	max-width: 20%;
+}
+
+.gallery-columns-6 .gallery-item {
+	max-width: 16.66%;
+}
+
+.gallery-columns-7 .gallery-item {
+	max-width: 14.28%;
+}
+
+.gallery-columns-8 .gallery-item {
+	max-width: 12.5%;
+}
+
+.gallery-columns-9 .gallery-item {
+	max-width: 11.11%;
+}
+
+.gallery-caption {
+	display: block;
+}
+
+/*
+* page header style
+*/
+.page-head {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+}
+.page-head img {
+    height:  auto;
+    width: 100%;
+}
+
+header.img-header {
+    position:  absolute;
+    top:  0;
+    left:  0;
+    bottom: 0;
+    text-align: center;
+    right: 0;
+}
+
+h1.img-title {
+    padding: 80px 0;
+    color: #fff;
+    text-shadow: 2px 5px 4px #000;
+}
+.archive-description {
+    color: #fff;
+    margin-top: -68px;
+    font-size: 18px;
+    text-shadow: 2px 5px 4px #000;
+}
+/*
+* Footer style
+*/
+.footer-bottom {
+    background:  #000;
+    color: #f8f9fa;
+    padding: 10px 0;
+}
+
+ul#menu-footer-menu {
+    margin:  0;
+    padding:  0;
+    list-style:  none;
+}
+
+ul#menu-footer-menu li{
+    display:  inline-block;
+    font-size: 14px;
+}
+.footer-bottom {
+	font-size: 14px;
+}
+
+ul#menu-footer-menu li a,
+.footer-bottom a{
+    color:  #f8f9fa;
+    margin-right: 5px;
+}
+
+.footer-middle,
+.footer-middle a{
+    color:  #ccc;
+}
+.widget-title {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    font-size: 18px;
+    padding-bottom: 15px;
+    position: relative;
+    font-weight: 700;
+}
+.footer-widget ul li a {
+    position: relative;
+    padding-left: 20px;
+}
+.footer-widget ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.footer-widget ul li a:before {
+    content: "\f105";
+    font-family: FontAwesome;
+    left: 5px;
+    position: absolute;
+    -webkit-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+.subscribe-field img {
+    height: 200px;
+    width: 100%;
+}
+.subscribe-field {
+    position: relative;
+}
+.overlay-text {
+    position:  absolute;
+    top:  0;
+    left:  0;
+    width:  100%;
+    height: 100%;
+    background: #000;
+    opacity: 0.6;
+}
+
+.form-text {
+    position:  absolute;
+    top:  0;
+    left:  0;
+    width:  100%;
+    height: 100%;
+}
+
+input#mce-EMAIL {
+    opacity: 1 !important;
+}
+
+.mc-field-group {
+    opacity: 1;
+}
+
+form#mc-embedded-subscribe-form {
+    opacity:  inherit;
+}
+
+ button.navbar-toggler{
+        color: #fff;
+    }
+/*
+*Responsive css
+*
+*/
+/* Tablet Layout: 768px. */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+.list-post .card-footer{
+    position: inherit;
+    width: 100%;
+}
+
+}
+@media only screen and (max-width: 780px) {
+    .container{
+        width:90%;
+    }
+    input.search-field.form-control.input-lg {
+    width: 270px !important;
+    }
+    button.navbar-toggler{
+        color: #fff;
+        margin-left: -20px;
+    }
+  .header-search {
+    position: absolute;
+    top: -65px;
+    right: 25px;
+}
+h1.site-title {
+    text-align: center;
+}
+#masthead .col-md-1 {
+    height: 0;
+}
+.home-banner img {
+    width: 100%;
+    min-height: 300px;
+}
+.banner-text {
+    top: 10%;
+}
+.banner-text h1 {
+    font-size: 30px;
+}
+.banner-text h3 {
+    font-size: 24px;
+    margin: 14px 0 30px;
+}
+.comment-form input {
+    width: 100%;
+}
+.pagination ul {
+    padding: 0 70px;
+
+}
+.pagination_num{
+    padding: 0px 6px;
+    height: 38px;
+    margin: 2px;
+}
+.pagination_prev, .pagination_next {
+    height: 35px;
+    width: 35px;
+}
+
+
+}

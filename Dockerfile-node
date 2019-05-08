@@ -21,4 +21,4 @@ COPY /spa/package.json /usr/src/hyperbole-app/package.json
 RUN npm install --silent
 
 # start app
-CMD ["npm", "start"]
+CMD ["npm", "run", "start"]
