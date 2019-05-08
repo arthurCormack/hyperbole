@@ -5,9 +5,8 @@
  * code.
  */
 
-
-import 'react-app-polyfill/ie11';
-import 'react-app-polyfill/stable';
+// Needed for redux-saga es6 generator support
+import '@babel/polyfill';
 
 // Import all the third party stuff
 import React from 'react';

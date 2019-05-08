@@ -37,11 +37,14 @@ services:
     #   - hyperbole-net
 
   nginx-proxy:
-    image: nginx:latest
+    
     container_name: nginx-proxy
     restart: always
-    volumes:
-      - ./nginx-proxy.conf:/etc/nginx/nginx.conf
+    build:
+      context: .
+      dockerfile: Dockerfile-nginx
+    # volumes:
+    #   - ./nginx-proxy.conf:/etc/nginx/nginx.conf
     ports:
       - 80:80
       - 443:443
@@ -65,5 +68,5 @@ services:
       - NODE_ENV=development
     # networks:
     #   - hyperbole-net
-  networks:
+  # networks:
     #hyperbole-net:
