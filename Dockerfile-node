@@ -1,24 +1,21 @@
 # base image
-FROM node:latest
+FROM node:alpne
 # add dependencies so that we can build some native node_modules
 # RUN apk --no-cache add --virtual native-deps g++ gcc libgcc libstdc++ linux-headers make python && \
 #     npm install --quiet node-gyp -g 
 #\&& apk del native-deps
 
-# RUN apk add --no-cache \
-#     autoconf \
-#     automake \
-#     bash \
-#     g++ \
-#     libgcc \
-#     libstdc++ \
-#     libc6-compat \
-#     libjpeg-turbo-dev \
-#     libpng-dev \
-#     linux-headers \
-#     make \
-#     nasm \
-#     python
+RUN apk add --no-cache \
+    autoconf \
+    automake \
+    bash \
+    g++ \
+    libgcc \
+    libstdc++ \
+    libc6-compat \
+    linux-headers \
+    make \
+    nasm
 
 # set working directory
 RUN mkdir -p /usr/src/hyperbole-app
