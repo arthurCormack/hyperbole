@@ -1,5 +1,5 @@
 # base image
-FROM node:alpne
+FROM node:alpine
 # add dependencies so that we can build some native node_modules
 # RUN apk --no-cache add --virtual native-deps g++ gcc libgcc libstdc++ linux-headers make python && \
 #     npm install --quiet node-gyp -g 
