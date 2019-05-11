@@ -24,9 +24,10 @@ const initialPostsState = {
   posts: false,// false or []
 };
 
-export const initialState = {
-  initialPosts: initialPostsState,
-};
+// export const initialState = {
+//   initialPosts: initialPostsState,
+// };
+export const initialState = initialPostsState;
 
 /* eslint-disable default-case, no-param-reassign */
 const initialPosts = (state = initialState, action) =>
