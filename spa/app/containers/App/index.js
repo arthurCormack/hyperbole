@@ -40,12 +40,12 @@ const AppWrapper = styled.div`
 `;
 
 
-// const App = ({ route }) => { 
-  const App = (props) => {
-  const route = props.route;
-  console.log(`App, `, props);
+const App = ({ route }) => { 
+  // const App = (props) => {
+  // const route = props.route;
+  // console.log(`App, `, props);
   // console.log(`props.route.routes`, props.route.routes);
-  console.log(`route:`, route);
+  // console.log(`route:`, route);
   // console.log(`...App()`);
   // console.log(`App()`);
   // console.log(`this`, this);
