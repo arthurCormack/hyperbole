@@ -27,7 +27,9 @@ const initialPostsState = {
 // export const initialState = {
 //   initialPosts: initialPostsState,
 // };
-export const initialState = initialPostsState;
+export const initialState = {
+  initialPosts: initialPostsState
+};
 
 /* eslint-disable default-case, no-param-reassign */
 const initialPosts = (state = initialState, action) =>
