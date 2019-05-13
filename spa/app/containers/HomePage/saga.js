@@ -52,6 +52,8 @@ function* getInitialPosts() {
   // check in state to see if we have posts, with a select.
   // also, don't call them if we already have them.
   //
+  console.log(`getInitialPosts()`);
+
   const initialPosts = yield select(makeSelectInitialPostsPosts());
   const doWeHaveDataYet = initialPosts !== false;
   const areWeLoading = yield select(makeSelectInitialPostsLoading());
@@ -72,7 +74,8 @@ function* getInitialPosts() {
 }
 function* homePageSaga() {
   console.log('homePageSaga!!!!!!!!!');
-  if (yield call(isServer)) {
+  // if (yield call(isServer)) {
+  if(isServer) {
     yield call(getInitialPosts);
   } else {
     yield call(getInitialPosts);
