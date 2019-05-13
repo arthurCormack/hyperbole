@@ -17,7 +17,6 @@ export default [
         ...HomePage, // this will provide both component and loader params
         path: '/',
         exact: true,
-        test: 'home',
       },
       // {
       //   ...AuthorPage,
