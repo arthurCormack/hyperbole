@@ -9,6 +9,19 @@
 * License: none
 */
 
+
+// Make sure we don't expose any info if called directly
+if ( !function_exists( 'add_action' ) ) {
+	echo 'Hi there!  I\'m just a plugin, not much I can do when called directly.';
+	exit;
+}
+
+define( 'HYPERBOLE_VERSION', '4.1.1' );
+define( 'HYPERBOLE__MINIMUM_WP_VERSION', '4.0' );
+define( 'HYPERBOLE__PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
+
+
+
 /**
  * One of the big things that we have to do, is perfect the cookie / mechanism, to enable the wp admin bar / or at least an edit button.
  * Do we want to be setting one of our own cookies, or instead use one of wp's cookies that is already set?
@@ -29,12 +42,14 @@
   * Don't worry about pagination. 
   * 
   */
-  require('./includes/thumbnails.php');
-  require('./includes/guess404Permalink.php');
-  require('./includes/endpoints/homepage.php');
-  require('./includes/endpoints/singleposts.php');
-  require('./getAttachmentImage.php');// defines hyperbole_get_attachment_image
-}
+
+require_once( HYPERBOLE__PLUGIN_DIR . 'includes/thumbnails.php');
+require_once( HYPERBOLE__PLUGIN_DIR . 'includes/guess404Permalink.php');
+require_once( HYPERBOLE__PLUGIN_DIR . 'includes/endpoints/homepage.php');
+require_once( HYPERBOLE__PLUGIN_DIR . 'includes/endpoints/singleposts.php');
+require_once( HYPERBOLE__PLUGIN_DIR . 'includes/getAttachmentImage.php');// defines hyperbole_get_attachment_image
+
+
 
 add_action( "rest_api_init", function () {
   // require a jwt to use the api?
@@ -73,4 +88,4 @@ add_action( "rest_api_init", function () {
 		}
 	) );
 
-}
+});
