@@ -24,8 +24,12 @@ module.exports = {
   setupFilesAfterEnv: [
     '<rootDir>/internals/testing/test-bundler.js',
     'react-testing-library/cleanup-after-each',
+    'jest-dom/extend-expect',
   ],
-  setupFiles: ['raf/polyfill'],
   testRegex: 'tests/.*\\.test\\.js$',
   snapshotSerializers: [],
+  watchPlugins: [
+    'jest-watch-typeahead/filename',
+    'jest-watch-typeahead/testname',
+  ],
 };
