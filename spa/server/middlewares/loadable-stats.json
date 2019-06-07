@@ -18,7 +18,7 @@
       "chunkNames": [
         "main"
       ],
-      "emitted": true
+      "emitted": false
     }
   ],
   "filteredAssets": 0,
