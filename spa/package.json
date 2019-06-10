@@ -171,7 +171,7 @@
     "plop": "2.3.0",
     "pre-commit": "1.2.2",
     "prettier": "1.17.0",
-    "react-app-polyfill": "0.2.2",
+    "react-app-polyfill": "^0.2.2",
     "react-hot-loader": "^4.8.4",
     "react-test-renderer": "16.8.6",
     "react-testing-library": "6.1.2",

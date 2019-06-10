@@ -40,9 +40,15 @@ const AppWrapper = styled.div`
 `;
 
 
-const App = ({ route }) => {
-  // console.log(`App(), route:`, route);
+const App = ({ route }) => { 
+  // const App = (props) => {
+  // const route = props.route;
+  // console.log(`App, `, props);
+  // console.log(`props.route.routes`, props.route.routes);
+  // console.log(`route:`, route);
   // console.log(`...App()`);
+  // console.log(`App()`);
+  // console.log(`this`, this);
   return (
     <AppWrapper>
       {/* <GoogleTagManager gtmId='GTM-5RD8FD' /> */}
@@ -61,6 +67,7 @@ const App = ({ route }) => {
       {/* <PageWrapper> */}
       <Header />
       {renderRoutes(route.routes)}
+      {/* {React.Children.toArray(props.route.routes.component)} */}
       <Footer />
 
       {/* </PageWrapper> */}

@@ -1,40 +1,72 @@
 version: '3'
 
 services:
-   db:
-     image: mysql:5.7
-     volumes:
-       - ./db:/var/lib/mysql
-     restart: always
-     environment:
-       MYSQL_ROOT_PASSWORD: easytoguess
-       MYSQL_DATABASE: wordpress
-       MYSQL_USER: wordpress
-       MYSQL_PASSWORD: eveneasier
-     ports:
+  db:
+    container_name: db
+    image: mysql:5.7
+    volumes:
+      - ./db:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: easytoguess
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: eveneasier
+    ports:
       - "3306:3306"
-   wordpress:
-     depends_on:
-       - db
-     image: wordpress:4.9.8-php5.6-apache
-     ports:
-       - "8080:80"
-     restart: always
-     volumes:
-       - ./wp-content:/var/www/html/wp-content
-     environment:
-       WORDPRESS_DB_HOST: db:3306
-       WORDPRESS_DB_USER: wordpress
-       WORDPRESS_DB_PASSWORD: eveneasier
-       WORDPRESS_DB_NAME: wordpress
-       WP_DEBUG: 0
+    # networks:
+    #   - hyperbole-net
+  wordpress:
+    container_name: wp
+    depends_on:
+      - db
+      - nginx-proxy
+    image: wordpress:5.1.1-php7.1-apache
+    ports:
+      - "8080:80"
+    restart: always
+    volumes:
+      - ./wp/wp-content:/var/www/html/wp-content
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: eveneasier
+      WORDPRESS_DB_NAME: wordpress
+      WP_DEBUG: 0
+    # networks:
+    #   - hyperbole-net
 
-   nginx:
-     depends_on:
-       - wordpress
-     restart: always
-     build:
-       context: .
-       dockerfile: Dockerfile-nginx
-     ports:
-       - "80:80"
+  nginx-proxy:
+    
+    container_name: nginx-proxy
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile-nginx
+    # volumes:
+    #   - ./nginx-proxy.conf:/etc/nginx/nginx.conf
+    ports:
+      - 80:80
+      - 443:443
+    # networks:
+    #   - hyperbole-net
+  node-ssr:
+    container_name: node-ssr
+    depends_on:
+      - nginx-proxy
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile-node
+    ports:
+      - "8081:8081"
+      - "8082:8082"
+    volumes:
+      - './spa:/usr/src/hyperbole-app'
+      - '/usr/src/hyperbole-app/node_modules'
+    environment:
+      - NODE_ENV=development
+    # networks:
+    #   - hyperbole-net
+  # networks:
+    #hyperbole-net:

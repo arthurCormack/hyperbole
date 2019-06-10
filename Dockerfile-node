@@ -1,0 +1,39 @@
+# base image
+
+# so this works, but is not ideal for development, because there is no hot-reloading taking place.
+# Unless we can use VSC to edit files that are inside a docker container? No ... they need to be the files that are in the repo!
+# so that they can be properly version controlled.
+# so we need to use something like a volume mount, and then a thing, to stop/start node, when server files change
+# and webpack hot module reloading, or whatever
+
+FROM node:alpine
+# add dependencies so that we can build some native node_modules
+# RUN apk --no-cache add --virtual native-deps g++ gcc libgcc libstdc++ linux-headers make python && \
+#     npm install --quiet node-gyp -g 
+#\&& apk del native-deps
+
+RUN apk add --no-cache \
+    autoconf \
+    automake \
+    bash \
+    g++ \
+    libgcc \
+    libstdc++ \
+    libc6-compat \
+    linux-headers \
+    make \
+    nasm
+
+# set working directory
+RUN mkdir -p /usr/src/hyperbole-app
+WORKDIR /usr/src/hyperbole-app
+
+# add `/usr/src/hyperbole-app/node_modules/.bin` to $PATH
+ENV PATH /usr/src/hyperbole-app/node_modules/.bin:$PATH
+
+# install and cache app dependencies
+COPY /spa/package.json /usr/src/hyperbole-app/package.json
+RUN npm install --silent
+
+# start app
+CMD ["npm", "run", "start"]

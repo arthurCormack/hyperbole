@@ -19,7 +19,7 @@ const outputPath = path.join(process.cwd(), 'server', 'middlewares');
 module.exports = {
   name: 'server',
   target: 'node',
-  mode: 'development',
+  mode: 'production',
   externals: [nodeExternals(), '@loadable/component'],
   entry: [
     require.resolve('react-app-polyfill/ie11'),

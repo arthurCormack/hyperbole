@@ -13,7 +13,9 @@ import { compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
 
 import { useInjectReducer } from 'utils/injectReducer';
-import { useInjectSaga } from 'utils/injectSaga';
+import injectSaga, { useInjectSaga } from 'utils/injectSaga';
+
+
 // import {
 //   makeSelectRepos,
 //   makeSelectLoading,
@@ -35,16 +37,19 @@ import saga from './saga';
 
 const key = 'home';
 
+const withSaga = injectSaga({ key, saga });
+
+// the useInjectSaga hook compositional approach works on the client, but doesn't trigger the saga on the server, so instead, we use the redux compose, withSaga, approach.
 export function HomePage({
  
 }) {
   useInjectReducer({ key, reducer });
-  useInjectSaga({ key, saga });
+  // useInjectSaga({ key, saga });
 
-  useEffect(() => {
-    // When initial state username is not null, submit the form to load repos
-    // if (username && username.trim().length > 0) onSubmitForm();
-  }, []);
+  // useEffect(() => {
+  //   // When initial state username is not null, submit the form to load repos
+  //   // if (username && username.trim().length > 0) onSubmitForm();
+  // }, []);
 
   // const reposListProps = {
   //   loading,
@@ -115,6 +120,7 @@ const withConnect = connect(
 export default {
   component: compose(
     withConnect,
+    withSaga,
     memo,
   )(HomePage)
 };

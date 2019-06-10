@@ -9,10 +9,9 @@ stats.json
 npm-debug.log
 .idea
 
-#app/vendor
-#app/vendor/*
-#app/vendor/**/*.js
-#app/vendor/jwplayer/*.js
+**/generated.*
+
+db
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
