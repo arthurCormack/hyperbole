@@ -15,6 +15,9 @@ const outputPath = path.join(process.cwd(), 'server', 'middlewares');
 // webpack.ssr.dev.babel.js and webpack.ssr.prod.js. becasue in dev mode, it gets called and has to work by itself,
 // without passing in an object, when we call ssr:generate
 
+// do we really require react-app-polyfill during ssr?
+// and, if we are bundling it in with webpack, should ewe also be importing it later on? making it come in twice, in effect?
+// probably not
 
 module.exports = {
   name: 'server',
@@ -22,7 +25,6 @@ module.exports = {
   mode: 'development',
   externals: [nodeExternals(), '@loadable/component'],
   entry: [
-    require.resolve('react-app-polyfill/ie11'),
     path.join(process.cwd(), 'app/serverEntry.js'),
   ],
   output: {

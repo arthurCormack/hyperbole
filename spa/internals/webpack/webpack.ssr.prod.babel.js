@@ -22,7 +22,6 @@ module.exports = {
   mode: 'production',
   externals: [nodeExternals(), '@loadable/component'],
   entry: [
-    require.resolve('react-app-polyfill/ie11'),
     path.join(process.cwd(), 'app/serverEntry.js'),
   ],
   output: {
