@@ -7,7 +7,7 @@ const GlobalStyle = createGlobalStyle`
     width: 100%;
     line-height: 1.5;
     margin: 0;
-    border: 20px solid red;
+    
   }
 
   body {
@@ -22,7 +22,7 @@ const GlobalStyle = createGlobalStyle`
     background-color: #fafafa;
     min-height: 100%;
     min-width: 100%;
-    border: 2px solid blue;
+    
   }
 
   p,

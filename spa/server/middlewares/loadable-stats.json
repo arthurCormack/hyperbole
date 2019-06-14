@@ -2,7 +2,7 @@
   "errors": [],
   "warnings": [],
   "version": "4.29.6",
-  "hash": "479bbc5676848ba9f48f",
+  "hash": "781c8f4ef8d61a105263",
   "publicPath": "/",
   "outputPath": "/usr/src/hyperbole-app/server/middlewares",
   "assetsByChunkName": {
@@ -11,7 +11,7 @@
   "assets": [
     {
       "name": "generated.serverEntry.js",
-      "size": 149843,
+      "size": 144745,
       "chunks": [
         "main"
       ],
