@@ -22,6 +22,7 @@ export default [
       {
         ...TestPage,
         path: '/test',
+        exact: true,
       },
       // {
       //   ...AuthorPage,

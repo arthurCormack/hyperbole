@@ -62,15 +62,13 @@ const App = ({ route }) => {
       >
         <meta name="description" content="Hyperbole" />
       </Helmet>
-      {/* <Wallpaper /> */}
-
-      {/* <PageWrapper> */}
+    
       <Header />
       {renderRoutes(route.routes)}
-      {/* {React.Children.toArray(props.route.routes.component)} */}
+     
       <Footer />
 
-      {/* </PageWrapper> */}
+    
       <GlobalStyle />
     </AppWrapper>
   );
