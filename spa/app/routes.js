@@ -3,6 +3,7 @@
 
 import App from 'containers/App';
 import HomePage from 'containers/HomePage';
+import TestPage from 'containers/TestPage';
 // import SinglePostPage from 'containers/SinglePostPage';
 // import SinglePage from 'containers/SinglePage';
 // import ArchivePage from 'containers/ArchivePage';
@@ -17,6 +18,10 @@ export default [
         ...HomePage, // this will provide both component and loader params
         path: '/',
         exact: true,
+      },
+      {
+        ...TestPage,
+        path: '/test',
       },
       // {
       //   ...AuthorPage,

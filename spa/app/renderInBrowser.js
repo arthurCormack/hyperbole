@@ -8,7 +8,7 @@ import { renderRoutes } from 'react-router-config';
 
 // Import Language Provider
 import LanguageProvider from 'containers/LanguageProvider';
-
+import { HelmetProvider } from 'react-helmet-async';
 // ok. problem that I just noticed is this. renderInBrowser and serverEntry both do a renderRoutes,
 // and both contain App.js, which is also doing a renderRoutes. OOPS.
 // nned to figure out how to fix that properly.
@@ -21,7 +21,9 @@ export default function renderInBrowser({ messages, store, Routes, history }) {
       <Provider store={store}>
         <LanguageProvider messages={messages}>
           <ConnectedRouter history={history}>
-            <div>{renderRoutes(Routes)}</div>
+            <HelmetProvider>
+              {renderRoutes(Routes)}
+            </HelmetProvider>
           </ConnectedRouter>
         </LanguageProvider>
       </Provider>,

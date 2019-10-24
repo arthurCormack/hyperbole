@@ -28,7 +28,7 @@ import { createMemoryHistory } from 'history';
 import htmlescape from 'htmlescape';
 
 import { END } from 'redux-saga';
-import { Helmet } from 'react-helmet';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 // import styleSheet from 'styled-components/lib/models/StyleSheet';
 import { ServerStyleSheet, StyleSheetManager } from 'styled-components';
 
@@ -50,14 +50,18 @@ import monitorSagas from 'utils/monitorSagas';
 
 import { appLocales, translationMessages as messages} from './i18n';
 
+
 function renderAppToString(url, store, history, styleSheet, extractor ) {
+  const helmetContext = {};
   const app = styleSheet ? (
     <ChunkExtractorManager extractor={extractor}>
       <StyleSheetManager sheet={styleSheet.instance}>
         <Provider store={store}>
           <LanguageProvider messages={messages}>
             <ConnectedRouter history={history}>
-              <div>{renderRoutes(Routes)}</div>
+              <HelmetProvider context={helmetContext}>
+                {renderRoutes(Routes)}
+              </HelmetProvider>
             </ConnectedRouter>
           </LanguageProvider>
         </Provider>
@@ -67,14 +71,20 @@ function renderAppToString(url, store, history, styleSheet, extractor ) {
     <Provider store={store}>
       <LanguageProvider messages={messages}>
         <ConnectedRouter history={history}>
-          <div>{renderRoutes(Routes)}</div>
+          <HelmetProvider context={helmetContext}>
+            {renderRoutes(Routes)}
+          </HelmetProvider>
         </ConnectedRouter>
       </LanguageProvider>
     </Provider>
   );
-  return renderToString(
-    app
-  );
+  // return renderToString(
+  //   app
+  // );
+  return {
+    appString: renderToString(app),
+    helmetContext,
+  }
 }
 
 
@@ -104,8 +114,11 @@ async function renderHtmlDocument({ url, store, sagasDone, assets, webpackDllNam
   const sheet = new ServerStyleSheet();
 
   // 2nd render phase - the sagas triggered in the first phase are resolved by now
-  const appMarkup = renderAppToString(url, store, memHistory, sheet, webExtractor);
-
+  const appObj = renderAppToString(url, store, memHistory, sheet, webExtractor);
+  // const appMarkup = renderAppToString(url, store, memHistory, sheet, webExtractor);
+  const appMarkup = appObj.appString;
+  const head = appObj.helmetContext.helmet;
+  // console.log(`head`, head);
   // capture the generated css
   const css = sheet.getStyleTags();
   sheet.seal();
@@ -118,7 +131,7 @@ async function renderHtmlDocument({ url, store, sagasDone, assets, webpackDllNam
 
   const t = new Date();
   const timstamp = `${t.toISOString()}`;
-  const head = Helmet.renderStatic();
+  // const head = Helmet.renderStatic();// not a function here!
   const doc = `<html>
     <head>
       <meta charSet="utf-8" />
