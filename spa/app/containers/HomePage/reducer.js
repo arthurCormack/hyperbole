@@ -32,7 +32,7 @@ export const initialState = {
 };
 
 /* eslint-disable default-case, no-param-reassign */
-const initialPosts = (state = initialState, action) =>
+const initialPosts = (state = initialPostsState, action) =>
   produce(state, draft => {
     switch (action.type) {
       case LOAD_HOMEPAGE_INITIALPOSTS:

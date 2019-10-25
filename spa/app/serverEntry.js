@@ -60,7 +60,7 @@ function renderAppToString(url, store, history, styleSheet, extractor ) {
           <LanguageProvider messages={messages}>
             <ConnectedRouter history={history}>
               <HelmetProvider context={helmetContext}>
-                {renderRoutes(Routes)}
+                <div>{renderRoutes(Routes)}</div>
               </HelmetProvider>
             </ConnectedRouter>
           </LanguageProvider>
@@ -72,7 +72,7 @@ function renderAppToString(url, store, history, styleSheet, extractor ) {
       <LanguageProvider messages={messages}>
         <ConnectedRouter history={history}>
           <HelmetProvider context={helmetContext}>
-            {renderRoutes(Routes)}
+            <div>{renderRoutes(Routes)}</div>
           </HelmetProvider>
         </ConnectedRouter>
       </LanguageProvider>
@@ -90,6 +90,7 @@ function renderAppToString(url, store, history, styleSheet, extractor ) {
 
 // store, sagasDone, assets, webpackDllNames
 async function renderHtmlDocument({ url, store, sagasDone, assets, webpackDllNames, memHistory, nodeStats, webStats }) {// renderProps is always going to be App.
+  console.log(`renderHtmlDocument()`)
   const nodeExtractor = new ChunkExtractor({ statsFile: nodeStats });
 
   const webExtractor = new ChunkExtractor({ statsFile: webStats });
@@ -102,14 +103,22 @@ async function renderHtmlDocument({ url, store, sagasDone, assets, webpackDllNam
   // we need to if we are going to have any dynamic sagas inside that load data.
   //  we need to make a decision to either only have dynamic data triggered in loading functions, and disable other ones during ssr.
 
-
+  // This seems to be not working anymore, because of the way that we have done the sagas.
   store.dispatch(END);
 
   // wait for all tasks to finish
   await sagasDone();
+  // this does not seem to be happening here!
+  /**
+   * 
+   * store.runSaga = sagaMiddleware.run;
+  store.close = () => store.dispatch(END);
+   */
 
   // capture the state after the first render, or after loadCOntent promises are resolved,
   const state = store.getState();
+
+  console.log(`between renderAppToStrings, state:`, state);
   // prepare style sheet to collect generated css
   const sheet = new ServerStyleSheet();
 

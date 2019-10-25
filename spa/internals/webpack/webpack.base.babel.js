@@ -136,9 +136,19 @@ module.exports = options => ({
     //   // make fetch available
     //   fetch: 'exports-loader?self.fetch!unfetch',
     // }),
-    new webpack.EnvironmentPlugin({
-      NODE_ENV: 'development',
+
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+        API_URL: JSON.stringify(process.env.API_URL),
+        SERVER_API_URL: JSON.stringify(process.env.SERVER_API_URL),
+      },
     }),
+
+    // new webpack.EnvironmentPlugin({
+    //   NODE_ENV: 'development',
+    // }),
+    
     new LoadablePlugin(), new webpack.NamedModulesPlugin(), new MiniCssExtractPlugin(), assetsPluginInstance
   ]),
   resolve: {

@@ -40,9 +40,7 @@ import { isServer } from 'utils/detection';
 
 import { loadHomePageInitialPosts, loadHomePageInitialPostsSuccess, loadHomePageInitialPostsFailure } from './actions';
 import {
-  makeSelectInitialPostsPosts,
-  makeSelectInitialPostsLoading,
-  makeSelectInitialPostsError,
+  makeSelectInitialPosts,
 } from './selectors';
 
 import { APICALLURL_GETINITIALPOSTS } from './constants';
@@ -54,16 +52,22 @@ function* getInitialPosts() {
   //
   console.log(`getInitialPosts()`);
 
-  const initialPosts = yield select(makeSelectInitialPostsPosts());
-  const doWeHaveDataYet = initialPosts !== false;
-  const areWeLoading = yield select(makeSelectInitialPostsLoading());
- 
+  const initialPosts = yield select(makeSelectInitialPosts());
+  console.log('initialPosts', initialPosts);
+  // const initialPosts2 = yield select(makeSelectInitialPostsPosts());
+  const doWeHaveDataYet = initialPosts.posts !== false;
+  const areWeLoading = initialPosts.loading;
+  
+  console.log(initialPosts, doWeHaveDataYet, areWeLoading);
+
   if (!doWeHaveDataYet && !areWeLoading) {// hack to always load, because we might have to overwrite the ads data, and this is the only way to do it
     yield put(loadHomePageInitialPosts());// next time areWeLoading will be true, until success or failure, and then doWeHaveDataYet might be different.
     try {
+      console.log(`attempting to fetch ${APICALLURL_GETINITIALPOSTS}`);
       const someInitialPostsData = yield call(request, APICALLURL_GETINITIALPOSTS);
       yield put(loadHomePageInitialPostsSuccess(someInitialPostsData));
     } catch (e) {
+      console.log(e);
       yield put(loadHomePageInitialPostsFailure());
     }
   } else {

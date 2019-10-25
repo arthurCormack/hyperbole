@@ -10,27 +10,34 @@ const selectHome = state => state.home || initialState;
 const makeSelectInitialPosts = () =>
   createSelector(
     selectHome,
-    homeState => homeState.initialPosts,
+    (homeState) => {
+      // console.log('makeSelectInitialPosts', homeState);
+      return homeState.initialPosts;
+    }
   );
 
 const makeSelectInitialPostsPosts = () =>
   createSelector(
     makeSelectInitialPosts,
-    homeState => homeState.initialPosts,
+    (initialPosts) => {
+      // console.log('makeSelectInitialPostsPosts', initialPosts);
+      return initialPosts.posts;
+    }
   );
 const makeSelectInitialPostsLoading = () =>
   createSelector(
     makeSelectInitialPosts,
-    homeState => homeState.loading,
+    initialPosts => initialPosts.loading,
   );
 const makeSelectInitialPostsError = () =>
   createSelector(
     makeSelectInitialPosts,
-    homeState => homeState.error,
+    initialPosts => initialPosts.error,
   );
 
 export {
   selectHome,
+  makeSelectInitialPosts,
   makeSelectInitialPostsPosts,
   makeSelectInitialPostsLoading,
   makeSelectInitialPostsError,

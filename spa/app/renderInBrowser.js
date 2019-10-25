@@ -16,13 +16,14 @@ import { HelmetProvider } from 'react-helmet-async';
 
 export default function renderInBrowser({ messages, store, Routes, history }) {
   console.log(`renderInBrowser()`);
+  const helmetContext = {};
   if (process.env.NODE_ENV === 'production') {
     ReactDOM.hydrate(
       <Provider store={store}>
         <LanguageProvider messages={messages}>
           <ConnectedRouter history={history}>
-            <HelmetProvider>
-              {renderRoutes(Routes)}
+            <HelmetProvider context={helmetContext}>
+              <div>{renderRoutes(Routes)}</div>
             </HelmetProvider>
           </ConnectedRouter>
         </LanguageProvider>
@@ -33,7 +34,9 @@ export default function renderInBrowser({ messages, store, Routes, history }) {
       <Provider store={store}>
         <LanguageProvider messages={messages}>
           <ConnectedRouter history={history}>
-            <div>{renderRoutes(Routes)}</div>
+            <HelmetProvider context={helmetContext}>
+              <div>{renderRoutes(Routes)}</div>
+            </HelmetProvider>
           </ConnectedRouter>
         </LanguageProvider>
       </Provider>,

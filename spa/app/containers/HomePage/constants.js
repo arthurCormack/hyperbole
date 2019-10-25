@@ -9,11 +9,10 @@
  * export const YOUR_ACTION_CONSTANT = 'yourproject/YourContainer/YOUR_ACTION_CONSTANT';
  */
 
-export const CHANGE_USERNAME = 'boilerplate/Home/CHANGE_USERNAME';
-
+import { API_URL } from 'containers/App/constants';
 
 export const LOAD_HOMEPAGE_INITIALPOSTS = 'boilerplate/Home/LOAD_HOMEPAGE_INITIALPOSTS';
 export const LOAD_HOMEPAGE_INITIALPOSTS_SUCCESS = 'boilerplate/Home/LOAD_HOMEPAGE_INITIALPOSTS_SUCCESS';
 export const LOAD_HOMEPAGE_INITIALPOSTS_FAILURE = 'boilerplate/Home/LOAD_HOMEPAGE_INITIALPOSTS_FAILURE';
 
-export const APICALLURL_GETINITIALPOSTS = 'localhost/wp-json';
+export const APICALLURL_GETINITIALPOSTS = `${API_URL}/getrecentposts`;
