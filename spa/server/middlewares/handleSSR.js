@@ -1,5 +1,6 @@
 /* eslint-disable global-require */
-require('unfetch');
+// require('unfetch');
+require('isomorphic-unfetch');// scopes it in globally.
 const path = require('path');
 const nodeStats = path.resolve(__dirname, 'loadable-stats.json'); // in server/
 const webStats = path.resolve(process.cwd(), 'build/loadable-stats.json');

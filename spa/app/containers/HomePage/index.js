@@ -14,7 +14,8 @@ import { createStructuredSelector } from 'reselect';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { useInjectReducer } from 'utils/injectReducer';
-import { useInjectSaga } from 'utils/injectSaga';
+
+import injectSaga, { useInjectSaga } from 'utils/injectSaga';
 
 import { makeSelectInitialPosts } from './selectors';
 
@@ -39,7 +40,7 @@ import saga from './saga';
 
 const key = 'home';
 
-// const withSaga = injectSaga({ key, saga });
+const withSaga = injectSaga({ key, saga });
 
 // the useInjectSaga hook compositional approach works on the client, but doesn't trigger the saga on the server, so instead, we use the redux compose, withSaga, approach.
 
@@ -47,13 +48,13 @@ const stateSelector = createStructuredSelector({
   initialPosts: makeSelectInitialPosts(),
 });
 
-function HomePage() {
+function HomePage({ initialPosts }) {
 
-  const { initialPosts } = useSelector(stateSelector);
+  // const { initialPosts } = useSelector(stateSelector);
   const dispatch = useDispatch();
 
   useInjectReducer({ key, reducer });
-  useInjectSaga({ key, saga });
+  // useInjectSaga({ key, saga });
 
   // useEffect(() => {
   //   // When initial state username is not null, submit the form to load repos
@@ -104,32 +105,32 @@ function HomePage() {
 //   // onChangeUsername: PropTypes.func,
 // };
 
-// export function mapDispatchToProps(dispatch) {
-//   return {
-//     // onChangeUsername: evt => dispatch(changeUsername(evt.target.value)),
-//     // onSubmitForm: evt => {
-//     //   if (evt !== undefined && evt.preventDefault) evt.preventDefault();
-//     //   dispatch(loadRepos());
-//     // },
-//   };
-// }
+export function mapDispatchToProps(dispatch) {
+  return {
+    // onChangeUsername: evt => dispatch(changeUsername(evt.target.value)),
+    // onSubmitForm: evt => {
+    //   if (evt !== undefined && evt.preventDefault) evt.preventDefault();
+    //   dispatch(loadRepos());
+    // },
+  };
+}
 
-// const mapStateToProps = createStructuredSelector({
-//   initialPosts: makeSelectInitialPosts(),
-// });
+const mapStateToProps = createStructuredSelector({
+  initialPosts: makeSelectInitialPosts(),
+});
 
-// const withConnect = connect(
-//   mapStateToProps,
-//   mapDispatchToProps,
-// );
+const withConnect = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+);
 
-// export default {
-//   component: compose(
-//     withConnect,
-//     withSaga,
-//     memo,
-//   )(HomePage)
-// };
 export default {
-  component: HomePage
+  component: compose(
+    withConnect,
+    withSaga,
+    memo,
+  )(HomePage)
 };
+// export default {
+//   component: HomePage
+// };
