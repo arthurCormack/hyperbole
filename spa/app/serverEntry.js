@@ -8,8 +8,8 @@
  */
 
 // import '@babel/polyfill'; // for regeneratorRuntime
-// import 'react-app-polyfill/ie11';
-// import 'react-app-polyfill/stable';
+import 'react-app-polyfill/ie11';
+import 'react-app-polyfill/stable';
 
 
 import React from 'react';
@@ -27,7 +27,7 @@ import { createMemoryHistory } from 'history';
 
 import htmlescape from 'htmlescape';
 
-import { END } from 'redux-saga';
+import { END, runSaga, storeIO } from 'redux-saga';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 // import styleSheet from 'styled-components/lib/models/StyleSheet';
 import { ServerStyleSheet, StyleSheetManager } from 'styled-components';
@@ -104,10 +104,13 @@ async function renderHtmlDocument({ url, store, sagasDone, assets, webpackDllNam
   //  we need to make a decision to either only have dynamic data triggered in loading functions, and disable other ones during ssr.
 
   // This seems to be not working anymore, because of the way that we have done the sagas.
-  store.dispatch(END);
+  store.dispatch(END);// https://github.com/redux-saga/redux-saga/issues/255
 
   // wait for all tasks to finish
+  console.log(`supposedly, we are to be waiting for the sagasDone to complete ... `);
+  console.log(`sagasDone`, sagasDone);
   await sagasDone();
+  console.log('after sagasDone()');
   // this does not seem to be happening here!
   /**
    * 
@@ -193,7 +196,7 @@ function renderAppToStringAtLocation(url, { assets, nodeStats, webStats, lang },
   const store = createStore({}, memHistory);
 
   const sagasDone = monitorSagas(store);
-
+  // console.log(`sagasDone`, sagasDone);
   // maybe if we dispatch a LOCATION_CHANGE to the store, with memHistory?!
   store.dispatch(changeLocale(lang));
 

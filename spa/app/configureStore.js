@@ -27,8 +27,9 @@ export default function configureStore(initialState = {}, history) {
     /* eslint-enable */
   }
 
-  const sagaMiddleware = createSagaMiddleware(reduxSagaMonitorOptions);
-
+  // const sagaMiddleware = createSagaMiddleware(reduxSagaMonitorOptions);
+  const sagaMiddleware = createSagaMiddleware();
+  
   // Create the store with two middlewares
   // 1. sagaMiddleware: Makes redux-sagas work
   // 2. routerMiddleware: Syncs the location/URL path to the state

@@ -131,6 +131,3 @@ export default {
     memo,
   )(HomePage)
 };
-// export default {
-//   component: HomePage
-// };

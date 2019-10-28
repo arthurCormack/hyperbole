@@ -65,6 +65,7 @@ function* getInitialPosts() {
     try {
       console.log(`attempting to fetch ${APICALLURL_GETINITIALPOSTS}`);
       const someInitialPostsData = yield call(request, APICALLURL_GETINITIALPOSTS);
+      console.log(`someInitialPostsData:`, someInitialPostsData);
       yield put(loadHomePageInitialPostsSuccess(someInitialPostsData));
     } catch (e) {
       console.log(e);

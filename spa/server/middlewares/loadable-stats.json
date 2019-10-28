@@ -2,7 +2,7 @@
   "errors": [],
   "warnings": [],
   "version": "4.40.0",
-  "hash": "27c47738d8ecc860be93",
+  "hash": "a773b31d5f8324a1f3b0",
   "publicPath": "/",
   "outputPath": "/usr/src/app/server/middlewares",
   "assetsByChunkName": {
@@ -11,7 +11,7 @@
   "assets": [
     {
       "name": "generated.serverEntry.js",
-      "size": 160077,
+      "size": 162028,
       "chunks": [
         "main"
       ],
