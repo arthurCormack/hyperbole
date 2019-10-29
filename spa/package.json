@@ -95,7 +95,7 @@
     "react-helmet-async": "1.0.4",
     "react-intl": "2.9.0",
     "react-redux": "7.1.1",
-    "react-router-config": "^5.0.0",
+    "react-router-config": "^5.1.1",
     "react-router-dom": "5.1.2",
     "react-swipeable": "^5.1.0",
     "redux": "4.0.4",

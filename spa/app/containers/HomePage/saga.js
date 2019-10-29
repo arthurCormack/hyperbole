@@ -6,7 +6,7 @@ import { call, put, select, takeLatest } from 'redux-saga/effects';
 
 import request from 'utils/request';
 
-mport { loadHomePageInitialPosts, loadHomePageInitialPostsSuccess, loadHomePageInitialPostsFailure } from './actions';
+import { loadHomePageInitialPosts, loadHomePageInitialPostsSuccess, loadHomePageInitialPostsFailure } from './actions';
 import {
   makeSelectInitialPosts,
 } from './selectors';
