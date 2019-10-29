@@ -5,11 +5,6 @@
  *
  * @return {object}          The parsed JSON from the request
  */
-
-// import 'unfetch';
-
-import fetch from 'isomorphic-unfetch';
-
 function parseJSON(response) {
   if (response.status === 204 || response.status === 205) {
     return null;
@@ -42,8 +37,8 @@ function checkStatus(response) {
  *
  * @return {object}           The response data
  */
-export default function request(url, options) {
-  return fetch(url, options)
-    .then(checkStatus)
-    .then(parseJSON);
+export default async function request(url, options) {
+  const fetchResponse = await fetch(url, options);
+  const response = await checkStatus(fetchResponse);
+  return parseJSON(response);
 }

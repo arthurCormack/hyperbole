@@ -13,7 +13,6 @@ function trimURLPrefix(someURL) {
   // remove the http:// or https:// and place simply a // prefix
   // const result = someURL.replace(/(^\w+:|^)\/\//, '');
   // return '//' + result;
-
   return someURL;
   
 }

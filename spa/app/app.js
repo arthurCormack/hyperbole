@@ -5,39 +5,33 @@
  * code.
  */
 
-// Needed for redux-saga es6 generator support
-// import '@babel/polyfill';
 import 'react-app-polyfill/ie11';
 import 'react-app-polyfill/stable';
 
 // Import all the third party stuff
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import { Provider } from 'react-redux';
-// import { ConnectedRouter } from 'connected-react-router';
+import { Provider } from 'react-redux';
+import { ConnectedRouter } from 'connected-react-router';
 import FontFaceObserver from 'fontfaceobserver';
 import history from 'utils/history';
 import 'sanitize.css/sanitize.css';
 
-import { loadableReady } from '@loadable/component'
-
 // Import root app
-// import App from 'containers/App';
+import App from 'containers/App';
 
 // Import Language Provider
-// import LanguageProvider from 'containers/LanguageProvider';
+import LanguageProvider from 'containers/LanguageProvider';
 
 // Load the favicon and the .htaccess file
 import '!file-loader?name=[name].[ext]!./images/favicon.ico';
-import 'file-loader?name=.htaccess!./.htaccess'; // eslint-disable-line import/extensions
+import 'file-loader?name=.htaccess!./.htaccess';
 
+import { HelmetProvider } from 'react-helmet-async';
 import configureStore from './configureStore';
 
 // Import i18n messages
-import { appLocales, translationMessages as messages } from './i18n';
-
-import renderInBrowser from './renderInBrowser';
-import Routes from './routes';// so ... this is no longer a function, its a simple array
+import { translationMessages } from './i18n';
 
 // Observe loading of Open Sans (to remove open sans, remove the <link> tag in
 // the index.html file and this observer)
@@ -48,41 +42,25 @@ openSansObserver.load().then(() => {
   document.body.classList.add('fontLoaded');
 });
 
-
 // Create redux store with history
 const initialState = {};
 const store = configureStore(initialState, history);
 const MOUNT_NODE = document.getElementById('app');
 
-// console.log(`app.js!`);
-loadableReady(() => {
-  // console.log(`loadableReady()`);
-  // ReactDOM.hydrate(
-  // <Provider store={store}>
-  //   <LanguageProvider messages={translationMessages}>
-  //     <ConnectedRouter history={history}>
-  //       <App />
-  //     </ConnectedRouter>
-  //   </LanguageProvider>
-  // </Provider>, MOUNT_NODE)
-  renderInBrowser({ messages, store, Routes, history });
-});
-
-// const render = messages => {
-//   ReactDOM.render(
-//     <Provider store={store}>
-//       <LanguageProvider messages={messages}>
-//         <ConnectedRouter history={history}>
-//           <App />
-//         </ConnectedRouter>
-//       </LanguageProvider>
-//     </Provider>,
-//     MOUNT_NODE,
-//   );
-// };
-function render() {
-  renderInBrowser({ messages, store, Routes, history });
-}
+const render = messages => {
+  ReactDOM.render(
+    <Provider store={store}>
+      <LanguageProvider messages={messages}>
+        <ConnectedRouter history={history}>
+          <HelmetProvider>
+            <App />
+          </HelmetProvider>
+        </ConnectedRouter>
+      </LanguageProvider>
+    </Provider>,
+    MOUNT_NODE,
+  );
+};
 
 if (module.hot) {
   // Hot reloadable React components and translation json files
@@ -90,7 +68,7 @@ if (module.hot) {
   // have to be constants at compile-time
   module.hot.accept(['./i18n', 'containers/App'], () => {
     ReactDOM.unmountComponentAtNode(MOUNT_NODE);
-    render(messages);
+    render(translationMessages);
   });
 }
 
@@ -102,15 +80,15 @@ if (!window.Intl) {
     .then(() =>
       Promise.all([
         import('intl/locale-data/jsonp/en.js'),
-        // import('intl/locale-data/jsonp/de.js'),
+        import('intl/locale-data/jsonp/de.js'),
       ]),
     ) // eslint-disable-line prettier/prettier
-    .then(() => render(messages))
+    .then(() => render(translationMessages))
     .catch(err => {
       throw err;
     });
 } else {
-  render(messages);
+  render(translationMessages);
 }
 
 // Install ServiceWorker and AppCache in the end since

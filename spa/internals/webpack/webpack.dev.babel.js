@@ -44,7 +44,7 @@ module.exports = require('./webpack.base.babel')({
     new WebpackPwaManifest({
       name: 'Hyperbole Boilerplate',
       short_name: 'Hyperbole BP',
-      description: 'My Hyperbole Boilerplate-based project!',
+      description: 'Hyperbole Boilerplate-based project!',
       background_color: '#fafafa',
       theme_color: '#b1624d',
       inject: false,

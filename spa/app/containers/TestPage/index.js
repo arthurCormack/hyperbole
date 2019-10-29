@@ -35,7 +35,6 @@ function TestPage() {
         <title>TestPage</title>
         <meta name="description" content="Description of TestPage" />
       </Helmet>
-      This is the test page
     </div>
   );
 }

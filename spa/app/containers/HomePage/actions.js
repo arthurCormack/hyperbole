@@ -15,22 +15,9 @@
  *    }
  */
 
+
+
 import { LOAD_HOMEPAGE_INITIALPOSTS, LOAD_HOMEPAGE_INITIALPOSTS_SUCCESS, LOAD_HOMEPAGE_INITIALPOSTS_FAILURE } from './constants';
-
-// /**
-//  * Changes the input field of the form
-//  *
-//  * @param  {string} username The new text of the input field
-//  *
-//  * @return {object} An action object with a type of CHANGE_USERNAME
-//  */
-// export function changeUsername(username) {
-//   return {
-//     type: CHANGE_USERNAME,
-//     username,
-//   };
-// }
-
 // there are three pieces of state that the three action: loadHomePageInitialPosts, loadHomePageInitialPostsSuccess, and loadHomePageInitialPostsFailure
 // are concerned with, loading, error, and posts. loading and error status are booleans that can be inferred, so they don't need to be accepted as parameters, or passed along in the action. The name of the action indicates how loading and error are set.
 // but loadHomePageInitialPostsSuccess needs to pass alon the actual posts.
@@ -53,4 +40,3 @@ export function loadHomePageInitialPostsFailure() {
     type: LOAD_HOMEPAGE_INITIALPOSTS_FAILURE,
   }
 }
-//loadHomePageInitialPosts, loadHomePageInitialPostsSuccess, loadHomePageInitialPostsFailure
