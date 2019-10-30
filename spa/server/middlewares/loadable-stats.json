@@ -1,15 +1,8 @@
 {
-  "errors": [
-    "./app/serverEntry.js\nModule not found: Error: Can't resolve 'routes' in '/usr/src/app/app'\n @ ./app/serverEntry.js 33:0-28 55:51-57 63:51-57 188:29-35\n @ multi ./app/serverEntry.js",
-    "./app/serverEntry.js\nModule not found: Error: Can't resolve 'utils/monitorSagas' in '/usr/src/app/app'\n @ ./app/serverEntry.js 38:0-46 184:18-30\n @ multi ./app/serverEntry.js"
-  ],
-  "warnings": [
-    "./app/containers/App/reducer.js 24:9-19\n\"export 'LOAD_REPOS' was not found in './constants'\n @ ./app/reducers.js\n @ ./app/configureStore.js\n @ ./app/serverEntry.js\n @ multi ./app/serverEntry.js",
-    "./app/containers/App/reducer.js 36:9-25\n\"export 'LOAD_REPOS_ERROR' was not found in './constants'\n @ ./app/reducers.js\n @ ./app/configureStore.js\n @ ./app/serverEntry.js\n @ multi ./app/serverEntry.js",
-    "./app/containers/App/reducer.js 30:9-27\n\"export 'LOAD_REPOS_SUCCESS' was not found in './constants'\n @ ./app/reducers.js\n @ ./app/configureStore.js\n @ ./app/serverEntry.js\n @ multi ./app/serverEntry.js"
-  ],
+  "errors": [],
+  "warnings": [],
   "version": "4.41.2",
-  "hash": "1d98ecde522de428fec3",
+  "hash": "c2a960bd12baf6e2f37b",
   "publicPath": "/",
   "outputPath": "/usr/src/app/server/middlewares",
   "assetsByChunkName": {
@@ -18,7 +11,7 @@
   "assets": [
     {
       "name": "generated.serverEntry.js",
-      "size": 63880,
+      "size": 142189,
       "chunks": [
         "main"
       ],

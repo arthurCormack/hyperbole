@@ -45,7 +45,7 @@ const stateSelector = createStructuredSelector({
 });
 
 
-export default function HomePage() {
+const HomePage = () => {
   const { initialPosts } = useSelector(stateSelector);
 
   const dispatch = useDispatch();
@@ -97,4 +97,8 @@ export default function HomePage() {
       </div>
     </article>
   );
+}
+
+export default {
+  component: HomePage,
 }

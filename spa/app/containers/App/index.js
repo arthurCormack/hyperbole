@@ -8,20 +8,20 @@
  */
 
 import React from 'react';
+import { renderRoutes } from 'react-router-config';
 import { Helmet } from 'react-helmet-async';
 import styled from 'styled-components';
-import { Switch, Route } from 'react-router-dom';
+// import { Switch, Route } from 'react-router-dom';
 
-import HomePage from 'containers/HomePage/Loadable';
-import FeaturePage from 'containers/FeaturePage/Loadable';
-import NotFoundPage from 'containers/NotFoundPage/Loadable';
+// import HomePage from 'containers/HomePage/Loadable';
+// import FeaturePage from 'containers/FeaturePage/Loadable';
+// import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
 
 import GlobalStyle from '../../global-styles';
 
 const AppWrapper = styled.div`
-  max-width: calc(768px + 16px * 2);
   margin: 0 auto;
   display: flex;
   min-height: 100%;
@@ -29,23 +29,28 @@ const AppWrapper = styled.div`
   flex-direction: column;
 `;
 
-export default function App() {
+const App = ({ route }) => {
   return (
     <AppWrapper>
+      {/* <GoogleTagManager gtmId='GTM-5RD8FD' /> */}
       <Helmet
-        titleTemplate="%s - React Boilerplate"
-        defaultTitle="React Boilerplate"
+        titleTemplate="%s - Hyperbole"
+        defaultTitle="Hyperbole"
+        meta={[
+          { name: 'description', content: 'Hyperbole' },
+          // { property: 'fb:app_id', content: 534273583592060 },
+        ]}
       >
-        <meta name="description" content="A React Boilerplate application" />
+        <meta name="description" content="Hyperbole" />
       </Helmet>
       <Header />
-      <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route path="/features" component={FeaturePage} />
-        <Route path="" component={NotFoundPage} />
-      </Switch>
+      {renderRoutes(route.routes)}
       <Footer />
       <GlobalStyle />
     </AppWrapper>
   );
 }
+
+export default {
+  component: App,
+};

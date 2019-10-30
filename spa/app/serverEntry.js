@@ -52,6 +52,7 @@ import { appLocales, translationMessages as messages} from './i18n';
 
 
 function renderAppToString(url, store, history, styleSheet, extractor ) {
+  console.log(`renderAppToString()`, url);
   const helmetContext = {};
   const app = styleSheet ? (
     <ChunkExtractorManager extractor={extractor}>
@@ -81,6 +82,9 @@ function renderAppToString(url, store, history, styleSheet, extractor ) {
   // return renderToString(
   //   app
   // );
+  console.log(`just before we renderToString...`, app);
+  const appString = renderToString(app);
+  console.log(`appString`, appString);
   return {
     appString: renderToString(app),
     helmetContext,
