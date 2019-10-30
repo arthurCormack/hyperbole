@@ -50,7 +50,12 @@ openSansObserver.load().then(() => {
 
 
 // Create redux store with history
-const initialState = {};
+// const initialState = {};
+// Create redux store with history
+const initialState = window.APP_STATE || {};
+
+// but, really, when we render in the browser, we want to do it with the initialState that we get from hydrating!
+
 const store = configureStore(initialState, history);
 const MOUNT_NODE = document.getElementById('app');
 
