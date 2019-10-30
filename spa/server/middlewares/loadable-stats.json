@@ -8,8 +8,8 @@
     "./app/containers/App/reducer.js 36:9-25\n\"export 'LOAD_REPOS_ERROR' was not found in './constants'\n @ ./app/reducers.js\n @ ./app/configureStore.js\n @ ./app/serverEntry.js\n @ multi ./app/serverEntry.js",
     "./app/containers/App/reducer.js 30:9-27\n\"export 'LOAD_REPOS_SUCCESS' was not found in './constants'\n @ ./app/reducers.js\n @ ./app/configureStore.js\n @ ./app/serverEntry.js\n @ multi ./app/serverEntry.js"
   ],
-  "version": "4.40.0",
-  "hash": "7b126d84027c48c5d7b6",
+  "version": "4.41.2",
+  "hash": "1d98ecde522de428fec3",
   "publicPath": "/",
   "outputPath": "/usr/src/app/server/middlewares",
   "assetsByChunkName": {
@@ -18,7 +18,7 @@
   "assets": [
     {
       "name": "generated.serverEntry.js",
-      "size": 83777,
+      "size": 63880,
       "chunks": [
         "main"
       ],
