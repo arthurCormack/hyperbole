@@ -10,16 +10,21 @@
 import React from 'react';
 import { renderRoutes } from 'react-router-config';
 import { Helmet } from 'react-helmet-async';
-import styled from 'styled-components';
-// import { Switch, Route } from 'react-router-dom';
 
-// import HomePage from 'containers/HomePage/Loadable';
-// import FeaturePage from 'containers/FeaturePage/Loadable';
-// import NotFoundPage from 'containers/NotFoundPage/Loadable';
+import { useSelector, useDispatch } from 'react-redux';
+import { useInjectReducer, useInjectSaga, SagaInjectionModes } from 'redux-injectors';
+
+import styled from 'styled-components';
+
 import Header from 'components/Header';
 import Footer from 'components/Footer';
 
 import GlobalStyle from '../../global-styles';
+
+
+import reducer from './reducer';
+import saga from './sagas';
+const key = 'app';
 
 const AppWrapper = styled.div`
   margin: 0 auto;
@@ -30,6 +35,9 @@ const AppWrapper = styled.div`
 `;
 
 const App = ({ route }) => {
+
+  useInjectSaga({ key, saga, mode: SagaInjectionModes.DAEMON });
+
   return (
     <AppWrapper>
       {/* <GoogleTagManager gtmId='GTM-5RD8FD' /> */}
