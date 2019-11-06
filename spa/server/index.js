@@ -14,9 +14,6 @@ const ngrok =
 const { resolve } = require('path');
 const app = express();
 
-const reactDOMServer = require("react-dom/server");
-const loadableServer = require("@loadable/server");
-
 // If you need a backend, e.g. an API, add your custom backend-specific middleware here
 // app.use('/api', myApi);
 

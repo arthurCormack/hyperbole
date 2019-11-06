@@ -1,6 +1,6 @@
 <?php
 function hyperbole_getrecentposts() {
-  return "hello";
+  return "hello from hyperbole_getrecentposts";
   
   $args = array(
     'post_type' => 'post',

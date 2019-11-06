@@ -8,8 +8,8 @@
  */
 
 // import '@babel/polyfill'; // for regeneratorRuntime
-// import 'react-app-polyfill/ie11';
-// import 'react-app-polyfill/stable';
+import 'react-app-polyfill/ie11';
+import 'react-app-polyfill/stable';
 
 
 import React from 'react';
@@ -27,8 +27,8 @@ import { createMemoryHistory } from 'history';
 
 import htmlescape from 'htmlescape';
 
-import { END } from 'redux-saga';
-import { Helmet } from 'react-helmet';
+import { END, runSaga, storeIO } from 'redux-saga';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 // import styleSheet from 'styled-components/lib/models/StyleSheet';
 import { ServerStyleSheet, StyleSheetManager } from 'styled-components';
 
@@ -37,7 +37,10 @@ import { ServerStyleSheet, StyleSheetManager } from 'styled-components';
 // import 'global-styles';
 // maybe the solution for the style flash, is to inject the global styles in the head, when we build out the doc.
 
-import createStore from 'configureStore';
+// import createStore from 'configureStore';
+import configureStore from './configureStore';// o. this is actaully the same thing, just we are calling it something different.
+
+import { createInjectorsEnhancer } from "redux-injectors";
 
 import Routes from 'routes';// so ... this is no longer a function, its a simple array
 
@@ -50,14 +53,19 @@ import monitorSagas from 'utils/monitorSagas';
 
 import { appLocales, translationMessages as messages} from './i18n';
 
+
 function renderAppToString(url, store, history, styleSheet, extractor ) {
+  console.log(`renderAppToString()`, url);
+  const helmetContext = {};
   const app = styleSheet ? (
     <ChunkExtractorManager extractor={extractor}>
       <StyleSheetManager sheet={styleSheet.instance}>
         <Provider store={store}>
           <LanguageProvider messages={messages}>
             <ConnectedRouter history={history}>
-              <div>{renderRoutes(Routes)}</div>
+              <HelmetProvider context={helmetContext}>
+                <div>{renderRoutes(Routes)}</div>
+              </HelmetProvider>
             </ConnectedRouter>
           </LanguageProvider>
         </Provider>
@@ -67,19 +75,29 @@ function renderAppToString(url, store, history, styleSheet, extractor ) {
     <Provider store={store}>
       <LanguageProvider messages={messages}>
         <ConnectedRouter history={history}>
-          <div>{renderRoutes(Routes)}</div>
+          <HelmetProvider context={helmetContext}>
+            <div>{renderRoutes(Routes)}</div>
+          </HelmetProvider>
         </ConnectedRouter>
       </LanguageProvider>
     </Provider>
   );
-  return renderToString(
-    app
-  );
+  // return renderToString(
+  //   app
+  // );
+  // console.log(`just before we renderToString...`, app);
+  // const appString = renderToString(app);
+  // console.log(`appString`, appString);
+  return {
+    appString: renderToString(app),
+    helmetContext,
+  }
 }
 
 
 // store, sagasDone, assets, webpackDllNames
 async function renderHtmlDocument({ url, store, sagasDone, assets, webpackDllNames, memHistory, nodeStats, webStats }) {// renderProps is always going to be App.
+  console.log(`renderHtmlDocument()`)
   const nodeExtractor = new ChunkExtractor({ statsFile: nodeStats });
 
   const webExtractor = new ChunkExtractor({ statsFile: webStats });
@@ -92,20 +110,37 @@ async function renderHtmlDocument({ url, store, sagasDone, assets, webpackDllNam
   // we need to if we are going to have any dynamic sagas inside that load data.
   //  we need to make a decision to either only have dynamic data triggered in loading functions, and disable other ones during ssr.
 
-
-  store.dispatch(END);
+  // This seems to be not working anymore, because of the way that we have done the sagas.
+  store.dispatch(END);// https://github.com/redux-saga/redux-saga/issues/255
 
   // wait for all tasks to finish
+  console.log(`supposedly, we are to be waiting for the sagasDone to complete ... `);
+  // console.log(`sagasDone`, sagasDone);
+  // ha! so ... fundamental! the injectedSagas are {} at this point!
+  // but how is that even possible? How are they working, if they are not present? how do they get triggered, if they are not being injected?
+  // maybe let's look at ez2 and see what it does
   await sagasDone();
+  console.log('after sagasDone()');
+  // this does not seem to be happening here!
+  /**
+   * 
+   * store.runSaga = sagaMiddleware.run;
+  store.close = () => store.dispatch(END);
+   */
 
   // capture the state after the first render, or after loadCOntent promises are resolved,
   const state = store.getState();
+
+  console.log(`between renderAppToStrings, state:`, state);
   // prepare style sheet to collect generated css
   const sheet = new ServerStyleSheet();
 
   // 2nd render phase - the sagas triggered in the first phase are resolved by now
-  const appMarkup = renderAppToString(url, store, memHistory, sheet, webExtractor);
-
+  const appObj = renderAppToString(url, store, memHistory, sheet, webExtractor);
+  // const appMarkup = renderAppToString(url, store, memHistory, sheet, webExtractor);
+  const appMarkup = appObj.appString;
+  const head = appObj.helmetContext.helmet;
+  // console.log(`head`, head);
   // capture the generated css
   const css = sheet.getStyleTags();
   sheet.seal();
@@ -118,7 +153,7 @@ async function renderHtmlDocument({ url, store, sagasDone, assets, webpackDllNam
 
   const t = new Date();
   const timstamp = `${t.toISOString()}`;
-  const head = Helmet.renderStatic();
+  // const head = Helmet.renderStatic();// not a function here!
   const doc = `<html>
     <head>
       <meta charSet="utf-8" />
@@ -168,10 +203,13 @@ function renderAppToStringAtLocation(url, { assets, nodeStats, webStats, lang },
     keyLength: 6,
   });
 
-  const store = createStore({}, memHistory);
+  // const store = createStore({}, memHistory);// AHA! https://github.com/react-boilerplate/redux-injectors
+  const initialState = {};
+  const store = configureStore(initialState, memHistory);
+  // "The redux store needs to be configured to allow this library to work. The library exports a store enhancer that can be passed to the createStore function."
 
   const sagasDone = monitorSagas(store);
-
+  // console.log(`sagasDone`, sagasDone);
   // maybe if we dispatch a LOCATION_CHANGE to the store, with memHistory?!
   store.dispatch(changeLocale(lang));
 

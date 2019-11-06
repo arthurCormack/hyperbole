@@ -6,8 +6,6 @@ const GlobalStyle = createGlobalStyle`
     height: 100%;
     width: 100%;
     line-height: 1.5;
-    margin: 0;
-    
   }
 
   body {
@@ -22,13 +20,16 @@ const GlobalStyle = createGlobalStyle`
     background-color: #fafafa;
     min-height: 100%;
     min-width: 100%;
-    
   }
 
   p,
   label {
     font-family: Georgia, Times, 'Times New Roman', serif;
     line-height: 1.5em;
+  }
+
+  input, select {
+    font-size: inherit;
   }
 `;
 

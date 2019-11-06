@@ -13,8 +13,8 @@ import 'react-app-polyfill/stable';
 // Import all the third party stuff
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { ConnectedRouter } from 'connected-react-router';
+// import { Provider } from 'react-redux';
+// import { ConnectedRouter } from 'connected-react-router';
 import FontFaceObserver from 'fontfaceobserver';
 import history from 'utils/history';
 import 'sanitize.css/sanitize.css';
@@ -22,10 +22,10 @@ import 'sanitize.css/sanitize.css';
 import { loadableReady } from '@loadable/component'
 
 // Import root app
-import App from 'containers/App';
+// import App from 'containers/App';
 
 // Import Language Provider
-import LanguageProvider from 'containers/LanguageProvider';
+// import LanguageProvider from 'containers/LanguageProvider';
 
 // Load the favicon and the .htaccess file
 import '!file-loader?name=[name].[ext]!./images/favicon.ico';
@@ -50,36 +50,21 @@ openSansObserver.load().then(() => {
 
 
 // Create redux store with history
-const initialState = {};
+// const initialState = {};
+// Create redux store with history
+const initialState = window.APP_STATE || {};
+
+// but, really, when we render in the browser, we want to do it with the initialState that we get from hydrating!
+
 const store = configureStore(initialState, history);
 const MOUNT_NODE = document.getElementById('app');
 
 // console.log(`app.js!`);
 loadableReady(() => {
-  // console.log(`loadableReady()`);
-  // ReactDOM.hydrate(
-  // <Provider store={store}>
-  //   <LanguageProvider messages={translationMessages}>
-  //     <ConnectedRouter history={history}>
-  //       <App />
-  //     </ConnectedRouter>
-  //   </LanguageProvider>
-  // </Provider>, MOUNT_NODE)
   renderInBrowser({ messages, store, Routes, history });
 });
 
-// const render = messages => {
-//   ReactDOM.render(
-//     <Provider store={store}>
-//       <LanguageProvider messages={messages}>
-//         <ConnectedRouter history={history}>
-//           <App />
-//         </ConnectedRouter>
-//       </LanguageProvider>
-//     </Provider>,
-//     MOUNT_NODE,
-//   );
-// };
+
 function render() {
   renderInBrowser({ messages, store, Routes, history });
 }

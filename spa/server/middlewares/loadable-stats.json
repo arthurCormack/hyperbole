@@ -1,24 +1,25 @@
 {
   "errors": [],
   "warnings": [],
-  "version": "4.29.6",
-  "hash": "781c8f4ef8d61a105263",
+  "version": "4.41.2",
+  "hash": "98356e25a5734a23aea3",
   "publicPath": "/",
-  "outputPath": "/usr/src/hyperbole-app/server/middlewares",
+  "outputPath": "/usr/src/app/server/middlewares",
   "assetsByChunkName": {
     "main": "generated.serverEntry.js"
   },
   "assets": [
     {
       "name": "generated.serverEntry.js",
-      "size": 144745,
+      "size": 146946,
       "chunks": [
         "main"
       ],
       "chunkNames": [
         "main"
       ],
-      "emitted": false
+      "info": {},
+      "emitted": true
     }
   ],
   "filteredAssets": 0,
@@ -44,6 +45,13 @@
       ],
       "children": {},
       "childAssets": {}
+    }
+  },
+  "logging": {
+    "webpack.buildChunkGraph.visitModules": {
+      "entries": [],
+      "filteredEntries": 2,
+      "debug": false
     }
   },
   "children": []
