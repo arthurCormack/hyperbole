@@ -46,6 +46,7 @@ const stateSelector = createStructuredSelector({
 
 
 const HomePage = () => {
+  console.log(`HomePage`);
   const { initialPosts } = useSelector(stateSelector);
 
   const dispatch = useDispatch();

@@ -37,7 +37,7 @@ const AppWrapper = styled.div`
 const App = ({ route }) => {
 
   useInjectSaga({ key, saga, mode: SagaInjectionModes.DAEMON });
-
+  console.log(`App(), route:`, route);
   return (
     <AppWrapper>
       {/* <GoogleTagManager gtmId='GTM-5RD8FD' /> */}
