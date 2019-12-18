@@ -1,8 +1,10 @@
 {
-  "errors": [],
+  "errors": [
+    "./app/routes.js\nModule not found: Error: Can't resolve 'containers/TestPage' in '/usr/src/app/app'\n @ ./app/routes.js 11:0-43 22:24-32\n @ ./app/serverEntry.js\n @ multi ./app/serverEntry.js"
+  ],
   "warnings": [],
   "version": "4.41.2",
-  "hash": "7ac69f3de3042bd6de52",
+  "hash": "f8702c9b7082f422eeb1",
   "publicPath": "/",
   "outputPath": "/usr/src/app/server/middlewares",
   "assetsByChunkName": {
@@ -11,7 +13,7 @@
   "assets": [
     {
       "name": "generated.serverEntry.js",
-      "size": 146989,
+      "size": 147216,
       "chunks": [
         "main"
       ],
