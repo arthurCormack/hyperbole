@@ -10,7 +10,6 @@ const CircularDependencyPlugin = require('circular-dependency-plugin');
 const ErrorOverlayPlugin = require('error-overlay-webpack-plugin');
 
 
-
 module.exports = require('./webpack.base.babel')({
   mode: 'development',
 

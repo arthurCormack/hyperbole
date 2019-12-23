@@ -34,10 +34,12 @@ function TestPage() {
         <title>TestPage</title>
         <meta name="description" content="Description of TestPage" />
       </Helmet>
+       THis is the test page. 
+       Really?! Is it the test page? What do we have to do to see it working properly?
     </div>
   );
 }
 
 TestPage.propTypes = {};
 
-export default TestPage;
+export default {component: TestPage};
