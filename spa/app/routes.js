@@ -3,7 +3,7 @@
 
 import App from 'containers/App';
 import HomePage from 'containers/HomePage';
-// import TestPage from 'containers/TestPage';
+import TestPage from 'containers/TestPage';
 // import SinglePostPage from 'containers/SinglePostPage';
 // import SinglePage from 'containers/SinglePage';
 // import ArchivePage from 'containers/ArchivePage';
@@ -19,11 +19,11 @@ export default [
         path: '/',
         exact: true,
       },
-      // {
-      //   ...TestPage,
-      //   path: '/test',
-      //   exact: true,
-      // },
+      {
+        ...TestPage,
+        path: '/test',
+        exact: true,
+      },
       // {
       //   ...AuthorPage,
       //   path: '/author/:authorSlug',

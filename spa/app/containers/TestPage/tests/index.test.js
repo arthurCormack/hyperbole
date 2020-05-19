@@ -1,6 +1,6 @@
 /**
  *
- * Tests for {{ properCase name }}
+ * Tests for TestPage
  *
  * @see https://github.com/react-boilerplate/react-boilerplate/tree/master/docs/testing
  *
@@ -8,18 +8,12 @@
 
 import React from 'react';
 import { render } from '@testing-library/react';
-{{#if wantMessages}}
-import { IntlProvider } from 'react-intl';
-{{/if}}
 import { Provider } from 'react-redux';
 
-import {{ properCase name }} from '../index';
-{{#if wantMessages}}
-import { DEFAULT_LOCALE } from '../../../locales';
-{{/if}}
+import TestPage from '../index';
 import configureStore from '../../../configureStore';
 
-describe('<{{ properCase name }} />', () => {
+describe('<TestPage />', () => {
   let store;
 
   beforeEach(() => {
@@ -28,21 +22,11 @@ describe('<{{ properCase name }} />', () => {
 
   it('Expect to not log errors in console', () => {
     const spy = jest.spyOn(global.console, 'error');
-{{#if wantMessages}}
     render(
       <Provider store={store}>
-        <IntlProvider locale={DEFAULT_LOCALE}>
-          <{{ properCase name }} />
-        </IntlProvider>
+        <TestPage />
       </Provider>,
     );
-{{else}}
-    render(
-      <Provider store={store}>
-        <{{ properCase name }} />
-      </Provider>,
-    );
-{{/if}}
     expect(spy).not.toHaveBeenCalled();
   });
 
@@ -56,25 +40,13 @@ describe('<{{ properCase name }} />', () => {
    * @see {@link https://jestjs.io/docs/en/api#testskipname-fn}
    */
   it.skip('Should render and match the snapshot', () => {
-{{#if wantMessages}}
     const {
       container: { firstChild },
     } = render(
       <Provider store={store}>
-        <IntlProvider locale={DEFAULT_LOCALE}>
-          <{{ properCase name }} />
-        </IntlProvider>
+        <TestPage />
       </Provider>,
     );
-{{else}}
-    const {
-      container: { firstChild },
-    } = render(
-      <Provider store={store}>
-        <{{ properCase name }} />
-      </Provider>,
-    );
-{{/if}}
     expect(firstChild).toMatchSnapshot();
   });
 });
