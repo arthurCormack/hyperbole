@@ -13,21 +13,23 @@ Getting these two different stacks to play nicely together is actually not that 
 
 In the interest of making it easy to set up and try out, I've created a docker-compose file.
 
+## Before Getting Started
+  Get Docker.
+  While it certainly is possible to run the different parts of this without Docker, I have found it to an such invaluable tool in development. I'm not not guilty of hyperbole, when I say that has transformed the way that I work.
 
-These are the steps to getting started:
+## Getting Started:
 
-1) Clone the repo
+1) git clone https://github.com/arthurCormack/hyperbole.git
 
-2) cd into the dir
+2) cd ./hyperbole
 
-3) run docker-compose up -d
+3) docker-compose up -d
   - this will take a while on the first try, since it will first need to download a few images.
   - make sure you aren't already running anything on port 80.
   - it will now be running in developemnt mode.
-
+  
 4) in your browser, go to http://localhost/wp-admin and go through the steps to set up wordpress.
 5) go to /wp-admin/plugins and enable the hyperbole plugin.
-
 6) go to http://localhost to see it in action
 
 
