@@ -54,7 +54,7 @@ const App = ({ route }) => {
       <Header />
       {renderRoutes(route.routes)}
       <Footer />
-      <GlobalStyle />
+      {/* <GlobalStyle /> */}
     </AppWrapper>
   );
 }
