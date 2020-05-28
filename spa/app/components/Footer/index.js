@@ -13,13 +13,13 @@ function Footer() {
         <FormattedMessage {...messages.licenseMessage} />
       </section>
       <section>
-        <LocaleToggle />
+        {/* <LocaleToggle /> */}
       </section>
       <section>
         <FormattedMessage
           {...messages.authorMessage}
           values={{
-            author: <A href="https://twitter.com/mxstbr">Max Stoiber</A>,
+            author: <A href="https://twitter.com/CormackArthur">Arthur Cormack</A>,
           }}
         />
       </section>

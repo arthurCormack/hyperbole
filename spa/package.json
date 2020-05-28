@@ -71,7 +71,7 @@
     "@loadable/webpack-plugin": "^5.7.1",
     "chalk": "2.4.2",
     "compression": "1.7.4",
-    "connected-react-router": "6.6.0",
+    "connected-react-router": "6.6.1",
     "cross-env": "6.0.3",
     "express": "4.17.1",
     "fontfaceobserver": "2.1.0",

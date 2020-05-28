@@ -32,6 +32,7 @@ import { Helmet, HelmetProvider } from 'react-helmet-async';
 // import styleSheet from 'styled-components/lib/models/StyleSheet';
 import { ServerStyleSheet, StyleSheetManager } from 'styled-components';
 
+import GlobalStyle from 'global-styles';
 // Global styles should be injected before any other scoped style, so make sure
 // this file is imported before any styled component.
 // import 'global-styles';
@@ -76,6 +77,7 @@ function renderAppToString(url, store, history, styleSheet, extractor ) {
       <LanguageProvider messages={messages}>
         <ConnectedRouter history={history}>
           <HelmetProvider context={helmetContext}>
+            <GlobalStyle />
             <div>{renderRoutes(Routes)}</div>
           </HelmetProvider>
         </ConnectedRouter>
