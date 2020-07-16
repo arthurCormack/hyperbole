@@ -85,7 +85,7 @@
     "ip": "1.1.5",
     "isomorphic-unfetch": "^3.0.0",
     "jwt-decode": "^2.2.0",
-    "lodash": "4.17.15",
+    "lodash": "4.17.19",
     "minimist": "1.2.0",
     "offline-plugin": "5.0.7",
     "path": "^0.12.7",
